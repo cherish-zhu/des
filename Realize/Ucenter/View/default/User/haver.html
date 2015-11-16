@@ -1,0 +1,25 @@
+﻿<include file="header" />
+<include file="Public/left" />
+    <div class="user-right">
+        <div class="user-title">
+            <div class="right-meun">修改头像</div>
+        </div>
+        <div class="user-center">
+             <div class="user-avatar"><img src="<php>if($row['face'] == ''){echo '/data/face/face.jpg';}else{echo $row['face'];}</php>" /></div>
+             <div class="avatar-list"><p style="line-height:36px; background-color:#EFEFEF">选择头像:</p>
+               <form id="form1" name="form1" enctype="multipart/form-data" method="post" action="">
+                 <label for="fileField"></label>
+                 <input type="file" name="fileField" id="fileField" />
+                 <input type="submit" name="button" id="button" value="提交" />
+               </form>
+             </div>
+             <div class="clear"></div>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+</div>
+
+<div class="footer">CopyRight @ 2015 Destoy.com Powered by 大富豪娱乐有限公司.</div>
+</body>
+</html>

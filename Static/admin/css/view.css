@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+.view-app{width:100%; height:60px; line-height:60px}
+.view-type{width:100%; height:60px; line-height:60px; margin-bottom:20px}
+.view-app a,.view-type a{margin-right:16px; margin-left:12px; text-indent:10px}
+.view-box{width:262px; height:336px; float:left; margin-right:20px; margin-bottom:20px; border:#CCC 1px solid}
+.view-box img{ width:260px; height:300px;}
+.view-line{width:100%; height:36px; line-height:36px;text-indent:12px; border-top:#CCC 1px solid}
+.view-title{float:left; font-size:13px;text-indent:12px;}
+.view-step{float:right; color:#069;font-size:13px; cursor:pointer}
+.view-buy{float:right; color:#666; margin-right:12px;font-size:13px;}

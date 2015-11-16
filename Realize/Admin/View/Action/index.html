@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微博管理-捧星网后台系统</title>
+<link href="./admin/css/pagination.css?v=2.2.0" rel="stylesheet">
+<include file="Public/head" />
+</head>
+
+<body>
+	<div id="wrapper">
+		<include file="Public/left" />
+		<div id="page-wrapper" class="gray-bg dashbard-1">
+			<include file="Public/top" />
+			<div class="wrapper wrapper-content"><a href="{:U("/Action/add")}" class="btn btn-smn btn-primary">新增用户行为</a><!--form class="form-horizontal m-t" action="{:U("/Weibo/index")}" method="get" id="commentForm">
+                <input type="hidden" name="c" value="Weibo">
+                <input type="hidden" name="a" value="index">
+				<div class="row">
+					<div class="col-sm-5 m-b-xs">
+						<select class="input-sm form-control input-s-sm inline" name="status">
+							<option value="1" <php>if(empty($_GET['status']) || $_POST['status'] == 1) echo 'selected="selected"'</php>>正常</option>
+							<option value="0" <php>if($_GET['status'] == 0) echo 'selected="selected"'</php>>禁用</option>
+							<option value="2" <php>if($_GET['status'] == 2) echo 'selected="selected"'</php>>审核中</option>
+							<option value="3" <php>if($_GET['status'] == 3) echo 'selected="selected"'</php>>审核不过</option>
+						</select>
+					</div>
+					<div class="col-sm-4 m-b-xs">
+						<div data-toggle="buttons" class="btn-group">
+							<label class="btn btn-sm btn-white <php>if(empty($_GET['posid']) || $_GET['posid'] == 0) echo 'active'</php>"> <input type="radio" id="option1" name="posid" class="posid <php>if(empty($_GET['posid']) || $_GET['posid'] == 0) echo 'actived'</php>" value="0">普通
+							</label> <label class="btn btn-sm btn-white <php>if($_GET['posid'] == 1) echo 'active'</php>"> <input type="radio" id="option2" name="posid" class="posid <php>if($_GET['posid'] == 1) echo 'actived'</php>"  value="1">推荐
+							</label> <label class="btn btn-sm btn-white <php>if($_GET['posid'] == 2) echo 'active'</php>"> <input type="radio" id="option3" name="posid" class="posid <php>if($_GET['posid'] == 2) echo 'actived'</php>"  value="2">精华
+							</label> <label class="btn btn-sm btn-white <php>if($_GET['posid'] == 9) echo 'active'</php>"> <input type="radio" id="option3" name="posid"  class="posid <php>if($_GET['posid'] == 9) echo 'actived'</php>" value="9">置顶
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="input-group">
+							<input type="text" placeholder="请输入关键词" class="input-sm form-control" name="content" value="<php>echo  $_POST['content'];</php>"> <span class="input-group-btn">
+								<button type="submit" class="btn btn-sm btn-primary">搜索</button>
+							</span>
+						</div>
+					</div>
+                </form--></div>
+        
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>编号</th>
+								<th>标记</th>
+                                <th>名称</th>
+								<th>类型</th>
+								<th>规则</th>
+								<th>状态</th>
+								<th width="130" style="float:right">操作</th>
+							</tr>
+						</thead>
+						<tbody class="menu-list">
+                            <volist name="_list" id="k">
+							<tr>
+								<td>{$k.id}</td>
+								<td>{$k.name}</td>
+                                <th><a href="{:U("/Action/editAction","","")}/id/{$k.id}">{$k.title}</a></th>
+								<td><if  condition="$k.type eq 1">系统<else />用户</if></td>
+								<td>{$k.remark}</td>
+								<td>{$k.status_text}</td>
+								<td width="130" style="float:right"><a href="{:U('/Action/delete','','')}/id/{$k.id}">删除</a>&nbsp;&nbsp;<a href="{:U('/Action/status','','')}/status/{$k.status}/id/{$k.id}" class="menuStatus" id="{$k.status}-{$k.id}"><if  condition="$k.status eq 1">禁用<else />启用</if></a>&nbsp;&nbsp;<!--a href="{:U('/Admin_menu/addFrom','','')}/id/{$k.id}">添加子菜单</a--></td>
+							</tr>
+							</volist>                     
+						</tbody>
+					</table>
+				</div>
+                <div class="page">{$page}</div>
+			</div>
+		</div>
+</body>
+<script type="text/javascript">
+$(function(){
+	
+	$(".inline").change(function(){
+		status = $(".inline").val();
+	    artid  = $(".actived").val();
+		location.href = "?c=Weibo&m=index&status="+status+"&posid="+artid;
+	});
+	$(".btn-sm").click(function(){
+		status = $(".inline").val();
+	    artid  = $(this).children("input").val();
+		location.href = "?c=Weibo&m=index&status="+status+"&posid="+artid;
+	});
+});
+</script>
+</html>

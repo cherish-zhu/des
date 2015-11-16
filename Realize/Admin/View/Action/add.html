@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>菜单管理-捧星网后台系统</title>
+<include file="Public/head" />
+<link href="./admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="./admin/css/plugins/dropzone/basic.css" rel="stylesheet">
+<link href="./admin/css/plugins/dropzone/dropzone.css" rel="stylesheet">
+</head>
+
+<body>
+	<div id="wrapper">
+		<include file="Public/left" />
+		<div id="page-wrapper" class="gray-bg dashbard-1">
+			<include file="Public/top" />
+			<div class="wrapper wrapper-content">
+            
+                                <div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+<h5>新增用户行为 <small></small></h5>
+<div class="ibox-tools">
+<a class="collapse-link">
+<i class="fa fa-chevron-up"></i>
+</a>
+<a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+<i class="fa fa-wrench"></i>
+</a>
+<ul class="dropdown-menu dropdown-user">
+<li><a href="form_basic.html#">选项1</a>
+</li>
+<li><a href="form_basic.html#">选项2</a>
+</li>
+</ul>
+<a class="close-link">
+<i class="fa fa-times"></i>
+</a>
+</div>
+</div>
+<div class="ibox-content">
+<form class="form-horizontal"  method="post" action="{:U('/Action/saveAction')}">
+
+<div class="form-group">
+<label class="col-sm-2 control-label">行为标识（输入行为标识 英文字母）</label>
+
+<div class="col-sm-10">
+<input type="text" class="form-control" name="name" required aria-required="true">
+</div>
+</div>
+<div class="hr-line-dashed"></div>
+
+<div class="form-group">
+<label class="col-sm-2 control-label">行为名称（输入行为名称）</label>
+
+<div class="col-sm-10">
+<input type="text" class="form-control" name="title" required aria-required="true">
+</div>
+</div>
+<div class="hr-line-dashed"></div>
+
+<div class="form-group">
+<label class="col-sm-2 control-label">行为描述（输入行为描述）</label>
+
+<div class="col-sm-10">
+<textarea class="form-control" style="height:200px" name="remark" required aria-required="true">{$info['content']}</textarea>
+</div>
+</div>
+<div class="hr-line-dashed"></div>
+
+
+<div class="form-group">
+<label class="col-sm-2 control-label">行为类型（选择行为类型）</label>
+<div class="col-sm-10">
+  <select name="type" id="tribeid">
+    <option value="1">系统</option>
+    <option value="2">用户</option>
+  </select>
+</div>
+</div>
+<div class="hr-line-dashed"></div>
+
+<div class="form-group">
+<label class="col-sm-2 control-label">行为规则（输入行为规则，不写则只记录日志）</label>
+
+<div class="col-sm-10">
+<textarea class="form-control" style="height:200px" name="rule" required aria-required="true">{$info['content']}</textarea>
+</div>
+</div>
+<div class="hr-line-dashed"></div>
+
+<div class="form-group">
+<label class="col-sm-2 control-label">日志规则（记录日志备注时按此规则来生成，支持[变量|函数]。目前变量有：user,time,model,record,data）</label>
+
+<div class="col-sm-10">
+<textarea class="form-control" style="height:200px" name="log" required aria-required="true">{$info['content']}</textarea>
+</div>
+</div>
+<div class="hr-line-dashed"></div>
+
+<div class="form-group">
+<button class="btn btn-primary" type="submit">提交</button>
+
+<div class="col-sm-10">
+
+</div>
+</div>
+
+</form>
+
+</div>
+</div>
+</div>
+<div style="clear:both; width:100%; "></div>
+                    				
+			</div>
+		</div>
+        <div style="clear:both; width:100%; "></div>
+     </div>
+</body>
+    <script src="./admin/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="./admin/js/plugins/validate/messages_zh.min.js"></script>
+    <script src="./admin/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="./admin/js/plugins/dropzone/dropzone.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+
+<script>
+        $(document).ready(function () {
+
+            Dropzone.options.myAwesomeDropzone = {
+
+                autoProcessQueue: false,
+                uploadMultiple: true,
+                parallelUploads: 100,
+                maxFiles: 100,
+                success:function(int,ret){
+					$("#file").val(ret);
+				},
+                // Dropzone settings
+                init: function () {
+                    var myDropzone = this;
+
+                    this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        myDropzone.processQueue();
+                    });
+                    this.on("sendingmultiple", function () {});
+                    this.on("successmultiple", function (files, response) {});
+                    this.on("errormultiple", function (files, response) {});
+                }
+
+            }
+
+        });
+    </script>
+
+    <script>
+        //以下为修改jQuery Validation插件兼容Bootstrap的方法，没有直接写在插件中是为了便于插件升级
+        $.validator.setDefaults({
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                element.closest('.form-group').removeClass('has-error').addClass('has-success');
+            },
+            errorElement: "span",
+            errorClass: "help-block m-b-none",
+            validClass: "help-block m-b-none"
+
+
+        });
+
+         //以下为官方示例
+        $().ready(function () {
+            // validate the comment form when it is submitted
+            $("#commentForm").validate();
+
+            // validate signup form on keyup and submit
+            $("#signupForm").validate({
+                rules: {
+                    firstname: "required",
+                    lastname: "required",
+                    username: {
+                        required: true,
+                        minlength: 2
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5
+                    },
+                    confirm_password: {
+                        required: true,
+                        minlength: 5,
+                        equalTo: "#password"
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    topic: {
+                        required: "#newsletter:checked",
+                        minlength: 2
+                    },
+                    agree: "required"
+                },
+                messages: {
+                    firstname: "请输入你的姓",
+                    lastname: "请输入您的名字",
+                    username: {
+                        required: "请输入您的用户名",
+                        minlength: "用户名必须两个字符以上"
+                    },
+                    password: {
+                        required: "请输入您的密码",
+                        minlength: "密码必须5个字符以上"
+                    },
+                    confirm_password: {
+                        required: "请再次输入密码",
+                        minlength: "密码必须5个字符以上",
+                        equalTo: "两次输入的密码不一致"
+                    },
+                    email: "请输入您的E-mail",
+                    agree: "必须同意协议后才能注册"
+                }
+            });
+
+            // propose username by combining first- and lastname
+            $("#username").focus(function () {
+                var firstname = $("#firstname").val();
+                var lastname = $("#lastname").val();
+                if (firstname && lastname && !this.value) {
+                    this.value = firstname + "." + lastname;
+                }
+            });
+        });
+    </script>
+</html>

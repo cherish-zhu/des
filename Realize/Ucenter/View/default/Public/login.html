@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="form1" method="post" action="" onSubmit="javscript:return false;"><table width="582" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="186" height="45">用户名：</td>
+    <td width="396">
+      <input type="text" name="account" id="account"></td>
+  </tr>
+  <tr>
+    <td height="45">密码：</td>
+    <td>
+      <input type="password" name="passwd" id="passwd"></td>
+  </tr>
+  <tr>
+    <td height="45">验证码：</td>
+    <td>
+      <input type="text" name="code" id="code"><br>
+      <img title="点击刷新" width="170" height="50" class="verify" src="/Ucenter/Public/verify"></td>
+  </tr>
+  <tr>
+    <td height="45" colspan="2">
+      <input type="submit" name="button" id="button" value="提交">
+    </td>
+  </tr>
+</table></form>
+</body>
+<script src="/Static/JQuery/jquery-1.8.3.min.js"type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	$(".verify").click(function(){
+		var newUrl=$(this).attr("src")+"?F="+Math.random();
+        $(this).attr("src",newUrl);
+	});
+	$("#button").click(function(){
+		var $account = $("#account").val();
+		var $passwd  = $("#passwd").val();
+		var $code    = $("#code").val();
+		$.post("/Ucenter/Public/login",{account:$account,password:$passwd,verify:$code},function(ret){
+			//if(ret.status == 1)
+			alert(ret.info);
+			location.href = "/";
+		},"json");
+	});
+});
+</script>
+</html>

@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+
+.cont-left{float:left; width:800px !important; height:auto; margin-bottom:26px;}
+.cont-title{width:100%; height:40px; line-height:40px}
+.cont-title input{width:100%; height:36px !important; line-height:36px !important; text-indent:6px}
+.cont-center{width:100%; height:auto; margin-bottom:28px; margin-top:16px}
+.cont-center textarea{width:100%}
+.cont-mian{width:100%; height:auto}
+
+.cont-right{width:300px; height:auto; float:left; margin-left:60px;}
+.cont-head{width:100%; height:120px; clear:both; margin-bottom:10px}
+.cont-check{float:left; margin-right:20px; margin-top:0px !important}
+.cont-img{float:left}
+.cont-img img{width:100px; height:100px;}
+.cont-sub{width:100%; height:80px; clear:both; margin-bottom:12px; text-align:center}
+.cont-sub input{height:36px !important; line-height:16px !important; width:220px}
+
+.tab-box{width:100%; height:170px; border:#CCC 1px solid}
+.tab-menu{width:100%; height:36px; list-style-type:none; border-bottom:#CCC 1px solid; margin:0px; padding:0px; }
+.tab-menu li{border-right:#CCC 1px solid; float:left; line-height:36px; padding-left:12px; padding-right:12px; cursor:pointer}
+.tab-from{width:100%; height:auto; margin:12px}
+.tab-list{display:none}
+
+.cate-son{color:#000}
+.cate-bor{border: #069 1px solid}
+.buttom{margin-bottom:16px;border:1px #63A9CF solid;}
+
+.buttom li{cursor:pointer; height:auto; clear:both}
+
+.check-back{background-color:#096; color:#FFF}
+
+.cont-check-box{float:left; margin-right:20px; line-height:60px}
+.cont-check-box label{ margin-right:12px}
+.cont-check-box input{ margin-right:12px;  line-height:60px; vertical-align:middle}
+
+.cont-check-line{width:100%; height:36px; line-height:36px; vertical-align:middle}
+.cont-check-line input{line-height:36px; vertical-align:middle}
+.cont-check-line label{margin-left:12px}
+.tab-list{vertical-align:middle}

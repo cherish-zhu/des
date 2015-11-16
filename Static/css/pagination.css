@@ -1,0 +1,8 @@
+.page a{ width:32px; padding:5px 12px 5px 12px; margin:0px 1px 0px 10px; background-color:#999;-moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;            /* W3C syntax */
+}
+.page span{width:32px;padding:5px 12px 5px 12px; margin:0px 1px 0px 10px; background-color:#FFF;-moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;    }
+.page{clear:both; margin-top:20px !important}

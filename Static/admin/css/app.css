@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+
+table{ border:0}
+tr{border:0}
+td{border:0; cursor:pointer}
+.trhover{cursor:pointer; background-color:#bcd4ec !important}

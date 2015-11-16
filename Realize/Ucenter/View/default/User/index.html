@@ -1,0 +1,39 @@
+﻿<include file="header" />
+<include file="Public/left" />
+
+  <div class="user-right">
+        <div class="user-title">
+            <div class="right-meun">个人信息</div>
+        </div>
+        <div class="user-center">
+          <table width="612" border="0" align="left" cellpadding="0" cellspacing="0">
+              <tr>
+                <td height="36"><b>用户ID:</b>   <php>echo $info['id']+1000000</php></td>
+                <td><b>用户名：</b>    user</td>
+              </tr>
+              <tr>
+                <td height="36" colspan="2"><strong>邮箱：</strong>{$info['email']}</td>
+              </tr>
+              <tr>
+                <td height="36"><strong>登陆次数：</strong>{$info['login_count']}</td>
+                <td height="36"><strong>最近登陆： </strong>{$info['last_login_ip']} / {$info['last_login_time']|date="Y-m-d H:i",###}</td>
+              </tr>
+              <tr>
+                <td height="36" colspan="2"><strong>是否会员：</strong>普通会员 <strong>会员等级：1</strong></td>
+              </tr>
+              <tr>
+                <td height="36" colspan="2">所在用户组：玩家</td>
+            </tr>
+              <tr>
+                <td height="36" colspan="2"><strong>真实姓名：</strong>{$name}</td>
+            </tr>
+          </table>
+      </div>
+    </div>
+    
+    <div class="clear"></div>
+</div>
+
+<div class="footer">CopyRight @ 2015 Destoy.com Powered by 大富豪娱乐有限公司.</div>
+</body>
+</html>

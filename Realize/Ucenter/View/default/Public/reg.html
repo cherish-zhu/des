@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="form1" method="post" action="" onSubmit="javscript:return false;"><table width="582" border="0" cellspacing="0" cellpadding="0">
+<tr>
+    <td width="186" height="45">帐号：</td>
+    <td width="396">
+      <input type="text" name="account" id="account"></td>
+  </tr>
+  <tr>
+    <td width="186" height="45">手机号：</td>
+    <td width="396">
+      <input type="text" name="phone" id="phone"></td>
+  </tr>
+  <tr>
+    <td width="186" height="45">邮箱：</td>
+    <td width="396">
+      <input type="text" name="email" id="email"></td>
+  </tr>
+  <tr>
+    <td width="186" height="45">昵称：</td>
+    <td width="396">
+      <input type="text" name="nickname" id="nickname"></td>
+  </tr>
+  <tr>
+    <td height="45">密码：</td>
+    <td>
+      <input type="password" name="passwd" id="passwd"></td>
+  </tr>
+  <tr>
+    <td height="45">重复密码：</td>
+    <td>
+      <input type="password" name="password" id="password"></td>
+  </tr>
+  <tr>
+    <td height="45">验证码：</td>
+    <td>
+      <input type="text" name="code" id="code"><br>
+      <img title="点击刷新" width="170" height="50" class="verify" src="/Ucenter/Public/verify"></td>
+  </tr>
+  <tr>
+    <td height="45" colspan="2">
+      <input type="submit" name="button" id="button" value="提交">
+    </td>
+  </tr>
+</table></form>
+</body>
+<script type="text/javascript" src="/Static/JQuery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".verify").click(function(){
+		var newUrl=$(this).attr("src")+"?F="+Math.random();
+        $(this).attr("src",newUrl);
+	});
+	$("#button").click(function(){
+		var $account = $("#account").val();
+		var $passwd  = $("#passwd").val();
+		var $password = $("#password").val();
+		var $code    = $("#code").val();
+		var $nickname= $("#nickname").val();
+		var $phone   = $("#phone").val();
+		var $email   = $("#email").val();
+		var pho = /^(1)[0-9]{10}$/;
+		var str = /\w{4,16}/;
+		var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+		if(!str.test($account)){
+			alert('帐号输入有误');
+			return false;
+		}
+		if(!pho.test($phone)){
+			alert('手机号码输入有误');
+			return false;
+		}
+		if(!reg.test($email)){
+			alert('邮箱输入有误');
+			return false;
+		}			
+		if($nickname == ''){
+			alert('昵称不能为空');
+			return false;
+		}
+		if($passwd.length < 6){
+			alert('密码不能小于6个字符');
+			return false;
+		}
+		if($passwd != $password){
+			alert('两次密码不一致');
+			return false;
+		}
+		$.post("/Ucenter/Public/reg",{account:$account,phone:$phone,email:$email,nickname:$nickname,password:$passwd,verify:$code},function(ret){
+			//if(ret.status == 1)
+			alert(ret.info);
+		},"json");
+	});
+});
+</script>
+</html>

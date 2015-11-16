@@ -1,0 +1,169 @@
+@charset "utf-8";
+/* CSS Document */
+/********全局*******/
+*{margin:0 auto; padding:0}
+body{/*background-color:#FFF*/}
+a{text-decoration:none; color:#333}
+ul{list-style-type:none}
+.destroyTips{ position:absolute; z-index:1024px;width:430px; height:120px; top:36%; left:39%; border:#999 5px solid; line-height:120px; text-align:center; font-size:22px; color:#096}
+
+.color{color:#63A9CF}
+.red{color:red}
+
+
+
+/****顶部菜单****/
+.topBack{width:auto; min-width:1262px; height:auto; background-color: #161F30; clear:both}
+.top{margin-left:18px; margin-right:28px; height:50px;}
+.top ul{list-style-type:none}
+.top li{float:left; width:auto; margin-left:12px; font-size:18px; color:#FFF; line-height:47px; padding-left:16px; padding-right:16px; cursor:pointer}
+.top li a{color:#FFF}
+
+/****我的用户中心****/
+.click{ background-color:#000; border-bottom:#F00 3px solid}
+#click{ background-color:#000; border-bottom:#F00 3px solid}
+.leftFrame{width:180px; height:600px; float:left;}
+.rightFrame{width:100%;height:600px; float:left; overflow:hidden;}
+#user img{width:40px; height:40px; margin-top:4px; margin-right:16px; margin-bottom:4px}
+#user{height:50px}
+#user_main{
+	width:320px;
+	height:165px;
+	background-color:#FFF;
+	position:absolute;
+	z-index:1000;
+	top:50px;
+	right:28px;
+	border-bottom:#CCC 1px solid;
+	border-left:#CCC 1px solid;
+	display:none
+}
+
+/****小菜单****/
+
+.mi-cup{width:100%; height:36px; text-align:left; clear:both; border-bottom:solid 1px #999; background-color:#E0E1E7}
+.mi-cup-left{width:190px; line-height:36px; text-align: center; font-size:13px; color:#036; font-weight:bolder; height:36px; border-right:solid 1px #999; float:left; background-color: #AABACA}
+.mi-cup-right{width:160px;width: auto; min-width:1262px;}
+
+/****左边菜单****/
+.left{width:190px; height:100%; float:left; margin-top:0px; text-align:left; border-right:solid 1px #CCC; background-color:#E8EAEE}
+.left ul{width:130px; height: auto; padding-top:12px; padding-bottom:10px;list-style-type:none;  -moz-border-radius: 6px;      /* Gecko browsers */
+    -webkit-border-radius: 6px;   /* Webkit browsers */
+    border-radius:6px;            /* W3C syntax */  margin-top:29px; border: #AABACA 1px solid}
+.left li{width:100%; height:36px; text-indent:36px; color:#999; font-size:14px;  text-align:left; line-height:36px; cursor:pointer}
+.left div{text-indent:26px; line-height:36px}
+#list_up{width:100px; height:10px; margin-bottom:12px; background-color:#069; cursor:pointer}
+#list_down{width:100px; height:10px; margin-bottom:12px; background-color:#069; cursor:pointer}
+.left_list{background-color:#63A9CF; color:#FFF !important; font-weight:bolder}
+#left_list{background-color:#63A9CF; color:#FFF; font-weight:bolder}
+
+/***********操作面板***********/
+.main{width: auto; min-width:1262px; height: auto; clear:both}
+._right{width: auto; min-width:1054px; margin-left:36px; height: auto; float:left; padding-top:39px;}
+.right{width:10px !important}
+.face{width:100%; height:auto; margin-top:20px}
+
+/*****选项*********/
+.menu{width:100%; height:auto;}
+.menu ul{list-style-type:none;}
+.menu li{ padding-right:8px; padding-left:8px; border-right:#CCC 1px solid; float:left; line-height:32px; font-size:12px}
+
+.face{width:100%; height:auto; margin-top:20px}
+.none{margin-top:160px; text-align:center; font-size:36px; color:#F60; line-height:160px}
+.appmain{width:100%; height:460px; margin-top:32px; background-color:#fff}
+.page{width:100%; height:36px; clear:both; line-height:36px; margin-top:20px}
+.pageLeft{width:49.5%; height:30px; float:left; text-align:left}
+.pageRight{width:49.5%; height:30px; float:left; text-align:right}
+
+/*按钮*/
+#butt{width:120px; height:39px; text-align:center; line-height:39px; border:0; color:#FFF; font-size:14px;  -moz-border-radius:3px;  -webkit-border-radius: 3px;  border-radius:3px;font-weight:bolder;background-color:#63A9CF; cursor:pointer}
+
+.smile-butt{background-color:#069; border:0; width:60px; color:#FFF}
+.setting{width:60px; background-color:#39C; height:39px; line-height:39px; text-align:center; color:#FFF; cursor:pointer; font-size:12px; font-weight:bolder }
+.action,.add-action{width:60px; background-color:#39C; height:30px; line-height:30px; text-align:center; color:#FFF; -moz-border-radius:3px;      /* Gecko browsers */
+    -webkit-border-radius: 3px;   /* Webkit browsers */
+    border-radius:3px;            /* W3C syntax */ cursor:pointer; font-size:14px; font-weight:bolder; margin-right:12px}
+
+
+/*选择图标*/
+#change-ico{width:100px; padding:1px; cursor:pointer; height:100px; line-height:100px; margin-top:10px; text-align:center; border:#CCC 1px dashed}
+
+
+
+/*表单*/
+.add-box{width:100%; height:100px; border:dashed 1px #099; text-indent:8px}
+
+/**相册弹框**/
+.img-right p{float:left; width:80px; height:100%; line-height:50px; margin-right:10px; overflow:hidden; cursor:pointer}
+.img{padding:10px; margin-left:10px; margin-top:10px; width:100px; height:100px; border:1px solid #CCC; float:left; overflow:hidden }
+.img img{width:100px; height:100px; float:left; position:absolute}
+.uploadify-queue-item{width:100px !important; background-color:#FFF; padding:0}
+.uploadify-progress-bar{ height:10px; position: relative; top:30px;float:left}
+.img-set{
+	  width:100px;
+	  height:32px;
+	  line-height:32px;
+	  text-align:right;
+	  position:relative;
+	  top:68px;
+      background:rgba(255, 255, 255, 0.3) none repeat scroll 0 0 !important;/*实现FF背景透明，文字不透明*/
+      filter:Alpha(opacity=30); background:#fff;/*实现IE背景透明*/
+}
+.img-set div{ position:relative;}
+.img-line{width:100%;  height:50px; line-height:42px; }
+.img-left{float:left; width:360px}
+.img-right{float:right}
+#box{width:470px; height:210px; margin-left:100px; margin-top:120px; border:#CCC 1px dashed}
+.bar {
+    height: 18px;
+    background: green;
+}
+
+
+
+
+.index-info{width:43%; float:left; height:420px; margin-top:30px; margin-bottom:30px; font-size:13px; color:#666; border-bottom:1px #CCC solid; }
+.index-info li{line-height:42px; width:100%; text-indent:19px; border-bottom:1px #CCC solid; clear:both}
+.index-info p{ float:left}
+.index-info li:nth-child(odd){background-color: #E0ECED}
+
+
+.index-app{width:47%; margin-left:132px; float:left; height:420px; margin-top:30px; margin-bottom:10px; font-size:13px; color:#666; }
+.index-app li{line-height:84px; margin-right:36px; margin-bottom:18px; float:left; width:300px; text-indent:19px; border:1px #CCC dotted;}
+.index-app p{float:left; border-right:#CCC 1px dotted; width:149px; text-align:center; font-size:22px}
+
+.select{width:100%; height:40px; line-height:40px; clear:both; margin-bottom:20px}
+.select-left{float:left}
+.setect-right{float:right}
+.select select,input{border: #DBDBDB 1px solid; height:28px !important; line-height:28px !important; text-indent:6px; color: #033}
+.select select:focus,input:focus{
+
+     outline:none;
+     border:#87C6F9 1px solid;
+     box-shadow: 0 0 8px rgba(103, 166, 217, 1);
+
+   }
+
+#fileupload{width:200px; height:38px; background-color:#063}
+#image{width:98%; padding:10px; height:auto; border:1px #CCC solid; overflow:hidden}
+#imgset span{width:12px; height:12px; font-size:18px; text-align:right; float:left; cursor:pointer}
+.pic-name{width:65px; float:left; overflow:hidden}
+ #back{cursor:pointer; width:30px; height:50px; line-height:50px; float:left}
+ #next{cursor:pointer; width:30px; height:50px; line-height:50px; float:left}
+ #ajaxPage{width:auto; height:36px; line-height:42px; padding:0px; margin:0px; text-align:left}
+ #ajaxPage p{float:left; padding-right:10px; cursor:pointer}
+ .pagestyle{color:#F00}
+ .img-border{border:#066 1px solid}
+ 
+ .Faster{width:auto; float:right; list-style-type:none; margin-right:40px}
+ .Faster li{float:left; margin-top:8px; margin-left:8px}
+  .Faster li img{width:22px; height:22px; cursor:pointer}
+ 
+.BreadcrumbNavigation{list-style:none; line-height:36px; margin-left:30px; font-size:13px; float:left;border-radius:4px}.BreadcrumbNavigation>li{display:inline-block}.BreadcrumbNavigation>li+li:before{color:#ccc;content:""}.BreadcrumbNavigation>.active a{color:#999}
+
+
+
+#change-ico img{width:100%; height:100%}
+.cont-img img{width:100px !important; height:100px !important}
+
+.aui_state_lock{z-index:100000000 !important} 

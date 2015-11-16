@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+
+.user-list{width:100%; height:auto; text-align:left}
+.user-list ul{list-style-type:none; width:100%; height:auto; padding:0px; margin:0px}
+.user-list li{width:100%; height:38px; line-height:38px; background-color: #E2EDF3; margin-bottom:12px}
+.user-mian{background-color:#B3CBD2 !important;}
+
+.user-check{width:30px; height:auto; line-height:38px; float:left; margin-left:10px}
+.user-id{width:90px; height:auto; float:left}
+.user-name{float:left; width:200px; height:auto; line-height:38px}
+.user-from{float:right; width:200px; height:auto}
+.user-time{width:190px; float:right; height:auto}
+.user-action{float:right; width:100px; height:auto;}
+.user-node{ float:right; width:120px; height:auto}
+.user-action i{line-height:38px; margin-right:22px; color:#096; cursor:pointer}
+.botton-type{border:#CCC 1px solid}
+
+.add-role{width:120px; height:38px; line-height:38px; background-color:#096; float:left; margin-top:20px; text-align:center; font-size:14px; font-weight:bolder; color:#FFF; cursor:pointer}
+
+.node{width:100%; height:auto; margin-bottom:20px}
+.node-mian{background-color:#B3CBD2 !important; font-weight:bolder}
+.node li{width:100%; height:38px; line-height:38px; background-color: #E2EDF3; text-indent:10px; font-size:13px; font-weight:bolder}
+
+.add-node{color:#06C; float:right; margin-right:10px; cursor:pointer}

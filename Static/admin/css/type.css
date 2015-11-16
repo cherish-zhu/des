@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+
+.sortable li{cursor:pointer; height:auto}
+.buttom{margin-bottom:16px;border:1px #63A9CF solid;}
+.cate,._nav{width:100%; color:#FFF; height:43px; line-height:43px; background-color:#63A9CF}
+.cate-son,.nav-son{width:100%; height:43px; line-height:43px; border-bottom:1px solid #C7DFF1}
+.cate-id{float:left; margin-left:23px; margin-right:16px}
+.cate-check{float:left; margin-left:23px;}
+.cate-title{float:left;}
+.cate-ss,.cate-del{float:right; margin-right:18px;}
+.cate-del i{line-height:43px; font-size:18px}
+.cate-ss  i{line-height:43px; font-size:18px}
+.type-box{width:600px; height:390px}
+.type-left{width:200px; height:300px; float:left}
+.type-right{width:400px; height:300px; float:left}
+.type-line{width:100%; height:42px; line-height:42px}
+
+/*********************new new*****************/
+.category-box{width:100%; height:auto; margin-bottom:20px; border:#CCC 1px solid;-moz-border-radius: 8px;      /* Gecko browsers */
+    -webkit-border-radius: 8px;   /* Webkit browsers */
+    border-radius:8px;            /* W3C syntax */
+}
+.category-line{border-top:#CCC 1px solid; height:auto; clear:both;}
+.category-id{width:10%; height:42px; text-indent:18px; line-height:42px; float:left}
+.category-name{width:25%; height:42px; text-indent:18px; line-height:42px; float:left}
+.category-alias{width:22%; height:42px; text-indent:18px; line-height:42px; float:left}
+.category-action{width:200px; height:42px; text-indent:18px; line-height:42px; float:right}
+.category-cap{width:65px; height:42px; text-indent:18px; line-height:42px; float:right}
+.category-cap i{width:0px !important; cursor:pointer}
+.category-clear{clear:both; width:100%; height:1px}

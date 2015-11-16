@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+.edit-box{width:860px; height:720px; float:left}
+.edit-box textarea{width:860px; height:720px; float:left; margin-bottom:20px}
+
+.file-mneu{width:330px; height:auto; border:#CCC 1px solid; float:left; margin-right:160px; margin-bottom:20px; margin-left:20px}
+.file-mneu ul{margin:0 auto; padding:0px; list-style:none}
+.file-mneu li{width:100%; height:36px; line-height:36px; text-indent:10px}
+
+.indent2{margin-left:20px}
+.indent3{margin-left:40px}

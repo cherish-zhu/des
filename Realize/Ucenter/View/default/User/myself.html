@@ -1,0 +1,199 @@
+﻿<include file="header" />
+<include file="Public/left" />
+    <div class="user-right">
+        <div class="user-title">
+            <div class="right-meun"><a href="javascript:viod(0)">基本资料</a></div>
+            <div class="right-meun"><a href="javascript:viod(0)">联系方式</a></div>
+            <div class="right-meun"><a href="javascript:viod(0)">其他</a></div>
+        </div>
+        <div class="user-center"><form id="form1" name="form1" method="post" action="">
+            <div id="base">
+              <table width="550" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                  <td width="185" height="45"><b>基本资料</b></td>
+                  <td width="365">
+                  </td>
+                </tr>
+                <tr>
+                  <td width="185" height="45">昵称</td>
+                  <td width="365">
+                    <input type="text" name="nickname" id="nickname" value="{$meb['nickname']}" />
+                  </td>
+                </tr>
+                <tr>
+                  <td height="45">性别</td>
+                  <td>
+                    <select name="sex" size="1" id="sex">
+                      <option value="0" <php>if($meb['sex'] == 0) echo 'selected="selected"';</php>>-</option>
+                      <option value="1" <php>if($meb['sex'] == 1) echo 'selected="selected"';</php>>男</option>
+                      <option value="2" <php>if($meb['sex'] == 2) echo 'selected="selected"';</php>>女</option>
+                  </select></td>
+                </tr>
+                <tr>
+                  <td height="45">真实姓名</td>
+                  <td>
+                  <input type="text" name="name" id="name" value="{$meb['name']}" /></td>
+                </tr>
+                <tr>
+                  <td height="45">出生年月</td>
+                  <td>
+                    <input type="text" name="birthday" id="birthday" value="{$meb['birthday']}" /></td>
+                </tr>
+            </table>
+             </div>
+            <div id="conn"><table width="550" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="185" height="45"><b>联系方式</b></td>
+                  <td width="365">
+                  </td>
+                </tr>
+                <tr>
+                  <td height="45">联系地址</td>
+                  <td>
+                    <select name="province" id="province">
+                    <option value="0" >-</option>
+                  </select>
+                    <select name="city" id="city">
+                    <option value="0" >-</option>
+                    <php>
+                       foreach($pro as $key => $val){
+                           $sel = '';
+                           if($val['cityId'] == $meb['city']) $sel = 'selected = "selected"';
+                           echo '<option value="'.$val['cityId'].'" '.$sel.' >'.$val['cityName'].'</option>';
+                       }
+                    </php>
+                  </select>
+                    <select name="county" id="county">
+                    <option value="0" >-</option>
+                     <php>
+                       foreach($cit as $k => $v){
+                           $sel = '';
+                           if($v['districtId'] == $meb['county']) $sel = 'selected = "selected"';
+                           echo '<option value="'.$v['districtId'].'" '.$sel.' >'.$v['districtName'].'</option>';
+                       }
+                    </php>
+                  </select>
+                  <input name="street" type="text" id="street"  value="{$meb['address']}" size="13" /></td>
+                </tr>
+                <tr>
+                  <td width="185" height="45">QQ</td>
+                  <td width="365">
+                    <input type="text" name="qq" id="qq" value="{$meb['qq']}" />
+                  </td>
+                </tr>
+                <tr>
+                  <td height="45">Email</td>
+                  <td><label for="select"></label>
+                  <input type="text" name="email" id="email" value="{$meb['email']}" /></td>
+                </tr>
+                <tr>
+                  <td height="45">手机号码</td>
+                  <td>
+                  <input type="text" name="phone" id="phone" value="{$meb['phone']}" /></td>
+                </tr>
+            </table></div>
+          <div id="other"><table width="550" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="185" height="45"><b>其他</b></td>
+                  <td width="365">
+                  </td>
+                </tr>
+                <tr>
+                  <td width="185" height="45">备注</td>
+                  <td width="365" rowspan="3">
+                  <textarea name="remark" id="remark" cols="45" rows="8">{$meb['remark']}</textarea></td>
+                </tr>
+                <tr>
+                  <td height="45">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td height="45">&nbsp;</td>
+                </tr>
+            </table></div>
+            <div>
+            <table width="200" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="80"><input id="butt" type="submit" name="button" value="保存" /></td>
+              </tr>
+          </table></div>          
+        </form></div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div class="footer">CopyRight @ 2015 Destoy.com Powered by 大富豪娱乐有限公司.</div>
+</body>
+<script src="/Static/JQuery-UI/jquery-ui-1.10.4.custom.min.js"type="text/javascript"></script>
+<script type="text/javascript"> 
+        $(function(){  
+            $("#birthday").datepicker({
+            numberOfMonths:1,//显示几个月  
+            showButtonPanel:true,//是否显示按钮面板  
+            dateFormat: 'yy-mm-dd',//日期格式  
+            clearText:"清除",//清除日期的按钮名称  
+            closeText:"关闭",//关闭选择框的按钮名称  
+            yearSuffix: '年', //年的后缀  
+            showMonthAfterYear:true,//是否把月放在年的后面  
+            defaultDate:'2015-08-01',//默认日期  
+            minDate:'2011-03-01',//最小日期  
+            maxDate:'20201-12-31',//最大日期  
+            monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],  
+            dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],  
+            dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],  
+            dayNamesMin: ['日','一','二','三','四','五','六'],  
+            onSelect: function(selectedDate) {
+                 $("#birthday").val(selectedDate);  
+			}  
+			});  
+        });  
+       $.datepicker.regional['zh-CN'] = {  
+        closeText: '关闭',  
+        prevText: '<上月',  
+        nextText: '下月>',  
+        currentText: '今天',  
+        monthNames: ['一月','二月','三月','四月','五月','六月',  
+        '七月','八月','九月','十月','十一月','十二月'],  
+        monthNamesShort: ['一','二','三','四','五','六',  
+        '七','八','九','十','十一','十二'],  
+        dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],  
+        dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],  
+        dayNamesMin: ['日','一','二','三','四','五','六'],  
+        weekHeader: '周',  
+        dateFormat: 'yy-mm-dd',  
+        firstDay: 1,  
+        isRTL: false,  
+        showMonthAfterYear: true,  
+        yearSuffix: '年'};  
+    $.datepicker.setDefaults($.datepicker.regional['zh-CN']);  
+	
+	$proId = "{$meb['province']}";
+	
+	$.get("/Ucenter/address/province",function(data){
+		$.each(data,function(e,i){
+			$sel = "";
+			if(i.provinceId == $proId) $sel = 'selected = "selected"';
+			$("#province").append('<option value="'+i.provinceId+'" '+ $sel+' >'+i.provinceName+'</option>');
+		});		
+	},"json");
+	$("#province").change(function(){
+		$id = $(this).val();
+		$.get("/Ucenter/address/city?id="+$id,function(data){
+			str = '<option value="0">-</option>';
+			$.each(data,function(e,i){
+				str += '<option value="'+i.cityId+'" '+ $sel+' >'+i.cityName+'</option>';
+			$("#city").html(str);
+		});
+		},"json");
+	});
+	$("#city").change(function(){
+		$id = $(this).val();
+		$.get("/Ucenter/address/county?id="+$id,function(data){
+			str = '<option value="0">-</option>';
+			$.each(data,function(e,i){
+				str += '<option value="'+i.districtId+'" '+ $sel+' >'+i.districtName+'</option>';
+			$("#county").html(str);
+		});
+		},"json");
+	});
+</script>
+</html>
