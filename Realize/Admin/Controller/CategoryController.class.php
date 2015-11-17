@@ -48,15 +48,17 @@ class CategoryController extends CommonController {
 			$data['name'] = $_POST['name'];
 			$data['alias'] = $_POST['alias'];
 			$data['keyword'] = $_POST['keyword'];
-			$data['parent_id'] = $_POST['category'];		
+			$data['parent_id'] = $_POST['parent_id'];		
 			$data['create_time'] = time();
-			$data['icon'] = $_POST['thumb'];
-			$data['status'] = $_POST['status'];
+			$data['icon'] = $_POST['thumb'] ? $_POST['thumb'] : '';
+			$data['status'] = 1;
 			$data['description'] = $_POST['description'];
 			$model = M($this->table);
 			if(!empty($_GET['id'])) $ret = $model->where(array('id'=>$_GET['id']))->save($data);
 			else $ret = $model->add($data);
 			if($ret)  $this->success("操作成功");
+			else $this->success("操作失败");
+			return;
 		}
 		$this->assign('menus',array('A'=>'应用','B'=>'添加分类'));
 		$this->display();

@@ -154,7 +154,7 @@ function pwdHash($password, $type = 'md5') {
  		$where[$k]['parent_id'] = $v['id'];
  		$where[$k]['status'] = array('gt','-1');
  		$tree = $model->where($where[$k])->find();
- 		
+    if($count == 1) $app = $v['id'];
  		if(is_array($tree)){
  		 			$x = '&gt;&gt';
  		}else{
@@ -163,7 +163,7 @@ function pwdHash($password, $type = 'md5') {
  		
  		if($count > 1){
  		    $str .='<div class="category-line category-id-'.$v['parent_id'].'">';
- 		    $cz = '<a href="/admin/category/edit?id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
+ 		    $cz = '<a href="/admin/category/edit?app='.$app.'&id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
  		}else{
  		    $str .= '<div class="category-box">';
  		}

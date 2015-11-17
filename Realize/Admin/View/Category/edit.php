@@ -15,7 +15,7 @@
             <div class="col-lg-6" style="width:100% !important">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>添加分类</h5>
+                                <h5>编辑分类</h5>
                             </div>
                             <div class="ibox-content">
                                 <form class="form-horizontal m-t" action="/admin/menu/addMenu" method="post" id="commentForm">
@@ -29,37 +29,37 @@
                                         <label class="col-sm-3 control-label">上级分类：</label>
                                         <div class="col-sm-8">
                                             <select name="select" id="select">
-                                              <option value="2">1</option>
+                                              <?php echo $options ?>
                                             </select>
                                         </div>
                                   </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">分类名称：</label>
                                         <div class="col-sm-8">
-                                            <input id="cname" name="name" minlength="2" type="text" class="form-control" required aria-required="true">
+                                            <input id="name" name="name" minlength="2" type="text" class="form-control" value="<?php echo $x['name']?>" required aria-required="true">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">分类别名：</label>
                                         <div class="col-sm-8">
-                                            <input id="cemail" type="text" class="form-control" name="controller" required aria-required="true">
+                                            <input id="alias" type="text" class="form-control" name="alias"  value="<?php echo $x['alias']?>"  required aria-required="true">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">描述：</label>
                                         <div class="col-sm-8">
-                                            <input id="curl" type="text" class="form-control" name="action">
+                                            <input id="description" type="text" class="form-control" name="description" value="<?php echo $x['description']?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">关键字：</label>
                                         <div class="col-sm-8">
-                                            <input id="curl" type="text" class="form-control" name="icon">
+                                            <input id="keyword" type="text" class="form-control" name="keyword" value="<?php echo $x['keyword']?>">
                                         </div>
                                     </div>
                                   <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-3">
-                                        <input type="hidden" name="pid" value="<?php echo (int)$_GET['id'];?>">
+                                        <input type="hidden" name="parent_id" value="<?php echo $x['parent_id']?>">
                                         <button class="btn btn-primary" type="submit">提交</button>
                                         </div>
                                     </div>
