@@ -19,20 +19,19 @@
         <div id="page-wrapper" class="gray-bg dashbard-1">
             <?php require_once('./Realize/Admin/View/Public/top.php');?>
             <div class="wrapper wrapper-content">
-            
-                       
+                                   
            
-<?php echo $content?>
+                <?php echo $content?>
 
 
 <div class="page">
 	       <div class="pageLeft">
 	         <table width="427" border="0" align="left">
 	           <tr>
-	             <td width="36"><div class="action checkAll">全选</div></td>
-	             <td width="36"><div class="action" id="checkBack">反选</div></td>
+	             <td width="36"><div  style="float:left; width:100px" id="app-1" class="action">新增主分类</div></td>
+	             <td width="36"></td>
 	             <td width="230">
-	                 <div style="float:left" class="action">删除</div> <div  style="float:left; width:100px" id="app-1" class="action">新增分类</div>    
+	                  
                   </td>
 	             <td width="107">&nbsp;</td>
                </tr>

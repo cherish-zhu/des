@@ -7,7 +7,7 @@ class navController extends CommonController {
 	public function index(){
 		
 		//$this->assign('option',$arr);
-		$this->assign('type',nav_tree(0, 0));
+		$this->assign('type',nav_tree(0,0));
 
 		$this->assign('menus',array('A'=>'系统','B'=>'导航栏目'));
 

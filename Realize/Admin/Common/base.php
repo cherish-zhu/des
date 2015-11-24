@@ -88,30 +88,10 @@ function pwdHash($password, $type = 'md5') {
     return hash ( $type, $password );
 }
 
-/**
- * url
- */
- function url(){
-	 return host_url().host_dir();
+ function css($c){
+	 return '/Static/admin/css/'.$c.'.css';
  }
- function url2($u){
-	 return host_url().host_dir().'admin'.$u;
- }
- function css(){
-	 return host_url().host_dir();
- }
- function css2($c){
-	 return host_url().host_dir().'Static/admin/css/'.$c.'.css';
- }
- function js(){
-	 return host_url().host_dir();
- }
- function js2(){
-	 return host_url().host_dir();
- }
-  function base_url(){
-	 return host_url().host_dir();
- }
+
  
  function host_url(){
  	$opt = M("option");
@@ -135,55 +115,54 @@ function pwdHash($password, $type = 'md5') {
   * @author Cherish.Zhu
   */
  function type_tree($fid,$app,$count,$list=NULL){
- 	//$tree = array();
- 	$count = $count + 1;
- 	$list = $list;
- 	if($list!=NULL && $count == $list){
- 		break;
- 	}
- 	$model = M('category');
- 	$map   = array();
- 	$map['parent_id'] = $fid;
- 	$map['status'] = array('gt','-1');
- 	$ret = $model->where($map)->order('sort desc')->select();
- 	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
- 	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
- 	$str = '';
-    foreach($ret as $k => $v){
- 		$where = array();
- 		$where[$k]['parent_id'] = $v['id'];
- 		$where[$k]['status'] = array('gt','-1');
- 		$tree = $model->where($where[$k])->find();
-    if($count == 1) $app = $v['id'];
- 		if(is_array($tree)){
- 		 			$x = '&gt;&gt';
- 		}else{
- 		 			$x='';
- 		}
- 		
- 		if($count > 1){
- 		    $str .='<div class="category-line category-id-'.$v['parent_id'].'">';
- 		    $cz = '<a href="/admin/category/edit?app='.$app.'&id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
- 		}else{
- 		    $str .= '<div class="category-box">';
- 		}
- 			
- 		$str.='<div class="category-id">ID:'.$v['id'].'</div>
-          <div class="category-name">'.$n.$v['name'].'</div>
-          <div class="category-alias">别名:'.$v['alias'].'</div>
-          <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>
-          <div class="category-action">操作:<a href="/admin/category/insert?id='.$v['id'].'">添加子分类</a>&nbsp;&nbsp;'.$cz.'</div>';
- 		if(is_array($tree)){
- 		 			$ret[$k]['son'] = true;
- 		 			$str.= type_tree($ret[$k]['id'],$app,$count,$list);
- 		}
- 		if($count > 1) $str .= '<div class="category-clear"></div></div>';
- 		else $str.='<div class="category-clear"></div></div>';
- 		
-     }
-
- 	return $str;
- 	
+   	//$tree = array();
+   	$count = $count + 1;
+  
+   	if($list!=NULL && $count == $list){
+   		break;
+   	}
+   	$model = M('category');
+   	$map   = array();
+   	$map['parent_id'] = $fid;
+   	$map['status'] = array('gt','-1');
+   	$ret = $model->where($map)->order('sort desc')->select();
+   	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
+   	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
+   	$str = '';
+      foreach($ret as $k => $v){
+   		$where = array();
+   		$where[$k]['parent_id'] = $v['id'];
+   		$where[$k]['status'] = array('gt','-1');
+   		$tree = $model->where($where[$k])->find();
+      if($count == 1) $app = $v['id'];
+   		if(is_array($tree)){
+   		 			$x = '&gt;&gt';
+   		}else{
+   		 			$x='';
+   		}
+   		
+   		if($count > 1){
+   		    $str .='<div class="category-line category-id-'.$v['parent_id'].'">';
+   		    $cz = '<a href="/admin/category/edit?app='.$app.'&id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
+   		}else{
+   		    $str .= '<div class="category-box">';
+   		}
+   			
+   		$str.='<div class="category-id">ID:'.$v['id'].'</div>
+            <div class="category-name">'.$n.$v['name'].'</div>
+            <div class="category-alias">别名:'.$v['alias'].'</div>
+            <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>
+            <div class="category-action">操作:<a href="/admin/category/insert?id='.$v['id'].'">添加子分类</a>&nbsp;&nbsp;'.$cz.'</div>';
+   		if(is_array($tree)){
+   		 			$ret[$k]['son'] = true;
+   		 			$str.= type_tree($ret[$k]['id'],$app,$count,$list);
+   		}
+   		if($count > 1) $str .= '<div class="category-clear"></div></div>';
+   		else $str.='<div class="category-clear"></div></div>';
+   		
+       }   
+   	return $str;
+   	
 }
  
  
@@ -262,23 +241,23 @@ function pwdHash($password, $type = 'md5') {
  	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
  	$str = '';
  	foreach($ret as $k => $v){
- 		$where = array();
- 		$where[$k]['parent_id'] = $v['id'];
- 		$where[$k]['status'] = array('gt','-1');
- 		$tree  = $model->where($where[$k])->find();
- 		$check = $model->where(array('parent_id'=>$v['id'],'id'=>$id))->find();
- 		if(is_array($tree)){
- 			$x = '&gt;&gt';
- 		}else{
- 			$x='';
- 		}
- 		$sel = '';
- 		if(!empty($check)) $sel = ' selected="selected"';
- 		$str.='<option value="'.$v['id'].'"'.$sel.'>'.$n.$v['name'].'</option>';
- 		if(is_array($tree)){
- 			$ret[$k]['son'] = true;
- 			$str.= option_tree($ret[$k]['id'],$count,$list,$id);
- 		}
+ 		  $where = array();
+   		$where[$k]['parent_id'] = $v['id'];
+   		$where[$k]['status'] = array('gt','-1');
+   		$tree  = $model->where($where[$k])->find();
+   		$check = $model->where(array('parent_id'=>$v['id'],'id'=>$id))->find();
+   		if(is_array($tree)){
+   			  $x = '&gt;&gt';
+   		}else{
+   			  $x='';
+   		}
+   		$sel = '';
+   		if(!empty($check)) $sel = ' selected="selected"';
+   		$str.='<option value="'.$v['id'].'"'.$sel.'>'.$n.$v['name'].'</option>';
+   		if(is_array($tree)){
+   			  $ret[$k]['son'] = true;
+   			  $str.= option_tree($ret[$k]['id'],$count,$list,$id);
+   		}
  
  	}
  
@@ -349,50 +328,54 @@ function pwdHash($password, $type = 'md5') {
   * @author Cherish.Zhu
   */
  function nav_tree($fid,$count,$list=NULL){
- 	//$tree = array();
- 	$count = $count + 1;
- 	$list = $list;
- 	if($list!=NULL && $count == $list){
- 		break;
- 	}
- 	$model = M('nav');
- 	$map   = array();
- 	$map['parent_id'] = $fid;
- 	$map['status'] = array('gt','-1');
- 	$ret = $model->where($map)->order('sort desc')->select();
- 	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
- 	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
- 	$str = '<ul class="sortable sortable-'.$fid.'">';
- 	foreach($ret as $k => $v){
- 		$where = array();
- 		$where[$k]['parent_id'] = $v['id'];
- 		$where[$k]['status'] = array('gt','-1');
- 		$tree = $model->where($where[$k])->find();
- 		if(is_array($tree)){
- 			$x = '&gt;&gt';
- 		}else{
- 			$x='';
- 		}
- 		$css    = $count == 1 ?  "_nav" : "nav-son";
- 		$buttom = $count == 1 ?  " buttom" : "";
- 		$str.='<li class="ui-state-default'.$buttom.'">
-      <div class="'.$css.'" id="app-'.$app.'" title="双击编辑，拖拽排序">
-           <div class="cate-check"><input type="checkbox" /></div>
-           <div class="cate-id">'.$v['id'].'</div>
-           <div class="cate-title">'.$n.$v['name'].'</div>
-           <div class="cate-ss"><i class="fa fa-angle-right" id="sortable-'.$v['id'].'"></i></div>
-           <div class="cate-del"><i class="fa fa-trash-o" id="sortable-'.$v['id'].'"></i></div>
-      </div>';		
- 		if(is_array($tree)){
- 			$ret[$k]['son'] = true;
- 			$str.= nav_tree($ret[$k]['id'],$count,$list);
- 		}
- 		$str.="</li>";
- 			    
- 	}
- 	$str .= '</ul>';
 
- 	return $str;
+
+    $count = $count + 1;
+
+    if($list!=NULL && $count == $list){
+      break;
+    }
+    $model = M('nav');
+    $map   = array();
+    $map['parent_id'] = $fid;
+    $map['status'] = array('gt','-1');
+    $ret = $model->where($map)->order('sort desc')->select();
+    $n   = str_pad('',$count,'-',STR_PAD_RIGHT);
+    $n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
+    $str = '';
+      foreach($ret as $k => $v){
+      $where = array();
+      $where[$k]['parent_id'] = $v['id'];
+      $where[$k]['status'] = array('gt','-1');
+      $tree = $model->where($where[$k])->find();
+      // if($count == 1) $app = $v['id'];
+      if(is_array($tree)){
+            $x = '&gt;&gt';
+      }else{
+            $x='';
+      }
+      
+      if($count > 1){
+          $str .='<div class="category-line category-id-'.$v['parent_id'].'">';
+          $cz = '<a href="/admin/category/edit?id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
+      }else{
+          $str .= '<div class="category-box">';
+      }
+        
+      $str.='<div class="category-id">ID:'.$v['id'].'</div>
+            <div class="category-name">'.$n.$v['name'].'</div>
+            <div class="category-alias">链接:'.$v['links'].'</div>
+            <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>
+            <div class="category-action">操作:<a href="/admin/category/insert?id='.$v['id'].'">添加子分类</a>&nbsp;&nbsp;'.$cz.'</div>';
+      if(is_array($tree)){
+            $ret[$k]['son'] = true;
+            $str.= nav_tree($ret[$k]['id'],$count,$list);
+      }
+      if($count > 1) $str .= '<div class="category-clear"></div></div>';
+      else $str.='<div class="category-clear"></div></div>';
+      
+       }   
+    return $str;
  
  }
  
