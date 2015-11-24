@@ -357,7 +357,7 @@ function pwdHash($password, $type = 'md5') {
       
       if($count > 1){
           $str .='<div class="category-line category-id-'.$v['parent_id'].'">';
-          $cz = '<a href="/admin/category/edit?id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
+          $cz = '<a href="/admin/nav/edit?id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
       }else{
           $str .= '<div class="category-box">';
       }
@@ -366,7 +366,7 @@ function pwdHash($password, $type = 'md5') {
             <div class="category-name">'.$n.$v['name'].'</div>
             <div class="category-alias">链接:'.$v['links'].'</div>
             <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>
-            <div class="category-action">操作:<a href="/admin/category/insert?id='.$v['id'].'">添加子分类</a>&nbsp;&nbsp;'.$cz.'</div>';
+            <div class="category-action">操作:<a href="/admin/nav/insert?id='.$v['id'].'">添加子分类</a>&nbsp;&nbsp;'.$cz.'</div>';
       if(is_array($tree)){
             $ret[$k]['son'] = true;
             $str.= nav_tree($ret[$k]['id'],$count,$list);

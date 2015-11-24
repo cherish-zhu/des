@@ -92,7 +92,7 @@ $(".category-line").mouseout(function(){
 $(".delete-category").click(function(){
     $id = $(this).attr("id").split("-");
     $id = $id[3];
-    $.get('/admin/category/del?id='+$id,function(data){
+    $.get('/admin/nav/del?id='+$id,function(data){
         if(data == 1){
             alert('已经成功删除');
         }else{
