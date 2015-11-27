@@ -79,7 +79,6 @@ $(function(){
     });
     
     $("#change-img,#change-ico").bind("click",function(){
-		alert(123);
 		var dialog = art.dialog({id: 'N35891',title: "选择图片",	lock:true});
 	    $.ajax({
               url: '/admin/album/change_img',
