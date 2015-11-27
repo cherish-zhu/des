@@ -15,7 +15,7 @@ class navController extends CommonController {
 	}
 	
 	public function edit(){
-	
+	    $this->assign('menus',array('A'=>'系统','B'=>'导航栏目'));
 		$model = M($this->table);
 		$map = array();
 		$map['id'] = $_GET['id'];
@@ -23,7 +23,7 @@ class navController extends CommonController {
 		$arr = $model->where($map)->find();
 		$this->assign('options',option_nav($app, 0,NULL,$_GET['id']));
 		$this->assign('x',$arr);
-		$this->display('tog:nav');
+		$this->display();
 	
 	}
 	
@@ -40,13 +40,14 @@ class navController extends CommonController {
 	
 	public function insert(){
 	
+	    $this->assign('menus',array('A'=>'系统','B'=>'导航栏目'));
 		if(IS_POST){
 			$data = array();
-			$data['name'] = $_POST['name'];
+			$data['name']      = $_POST['name'];
 			$data['parent_id'] = $_POST['category'];
-			$data['links'] = $_POST['links'];
-			$data['icon'] = $_POST['thumb'];
-			$data['status'] = $_POST['status'];
+			$data['links']     = $_POST['links'];
+			$data['icon']      = $_POST['thumb'];
+			$data['status']    = $_POST['status'];
 			$model = M($this->table);
 			if(!empty($_GET['id'])) $ret = $model->where(array('id'=>$_GET['id']))->save($data);
 			else $ret = $model->add($data);
@@ -54,7 +55,7 @@ class navController extends CommonController {
 		}
 	
 		if($ret)  $this->success("操作成功");
-	
+	    $this->display();
 	}
 	
 	public function del(){
@@ -66,7 +67,7 @@ class navController extends CommonController {
 		$data['status'] = -1;
 		$map['id'] = $id;
 		$ret  = $model->where($map)->save($data);
-		return $ret;
+		echo $ret;
 	
 	}
 	

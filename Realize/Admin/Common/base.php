@@ -89,19 +89,19 @@ function pwdHash($password, $type = 'md5') {
 }
 
  function css($c){
-	 return '/Static/admin/css/'.$c.'.css';
+    return '/Static/admin/css/'.$c.'.css';
  }
 
  
  function host_url(){
- 	$opt = M("option");
- 	$opt_arr = $opt->where(array('key'=>'host_url'))->select();
- 	return $opt_arr[0]['value'];
+  	$opt = M("option");
+  	$opt_arr = $opt->where(array('key'=>'host_url'))->select();
+  	return $opt_arr[0]['value'];
  }
  function host_dir(){
- 	$opt = M("option");
- 	$opt_arr = $opt->where(array('key'=>'host_dir'))->select();
- 	return $opt_arr[0]['value'];
+ 	  $opt = M("option");
+   	$opt_arr = $opt->where(array('key'=>'host_dir'))->select();
+   	return $opt_arr[0]['value'];
  }
  
  /**
@@ -177,25 +177,25 @@ function pwdHash($password, $type = 'md5') {
   * @author Cherish.Zhu
   */
  function cate_tree($fid,$count,$list=NULL){
- 	//$tree = array();
- 	$count = $count + 1;
- 	$list = $list;
- 	if($list!=NULL && $count == $list){
- 		break;
- 	}
- 	$model = M('category');
- 	$map   = array();
- 	$map['parent_id'] = $fid;
- 	$map['status'] = array('gt','-1');
- 	$ret = $model->where($map)->order('sort desc')->select();
- 	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
- 	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
- 	$str = '<ul class="sortable-'.$fid.'">';
- 	foreach($ret as $k => $v){
- 		$where = array();
- 		$where[$k]['parent_id'] = $v['id'];
- 		$where[$k]['status'] = array('gt','-1');
- 		$tree = $model->where($where[$k])->find();
+  	//$tree = array();
+  	$count = $count + 1;
+  	$list = $list;
+  	if($list!=NULL && $count == $list){
+  		break;
+  	}
+  	$model = M('category');
+  	$map   = array();
+  	$map['parent_id'] = $fid;
+  	$map['status'] = array('gt','-1');
+  	$ret = $model->where($map)->order('sort desc')->select();
+  	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
+  	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
+  	$str = '<ul class="sortable-'.$fid.'">';
+  	foreach($ret as $k => $v){
+  		$where = array();
+  		$where[$k]['parent_id'] = $v['id'];
+  		$where[$k]['status'] = array('gt','-1');
+  		$tree = $model->where($where[$k])->find();
  
 //  		$str.='<li class="">
 //       <div class="cate-son" id="cate-id-'.$v['id'].'" title="单击选择分类">
@@ -208,9 +208,9 @@ function pwdHash($password, $type = 'md5') {
 //  		}
 //  		$str.="</li>";
  
- 	}
+  	}
     $str .= '</ul>';
- 	return $str;
+ 	  return $str;
  
  }
  
@@ -225,43 +225,43 @@ function pwdHash($password, $type = 'md5') {
   * @author Cherish.Zhu
   */
  function option_tree($fid,$count,$list=NULL,$id=NULL){
- 	//$tree = array();
- 	if($fid == 2) return ;
- 	$count = $count + 1;
- 	$list = $list;
- 	if($list!=NULL && $count == $list){
- 		break;
- 	}
- 	$model = M('category');
- 	$map   = array();
- 	$map['parent_id'] = $fid;
- 	$map['status'] = array('gt','-1');
- 	$ret = $model->where($map)->order('sort desc')->select();
- 	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
- 	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
- 	$str = '';
- 	foreach($ret as $k => $v){
- 		  $where = array();
-   		$where[$k]['parent_id'] = $v['id'];
-   		$where[$k]['status'] = array('gt','-1');
-   		$tree  = $model->where($where[$k])->find();
-   		$check = $model->where(array('parent_id'=>$v['id'],'id'=>$id))->find();
-   		if(is_array($tree)){
-   			  $x = '&gt;&gt';
-   		}else{
-   			  $x='';
-   		}
-   		$sel = '';
-   		if(!empty($check)) $sel = ' selected="selected"';
-   		$str.='<option value="'.$v['id'].'"'.$sel.'>'.$n.$v['name'].'</option>';
-   		if(is_array($tree)){
-   			  $ret[$k]['son'] = true;
-   			  $str.= option_tree($ret[$k]['id'],$count,$list,$id);
-   		}
- 
- 	}
- 
- 	return $str;
+   	//$tree = array();
+   	if($fid == 2) return ;
+   	$count = $count + 1;
+   	$list = $list;
+   	if($list!=NULL && $count == $list){
+   		break;
+   	}
+   	$model = M('category');
+   	$map   = array();
+   	$map['parent_id'] = $fid;
+   	$map['status'] = array('gt','-1');
+   	$ret = $model->where($map)->order('sort desc')->select();
+   	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
+   	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
+   	$str = '';
+   	foreach($ret as $k => $v){
+   		  $where = array();
+     		$where[$k]['parent_id'] = $v['id'];
+     		$where[$k]['status'] = array('gt','-1');
+     		$tree  = $model->where($where[$k])->find();
+     		$check = $model->where(array('parent_id'=>$v['id'],'id'=>$id))->find();
+     		if(is_array($tree)){
+     			  $x = '&gt;&gt';
+     		}else{
+     			  $x='';
+     		}
+     		$sel = '';
+     		if(!empty($check)) $sel = ' selected="selected"';
+     		$str.='<option value="'.$v['id'].'"'.$sel.'>'.$n.$v['name'].'</option>';
+     		if(is_array($tree)){
+     			  $ret[$k]['son'] = true;
+     			  $str.= option_tree($ret[$k]['id'],$count,$list,$id);
+     		}
+   
+   	}
+   
+   	return $str;
  
  }
  
@@ -278,42 +278,42 @@ function pwdHash($password, $type = 'md5') {
  function option_nav($fid,$count,$list=NULL,$id=NULL){
  	//$tree = array();
  	//if($fid == 2) return ;
- 	$count = $count + 1;
- 	$list = $list;
- 	if($list!=NULL && $count == $list){
- 		break;
- 	}
- 	$model = M('nav');
- 	$map   = array();
- 	
- 	$map['parent_id'] = $fid;
- 	$map['status'] = array('gt','-1');
- 	$ret = $model->where($map)->order('sort desc')->select();
- 	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
- 	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
- 	$str = '';
- 	foreach($ret as $k => $v){
- 		$where = array();
- 		$where[$k]['parent_id'] = $v['id'];
- 		$where[$k]['status'] = array('gt','-1');
- 		$tree  = $model->where($where[$k])->find();
- 		$check = $model->where(array('parent_id'=>$v['id'],'id'=>$id))->find();
- 		if(is_array($tree)){
- 			$x = '&gt;&gt';
- 		}else{
- 			$x='';
- 		}
- 		$sel = '';
- 		if(!empty($check)) $sel = ' selected="selected"';
- 		$str.='<option value="'.$v['id'].'"'.$sel.'>'.$n.$v['name'].'</option>';
- 		if(is_array($tree)){
- 			$ret[$k]['son'] = true;
- 			$str.= option_nav($ret[$k]['id'],$count,$list,$id);
- 		}
- 
- 	}
- 
- 	return $str;
+ 	    $count = $count + 1;
+    	$list = $list;
+    	if($list!=NULL && $count == $list){
+    		break;
+    	}
+    	$model = M('nav');
+    	$map   = array();
+    	
+    	$map['parent_id'] = $fid;
+    	$map['status'] = array('gt','-1');
+    	$ret = $model->where($map)->order('sort desc')->select();
+    	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
+    	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
+    	$str = '';
+    	foreach($ret as $k => $v){
+    		  $where = array();
+      		$where[$k]['parent_id'] = $v['id'];
+      		$where[$k]['status'] = array('gt','-1');
+      		$tree  = $model->where($where[$k])->find();
+      		$check = $model->where(array('parent_id'=>$v['id'],'id'=>$id))->find();
+      		if(is_array($tree)){
+      			$x = '&gt;&gt';
+      		}else{
+      			$x='';
+      		}
+      		$sel = '';
+      		if(!empty($check)) $sel = ' selected="selected"';
+      		$str.='<option value="'.$v['id'].'"'.$sel.'>'.$n.$v['name'].'</option>';
+      		if(is_array($tree)){
+      			$ret[$k]['son'] = true;
+      			$str.= option_nav($ret[$k]['id'],$count,$list,$id);
+      		}
+    
+    	}
+    
+    	return $str;
  
  }
  
@@ -327,55 +327,55 @@ function pwdHash($password, $type = 'md5') {
   * @return array
   * @author Cherish.Zhu
   */
- function nav_tree($fid,$count,$list=NULL){
+  function nav_tree($fid,$count,$list=NULL){
 
 
-    $count = $count + 1;
+       $count = $count + 1;   
 
-    if($list!=NULL && $count == $list){
-      break;
-    }
-    $model = M('nav');
-    $map   = array();
-    $map['parent_id'] = $fid;
-    $map['status'] = array('gt','-1');
-    $ret = $model->where($map)->order('sort desc')->select();
-    $n   = str_pad('',$count,'-',STR_PAD_RIGHT);
-    $n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
-    $str = '';
-      foreach($ret as $k => $v){
-      $where = array();
-      $where[$k]['parent_id'] = $v['id'];
-      $where[$k]['status'] = array('gt','-1');
-      $tree = $model->where($where[$k])->find();
-      // if($count == 1) $app = $v['id'];
-      if(is_array($tree)){
-            $x = '&gt;&gt';
-      }else{
-            $x='';
-      }
-      
-      if($count > 1){
-          $str .='<div class="category-line category-id-'.$v['parent_id'].'">';
-          $cz = '<a href="/admin/nav/edit?id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
-      }else{
-          $str .= '<div class="category-box">';
-      }
-        
-      $str.='<div class="category-id">ID:'.$v['id'].'</div>
-            <div class="category-name">'.$n.$v['name'].'</div>
-            <div class="category-alias">链接:'.$v['links'].'</div>
-            <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>
-            <div class="category-action">操作:<a href="/admin/nav/insert?id='.$v['id'].'">添加子分类</a>&nbsp;&nbsp;'.$cz.'</div>';
-      if(is_array($tree)){
-            $ret[$k]['son'] = true;
-            $str.= nav_tree($ret[$k]['id'],$count,$list);
-      }
-      if($count > 1) $str .= '<div class="category-clear"></div></div>';
-      else $str.='<div class="category-clear"></div></div>';
-      
-       }   
-    return $str;
+       if($list!=NULL && $count == $list){
+           break;
+       }
+       $model = M('nav');
+       $map   = array();
+       $map['parent_id'] = $fid;
+       $map['status'] = array('gt','-1');
+       $ret = $model->where($map)->order('sort desc')->select();
+       $n   = str_pad('',$count,'-',STR_PAD_RIGHT);
+       $n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
+       $str = '';
+       foreach($ret as $k => $v){
+           $where = array();
+           $where[$k]['parent_id'] = $v['id'];
+           $where[$k]['status'] = array('gt','-1');
+           $tree = $model->where($where[$k])->find();
+           // if($count == 1) $app = $v['id'];
+           if(is_array($tree)){
+                 $x = '&gt;&gt';
+           }else{
+                 $x='';
+           }
+           
+           if($count > 1){
+               $str .='<div class="category-line category-id-'.$v['parent_id'].'">';
+               $cz = '<a href="/admin/nav/edit?id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
+           }else{
+               $str .= '<div class="category-box">';
+           }
+             
+           $str.='<div class="category-id">ID:'.$v['id'].'</div>
+                 <div class="category-name">'.$n.$v['name'].'</div>
+                 <div class="category-alias">链接:'.$v['links'].'</div>
+                 <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>
+                 <div class="category-action">操作:<a href="/admin/nav/insert?id='.$v['id'].'">添加子分类</a>&nbsp;&nbsp;'.$cz.'</div>';
+           if(is_array($tree)){
+                 $ret[$k]['son'] = true;
+                 $str.= nav_tree($ret[$k]['id'],$count,$list);
+           }
+           if($count > 1) $str .= '<div class="category-clear"></div></div>';
+           else $str.='<div class="category-clear"></div></div>';
+       
+        }   
+       return $str;
  
  }
  
@@ -395,7 +395,7 @@ function pwdHash($password, $type = 'md5') {
  
      $re['utf-8']  = "/[x01-x7f]|[xc2-xdf][x80-xbf]|[xe0-xef][x80-xbf]{2}|[xf0-xff][x80-xbf]{3}/"; 
      $re['gb2312'] = "/[x01-x7f]|[xb0-xf7][xa0-xfe]/";
-     $re['gbk']    = "/[x01-x7f]|[x81-xfe][x40-xfe]/"; 
+     $re['gbk']    = "/[x01-x7f]|[x81-xfe][x40-xfe]/";
      $re['big5']   = "/[x01-x7f]|[x81-xfe]([x40-x7e]|xa1-xfe])/";
  
      preg_match_all($re[$charset], $str, $match);

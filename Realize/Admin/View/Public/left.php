@@ -29,7 +29,7 @@
 					</ul></li>
 				<li>
 			<?php }else{?>
-				<li><a href="{$vo.url}"><i class="fa <?php echo  $vo['icon']?>"></i> <span class="nav-label"><?php echo $vo['name']?></span><!--span class="label label-danger pull-right">2.0</span--></a></li>
+				<li><a href="{$vo.url}"><i class="fa <?php echo $vo['icon']?>"></i> <span class="nav-label"><?php echo $vo['name']?></span><!--span class="label label-danger pull-right">2.0</span--></a></li>
 			<?php }?>
 			<?php }?>
 		</ul>

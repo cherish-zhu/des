@@ -19,10 +19,9 @@
         <div id="page-wrapper" class="gray-bg dashbard-1">
             <?php require_once('./Realize/Admin/View/Public/top.php');?>
             <div class="wrapper wrapper-content">
-            
-                       
+                                   
            
-<?php echo $content?>
+                <?php echo $content?>
 
 
 <div class="page">

@@ -1,7 +1,7 @@
 <?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE html>
 <html>
 <head>
-<title>系统首页 - 我的控制台</title>
+<title>导航栏目 - 我的控制台</title>
 <?php require_once('./Realize/Admin/View/Public/head.php');?>
 <link type="text/css" rel="stylesheet" href="/Static/Semantic-UI/css/semantic.min.css" />
 <link type="text/css" rel="stylesheet" href="/Static/admin/css/type.css" />
@@ -92,7 +92,7 @@ $(".category-line").mouseout(function(){
 $(".delete-category").click(function(){
     $id = $(this).attr("id").split("-");
     $id = $id[3];
-    $.get('/admin/category/del?id='+$id,function(data){
+    $.get('/admin/nav/del?id='+$id,function(data){
         if(data == 1){
             alert('已经成功删除');
         }else{

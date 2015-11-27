@@ -15,7 +15,7 @@
             <div class="col-lg-6" style="width:100% !important">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>添加分类</h5>
+                                <h5>添加导航</h5>
                             </div>
                             <div class="ibox-content">
                                 <form class="form-horizontal m-t" action="/admin/Category/insert" method="post" id="commentForm">
@@ -25,28 +25,33 @@
                                             <br/><br/><br/><br/>
                                         </div>
                                   </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">分类名称：</label>
+                                  <div class="form-group">
+                                        <label class="col-sm-3 control-label">上级导航：</label>
                                         <div class="col-sm-8">
-                                            <input id="name" name="name" minlength="2" type="text" class="form-control" required aria-required="true">
+                                            <select name="select" id="select">
+                                              <?php echo $options ?>
+                                            </select>
+                                        </div>
+                                  </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">导航名称：</label>
+                                        <div class="col-sm-8">
+                                            <input id="name" name="name" minlength="2" type="text" class="form-control" value="<?php echo $x['name']?>" required aria-required="true">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">分类别名：</label>
+                                        <label class="col-sm-3 control-label">链接地址：</label>
                                         <div class="col-sm-8">
-                                            <input id="alias" type="text" class="form-control" name="alias" required aria-required="true">
+                                            <input id="links" type="text" class="form-control" name="alias"  value="<?php echo $x['links']?>"  required aria-required="true">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">描述：</label>
+                                        <label class="col-sm-3 control-label">是否在列表中自动显示：</label>
                                         <div class="col-sm-8">
-                                            <input id="description" type="text" class="form-control" name="description">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">关键字：</label>
-                                        <div class="col-sm-8">
-                                            <input id="keyword" type="text" class="form-control" name="keyword">
+                                            <select name="status" id="select2">
+                                              <option value="1">是</option>
+                                              <option value="0">否</option>
+                                            </select>
                                         </div>
                                     </div>
                                   <div class="form-group">
