@@ -22,7 +22,8 @@
                                 <div class="form-group">
                                         <label class="col-sm-3 control-label">封面图标：</label>
                                         <div class="col-sm-8">
-                                            <br/><br/><br/><br/>
+                                            <div id="change-ico" class="cont-check" style="float:left; margin-right:20px; margin-top:0px">选择图标</div>
+                                            <div class="cont-img" style="float:left"><img src="/Static/icon/wold.jpg" /></div>
                                         </div>
                                   </div>
                                 <div class="form-group">

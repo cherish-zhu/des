@@ -179,7 +179,6 @@ function pwdHash($password, $type = 'md5') {
  function cate_tree($fid,$count,$list=NULL){
   	//$tree = array();
   	$count = $count + 1;
-  	$list = $list;
   	if($list!=NULL && $count == $list){
   		break;
   	}
@@ -190,26 +189,25 @@ function pwdHash($password, $type = 'md5') {
   	$ret = $model->where($map)->order('sort desc')->select();
   	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
   	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
-  	$str = '<ul class="sortable-'.$fid.'">';
+  	$str = '';
   	foreach($ret as $k => $v){
+      $str .= '<div class="category-line category-id-'.$v['parent_id'].'" level="'.$count.'">';
   		$where = array();
   		$where[$k]['parent_id'] = $v['id'];
   		$where[$k]['status'] = array('gt','-1');
   		$tree = $model->where($where[$k])->find();
  
-//  		$str.='<li class="">
-//       <div class="cate-son" id="cate-id-'.$v['id'].'" title="单击选择分类">
-//            <div class="cate-title">'.$n.$v['name'].'</div>
-//            <div class="cate-ss"><i class="fa fa-angle-right" id="sortable-'.$v['id'].'"></i></div>
-//       </div>';
-//  		if(is_array($tree)){
-//  			$ret[$k]['son'] = true;
-//  			$str.= cate_tree($ret[$k]['id'],$count,$list);
-//  		}
-//  		$str.="</li>";
- 
+ 		  $str.='<div class="category-id"><input tabindex="12" type="radio" class="ed" id="square-radio-1" name="square-radio"></div>
+                 <div class="category-name">'.$n.$v['name'].'</div>
+                 <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>';
+ 		  if(is_array($tree)){
+ 			$ret[$k]['son'] = true;
+ 			$str.= cate_tree($ret[$k]['id'],$count,$list);
+ 		  }
+     $str .= '<div class="category-clear"></div></div>';
   	}
-    $str .= '</ul>';
+    
+
  	  return $str;
  
  }
