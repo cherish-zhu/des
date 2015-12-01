@@ -176,7 +176,7 @@ function pwdHash($password, $type = 'md5') {
   * @return array
   * @author Cherish.Zhu
   */
- function cate_tree($fid,$count,$list=NULL){
+ function cate_tree($fid,$count,$list=NULL,$id){
   	//$tree = array();
   	$count = $count + 1;
   	if($list!=NULL && $count == $list){
@@ -196,8 +196,9 @@ function pwdHash($password, $type = 'md5') {
   		$where[$k]['parent_id'] = $v['id'];
   		$where[$k]['status'] = array('gt','-1');
   		$tree = $model->where($where[$k])->find();
- 
- 		  $str.='<div class="category-id"><input tabindex="12" type="radio" class="ed" id="square-radio-1" name="square-radio"></div>
+      if($id == $v['id']) $check = ' checked="checked"';
+      else $check = '';
+ 		  $str.='<div class="category-id"><input type="radio" class="ed" id="square-radio-'.$v['id'].'" name="cate_id" '.$check.'></div>
                  <div class="category-name">'.$n.$v['name'].'</div>
                  <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>';
  		  if(is_array($tree)){
@@ -224,9 +225,9 @@ function pwdHash($password, $type = 'md5') {
   */
  function option_tree($fid,$count,$list=NULL,$id=NULL){
    	//$tree = array();
-   	if($fid == 2) return ;
+   //	if($fid == 2) return ;
    	$count = $count + 1;
-   	$list = $list;
+
    	if($list!=NULL && $count == $list){
    		break;
    	}
@@ -274,12 +275,11 @@ function pwdHash($password, $type = 'md5') {
   * @author Cherish.Zhu
   */
  function option_nav($fid,$count,$list=NULL,$id=NULL){
- 	//$tree = array();
- 	//if($fid == 2) return ;
+
  	    $count = $count + 1;
-    	$list = $list;
+
     	if($list!=NULL && $count == $list){
-    		break;
+    		  break;
     	}
     	$model = M('nav');
     	$map   = array();
@@ -297,16 +297,16 @@ function pwdHash($password, $type = 'md5') {
       		$tree  = $model->where($where[$k])->find();
       		$check = $model->where(array('parent_id'=>$v['id'],'id'=>$id))->find();
       		if(is_array($tree)){
-      			$x = '&gt;&gt';
+      			  $x = '&gt;&gt';
       		}else{
-      			$x='';
+      			  $x='';
       		}
       		$sel = '';
       		if(!empty($check)) $sel = ' selected="selected"';
       		$str.='<option value="'.$v['id'].'"'.$sel.'>'.$n.$v['name'].'</option>';
       		if(is_array($tree)){
-      			$ret[$k]['son'] = true;
-      			$str.= option_nav($ret[$k]['id'],$count,$list,$id);
+      			  $ret[$k]['son'] = true;
+      			  $str.= option_nav($ret[$k]['id'],$count,$list,$id);
       		}
     
     	}
@@ -355,11 +355,10 @@ function pwdHash($password, $type = 'md5') {
            
            if($count > 1){
                $str .='<div class="category-line category-id-'.$v['parent_id'].'">';
-               $cz = '<a href="/admin/nav/edit?id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
            }else{
                $str .= '<div class="category-box">';
            }
-             
+           $cz = '<a href="/admin/nav/edit?id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
            $str.='<div class="category-id">ID:'.$v['id'].'</div>
                  <div class="category-name">'.$n.$v['name'].'</div>
                  <div class="category-alias">链接:'.$v['links'].'</div>

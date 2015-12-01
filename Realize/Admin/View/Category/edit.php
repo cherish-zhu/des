@@ -18,18 +18,18 @@
                                 <h5>编辑分类</h5>
                             </div>
                             <div class="ibox-content">
-                                <form class="form-horizontal m-t" action="/admin/menu/addMenu" method="post" id="commentForm">
+                                <form class="form-horizontal m-t" action="/admin/Category/form?id=<?php echo $_GET['id']?>" method="post" id="commentForm">
                                 <div class="form-group">
                                         <label class="col-sm-3 control-label">封面图标：</label>
                                         <div class="col-sm-8">
                                             <div id="change-ico" class="cont-check" style="float:left; margin-right:20px; margin-top:0px">选择图标</div>
-                                            <div class="cont-img" style="float:left"><img src="/Static/icon/wold.jpg" /></div>
+                                            <div class="cont-img" style="float:left"><img src="<?php if($x['icon'] != '') echo $x['icon']; else echo '/Static/icon/wold.jpg';?>" /></div>
                                         </div>
                                   </div>
                                 <div class="form-group">
                                         <label class="col-sm-3 control-label">上级分类：</label>
                                         <div class="col-sm-8">
-                                            <select name="select" id="select">
+                                            <select name="parent_id" id="select">
                                               <?php echo $options ?>
                                             </select>
                                         </div>
@@ -60,7 +60,7 @@
                                     </div>
                                   <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-3">
-                                        <input type="hidden" name="parent_id" value="<?php echo $x['parent_id']?>">
+                                        <input type="hidden" name="thumb" id="thumb" value="<?php echo $x['thumb']?>">
                                         <button class="btn btn-primary" type="submit">提交</button>
                                         </div>
                                     </div>

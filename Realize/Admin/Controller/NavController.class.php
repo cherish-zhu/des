@@ -21,7 +21,8 @@ class navController extends CommonController {
 		$map['id'] = $_GET['id'];
 		$app = $_GET['app'];
 		$arr = $model->where($map)->find();
-		$this->assign('options',option_nav($app, 0,NULL,$_GET['id']));
+		//$this->assign('options',option_nav(0, 2));
+		$this->assign('options',option_nav(0, 2,NULL,$_GET['id']));
 		$this->assign('x',$arr);
 		$this->display();
 	
@@ -29,32 +30,34 @@ class navController extends CommonController {
 	
 	public function form(){
 	
-		//$model = M($this->table);
-		$app = $_GET['app'];
+		$model = M($this->table);
+		// $app = $_GET['app'];
 		
-		$this->assign('options',option_nav(0, 2));
-		//	echo option_tree(1, 0);
-		$this->display('tog:navForm');
-	
+		// $this->assign('options',option_nav(0, 2));
+		// //	echo option_tree(1, 0);
+		// $this->display('tog:navForm');
+
+		if(IS_POST){
+			$data = array();
+			$data['name']      = $_POST['name'];
+			$data['parent_id'] = $_POST['parent_id'];
+			$data['links']     = $_POST['links'];
+			$data['icon']      = $_POST['thumb'];
+			$data['status']    = $_POST['status'];
+
+			if(!empty($_GET['id'])) $ret = $model->where(array('id'=>$_GET['id']))->save($data);
+			else $ret = $model->add($data);				
+		}
+		if($ret)  $this->success("操作成功");
+	    $this->success("操作失败");
 	}
 	
 	public function insert(){
 	
 	    $this->assign('menus',array('A'=>'系统','B'=>'导航栏目'));
-		if(IS_POST){
-			$data = array();
-			$data['name']      = $_POST['name'];
-			$data['parent_id'] = $_POST['category'];
-			$data['links']     = $_POST['links'];
-			$data['icon']      = $_POST['thumb'];
-			$data['status']    = $_POST['status'];
-			$model = M($this->table);
-			if(!empty($_GET['id'])) $ret = $model->where(array('id'=>$_GET['id']))->save($data);
-			else $ret = $model->add($data);
-				
-		}
-	
-		if($ret)  $this->success("操作成功");
+
+	    $this->assign('options',option_nav(0, 2));
+		//if($ret)  $this->success("操作成功");
 	    $this->display();
 	}
 	

@@ -9,10 +9,6 @@
 <link rel="stylesheet" href="/Static/Editor/kindeditor/themes/default/default.css" />
 <script charset="utf-8" src="/Static/Editor/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="/Static/Editor/kindeditor/lang/zh_CN.js"></script>
-<link href="/Static/iCheck/css/custom.css?v=1.0.2" rel="stylesheet">
-<link href="/Static/iCheck/skins/all.css?v=1.0.2" rel="stylesheet">
-<script src="/Static/iCheck/icheck.js?v=1.0.2"></script>
-<script src="/Static/iCheck/js/custom.min.js?v=1.0.2"></script>
 <script>
 			var editor;
 			KindEditor.ready(function(K) {
@@ -114,9 +110,7 @@
 
                 <div class="category-box">
                 <div class="category-line category-id-'">
-                <div class="category-name">
-
-<input type="radio" name="iCheck" checked>选择分类</div>
+                <div class="category-name">选择分类</div>
                 <div class="category-cap"  id="id-"><i class="angle right icon"></i></div>
                 <div class="category-clear"></div></div>
                 <?php echo $cate_tree;?>

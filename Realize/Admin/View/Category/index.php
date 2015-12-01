@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>分类管理 - 我的控制台</title>
@@ -20,7 +20,7 @@
             <?php require_once('./Realize/Admin/View/Public/top.php');?>
             <div class="wrapper wrapper-content">
                                    
-           
+                
                 <?php echo $content?>
 
 

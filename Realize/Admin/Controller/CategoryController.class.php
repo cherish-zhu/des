@@ -34,15 +34,6 @@ class CategoryController extends CommonController {
 	public function form(){
 
 		//$model = M($this->table);
-		$app = $_GET['app'];
-		$this->assign('options',option_tree($app, 0));
-	//	echo option_tree(1, 0);
-		$this->display('tog:form');
-	
-	}
-	
-	public function insert(){
-		
 		if(IS_POST){
 			$data = array();
 			$data['name'] = $_POST['name'];
@@ -55,11 +46,21 @@ class CategoryController extends CommonController {
 			$data['description'] = $_POST['description'];
 			$model = M($this->table);
 			if(!empty($_GET['id'])) $ret = $model->where(array('id'=>$_GET['id']))->save($data);
-			else $ret = $model->add($data);
-			if($ret)  $this->success("操作成功");
-			else $this->success("操作失败");
-			return;
+			else $ret = $model->add($data);			
 		}
+		if($ret)  $this->success("操作成功");
+		else $this->success("操作失败");
+		return;
+	// 	$app = $_GET['app'];
+	// 	$this->assign('options',option_tree($app, 0));
+	// //	echo option_tree(1, 0);
+	// 	$this->display('tog:form');
+	
+	}
+	
+	public function insert(){
+
+		$this->assign('options',option_tree($app = 1, 0,NULL,$_GET['id']));
 		$this->assign('menus',array('A'=>'应用','B'=>'添加分类'));
 		$this->display();
 		

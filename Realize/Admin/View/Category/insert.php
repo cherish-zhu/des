@@ -18,7 +18,7 @@
                                 <h5>添加分类</h5>
                             </div>
                             <div class="ibox-content">
-                                <form class="form-horizontal m-t" action="/admin/Category/insert" method="post" id="commentForm">
+                                <form class="form-horizontal m-t" action="/admin/Category/form" method="post" id="commentForm">
                                 <div class="form-group">
                                         <label class="col-sm-3 control-label">封面图标：</label>
                                         <div class="col-sm-8">
@@ -54,7 +54,8 @@
                                     </div>
                                   <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-3">
-                                        <input type="hidden" name="parent_id" value="<?php echo (int)$_GET['id'];?>">
+                                        <input type="hidden" name="thumb" id="thumb" value="<?php echo $_GET['thumb'];?>">
+                                        <input type="hidden" name="parent_id" value="<?php echo $_GET['id'];?>">
                                         <button class="btn btn-primary" type="submit">提交</button>
                                         </div>
                                     </div>

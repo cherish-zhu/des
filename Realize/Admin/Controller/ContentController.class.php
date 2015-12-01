@@ -83,8 +83,8 @@ class contentController extends CommonController {
 	    $this->assign('alt',$arr);
 		
 		$this->assign('option',$arr);
-		
-		$this->assign('cate_tree',cate_tree(1,0));
+
+		$this->assign('cate_tree',cate_tree(1,0,null,$arr['cate_id']));
 		
 		if($_POST){
 				

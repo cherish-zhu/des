@@ -107,20 +107,19 @@
                      <p style=" font-size:12px; line-height:36px" id="tips">系统自动检测内容完善程度后将自动保存到草稿箱</p>
                 </div>
                 
-                <ul class="cate buttom">
-                    <li class="ui-state-default">
-                        <div class="cate">
-                             <div class="cate-title">&nbsp;&nbsp;&nbsp;选择分类</div>
-                             <div class="cate-ss"><i class="fa fa-angle-down"></i></div>
-                        </div>
-                     </li>
-                    <?php echo $cate_tree;?>
-                </ul>      
+                <div class="category-box">
+                <div class="category-line category-id-'">
+                <div class="category-name">选择分类</div>
+                <div class="category-cap"  id="id-"><i class="angle right icon"></i></div>
+                <div class="category-clear"></div></div>
+                <?php echo $cate_tree;?>
+
+                <div class="category-clear"></div></div>    
           </div>
                
      </form>
      </div>
-
+            <div class="category-clear"></div>
             </div>
             <div class="footer">
                 <div class="pull-right">
@@ -136,6 +135,30 @@
 
 </body>
 <script type="text/javascript">
+
+
+$(".category-line[level != '1']").not(":first").hide();
+
+var num=0; 
+$('.category-cap').click(function(e){ 
+    $id = $(this).attr("id");
+    $id = $id.split("-");
+    $id = $id[1];
+    if(num++ %2 == 0){ 
+//doSomething 
+    $(this).children("i").removeClass("right").addClass("down"); 
+    
+    $(".category-id-"+$id).show(); 
+    }else{ 
+//doOtherSomething
+    $(this).children("i").removeClass("down").addClass("right");
+    $(".category-id-"+$id).hide(); 
+    } 
+
+    e.preventDefault(); //阻止元素的默认动作（如果存在） 
+});
+
+
 function sendfrom(){
 	 title = $("#title").val();
 	 cate  = $("#cateid").val();
