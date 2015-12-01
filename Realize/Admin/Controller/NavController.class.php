@@ -42,7 +42,7 @@ class navController extends CommonController {
 			else $ret = $model->add($data);				
 		}
 		if($ret)  $this->success("操作成功");
-	    $this->success("操作失败");
+	    else $this->success("操作失败");
 	}
 	
 	public function insert(){
@@ -52,7 +52,7 @@ class navController extends CommonController {
 	    $this->assign('options',option_nav(0, 2));
 
 	    $this->display();
-	    
+
 	}
 	
 	public function del(){

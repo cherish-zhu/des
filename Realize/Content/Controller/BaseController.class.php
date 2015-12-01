@@ -14,7 +14,7 @@ class BaseController extends Controller {
 		self::$name = $option->where(array('key'=>'host_name'))->find();
 		self::$title = $option->where(array('key'=>'host_title'))->find();
 		self::$title2 = $option->where(array('key'=>'host_title2'))->find();
-		self::$keyword = $option->where(array('key'=>'host_keyword'))->find();
+		self::$keyword  = $option->where(array('key'=>'host_keyword'))->find();
 		self::$description = $option->where(array('key'=>'host_description'))->find();
 		self::$bei = $option->where(array('key'=>'host_beian'))->find();
 		self::$url  = $option->where(array('key'=>'host_url'))->find();
