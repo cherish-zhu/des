@@ -5,8 +5,7 @@ class navController extends CommonController {
 	protected $table = 'nav';
 	
 	public function index(){
-		
-		//$this->assign('option',$arr);
+
 		$this->assign('type',nav_tree(0,0));
 
 		$this->assign('menus',array('A'=>'系统','B'=>'导航栏目'));
@@ -21,7 +20,6 @@ class navController extends CommonController {
 		$map['id'] = $_GET['id'];
 		$app = $_GET['app'];
 		$arr = $model->where($map)->find();
-		//$this->assign('options',option_nav(0, 2));
 		$this->assign('options',option_nav(0, 2,NULL,$_GET['id']));
 		$this->assign('x',$arr);
 		$this->display();
@@ -31,11 +29,6 @@ class navController extends CommonController {
 	public function form(){
 	
 		$model = M($this->table);
-		// $app = $_GET['app'];
-		
-		// $this->assign('options',option_nav(0, 2));
-		// //	echo option_tree(1, 0);
-		// $this->display('tog:navForm');
 
 		if(IS_POST){
 			$data = array();
@@ -57,8 +50,9 @@ class navController extends CommonController {
 	    $this->assign('menus',array('A'=>'系统','B'=>'导航栏目'));
 
 	    $this->assign('options',option_nav(0, 2));
-		//if($ret)  $this->success("操作成功");
+
 	    $this->display();
+	    
 	}
 	
 	public function del(){
