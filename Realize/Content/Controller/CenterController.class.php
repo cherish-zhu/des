@@ -24,7 +24,7 @@ class CenterController extends BaseController {
 	
 	public function index(){
 		
-		//echo D('Denter')->test();
+		
 		$cate  = M("category");
 		$center = M("center");
 		$hot = $center->where(array('cate_id'=>self::$cate_id,'status'=>1))->join(C('DB_PREFIX')."center_hits ON ".C('DB_PREFIX')."center.id = ".C('DB_PREFIX')."center_hits.center_id","LEFT")->order('hits desc')->limit(10)->select();
@@ -44,6 +44,13 @@ class CenterController extends BaseController {
 			$this->cate_list(self::$cate_id);
 		}
 		
+	}
+
+	public function __call($mehod,$args){
+       // var_dump(getCategoryId('album'));
+		//echo '您正在访问方法'.$mehod;
+		//var_dump($_GET);
+
 	}
 	
 	public function center($cate_id,$id){
@@ -100,9 +107,7 @@ class CenterController extends BaseController {
 		
 		$center->limit($page->firstRow . ',' . $page->listRows);
 		$arr = $center->select();
-		
-		// 		echo $center->getLastSql();
-		// 		print_r($arr);
+
 		$cate  = M("category");
 	    for ($i=0;$i<$page->listRows;$i++){
 			if(empty($arr[$i]['id'])) break;

@@ -33,7 +33,6 @@ class CategoryController extends CommonController {
 	
 	public function form(){
 
-		//$model = M($this->table);
 		if(IS_POST){
 			$data = array();
 			$data['name'] = $_POST['name'];
@@ -51,10 +50,6 @@ class CategoryController extends CommonController {
 		if($ret)  $this->success("操作成功");
 		else $this->success("操作失败");
 		return;
-	// 	$app = $_GET['app'];
-	// 	$this->assign('options',option_tree($app, 0));
-	// //	echo option_tree(1, 0);
-	// 	$this->display('tog:form');
 	
 	}
 	

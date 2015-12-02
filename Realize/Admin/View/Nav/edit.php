@@ -23,7 +23,7 @@
                                         <label class="col-sm-3 control-label">图标：</label>
                                         <div class="col-sm-8">
                                             <div id="change-ico" class="cont-check" style="float:left; margin-right:20px; margin-top:0px">选择图标</div>
-                                            <div class="cont-img" style="float:left"><img src="<?php if($x['thumb'] != '') echo $x['thumb']; else echo '/Static/icon/wold.jpg';?>" /></div>
+                                            <div class="cont-img" style="float:left"><img src="<?php if($x['icon'] != '') echo $x['icon']; else echo '/Static/icon/wold.jpg';?>" /></div>
                                         </div>
                                   </div>
                                 <div class="form-group">
