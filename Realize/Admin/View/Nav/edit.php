@@ -44,7 +44,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">链接地址：</label>
                                         <div class="col-sm-8">
-                                            <input id="links" type="text" class="form-control" name="links"  value="<?php echo $x['links']?>"  required aria-required="true">
+                                            <input id="link" type="text" class="form-control" name="link"  value="<?php echo $x['link']?>"  required aria-required="true">
                                         </div>
                                     </div>
                                     <div class="form-group">

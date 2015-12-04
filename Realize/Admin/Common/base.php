@@ -352,7 +352,7 @@ function nav_tree($fid,$count,$list=NULL){
          $cz = '<a href="/admin/nav/edit?id='.$v['id'].'">编辑</a>&nbsp;&nbsp<a href="javascript:viod(0)" class="delete-category" id="delete-category-id-'.$v['id'].'">删除</a>';
          $str.='<div class="category-id">ID:'.$v['id'].'</div>
                <div class="category-name">'.$n.$v['name'].'</div>
-               <div class="category-alias">链接:'.$v['links'].'</div>
+               <div class="category-alias">链接:'.$v['link'].'</div>
                <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>
                <div class="category-action">操作:<a href="/admin/nav/insert?id='.$v['id'].'">添加子分类</a>&nbsp;&nbsp;'.$cz.'</div>';
          if(is_array($tree)){

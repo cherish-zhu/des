@@ -34,7 +34,7 @@ class navController extends CommonController {
 			$data = array();
 			$data['name']      = $_POST['name'];
 			$data['parent_id'] = $_POST['parent_id'];
-			$data['links']     = $_POST['links'];
+			$data['link']     = $_POST['link'];
 			$data['icon']      = $_POST['thumb'];
 			$data['status']    = $_POST['status'];
 

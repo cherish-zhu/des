@@ -46,11 +46,19 @@ class CenterController extends BaseController {
 		
 	}
 
-	public function __call($mehod,$args){
-       // var_dump(getCategoryId('album'));
-		//echo '您正在访问方法'.$mehod;
-		//var_dump($_GET);
-
+	public function __call($method,$args){
+var_dump($_GET);
+		if(!isset($_GET['id'])){
+			$gid = (int)getCategoryId(ACTION_NAME);
+			if($gid == 0){
+				$this->display("public:tips");
+				return false;
+			}
+			$this->cate_list($gid);
+			$this->display('list');
+            return false;
+		}
+		
 	}
 	
 	public function center($cate_id,$id){
@@ -75,7 +83,7 @@ class CenterController extends BaseController {
 	}
 	
 	public function cate_list($id){
-		
+
 		$ret['id'] = $id;
 		
 		$map = array();
@@ -83,19 +91,19 @@ class CenterController extends BaseController {
 		$center = M("center");
 		
 		
-		if($_GET['alias'] == 'meifa'){
-			$nums = 12;
-		}elseif ($_GET['alias'] == 'hufu'){
-			$nums = 5;
-		}else{
-			$nums = 9;
-		}
+		// if($_GET['alias'] == 'meifa'){
+		// 	$nums = 12;
+		// }elseif ($_GET['alias'] == 'hufu'){
+		// 	$nums = 5;
+		// }else{
+		$nums = 13;
+		//}
 		
 		$map['cate_id'] = $ret['id'];
 		$map['status'] = 1;
 		
 		import('ORG.Util.Page');//导入分页类
-		$count= $center->where($map)->count();
+		$count = $center->where($map)->count();
 		$page       = new Page($count,$nums);
 		$show       = $page->show();
 		
@@ -119,15 +127,15 @@ class CenterController extends BaseController {
 		$this->assign('arr',$arr);
 		$this->assign('page',$show);// 赋值分页输出
 		
-		if($_GET['alias'] == 'meifa'){
-			$this->display('index2');
-		}elseif ($_GET['alias'] == 'hufu'){
-			$pse = $center->where($map)->join(C('DB_PREFIX')."center_count ON ".C('DB_PREFIX')."center_count.center_id = ".C('DB_PREFIX')."center.id","LEFT")->order('praise desc')->limit(4)->select();
-			$this->assign('pse',$pse);
-			$this->display('index1');
-		}else{
-			$this->display('index');
-		}
+		// if($_GET['alias'] == 'meifa'){
+		// 	$this->display('index2');
+		// }elseif ($_GET['alias'] == 'hufu'){
+		// 	$pse = $center->where($map)->join(C('DB_PREFIX')."center_count ON ".C('DB_PREFIX')."center_count.center_id = ".C('DB_PREFIX')."center.id","LEFT")->order('praise desc')->limit(4)->select();
+		// 	$this->assign('pse',$pse);
+		// 	$this->display('index1');
+		// }else{
+		// 	$this->display('index');
+		// }
 		
 	}
 	

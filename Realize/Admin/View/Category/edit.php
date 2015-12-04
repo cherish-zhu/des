@@ -30,6 +30,17 @@
                                         <label class="col-sm-3 control-label">上级分类：</label>
                                         <div class="col-sm-8">
                                             <select name="parent_id" id="select">
+                                              <?php switch($_GET['app']){
+												  case 1:
+                                                  echo '<option value="1">文章</option>';
+												  break;
+												  case 2:
+												  echo '<option value="2">相册</option>';
+												  break;
+												  case 3:
+												  echo '<option value="3">链接</option>';
+												  break;
+                                              }?>
                                               <?php echo $options ?>
                                             </select>
                                         </div>
