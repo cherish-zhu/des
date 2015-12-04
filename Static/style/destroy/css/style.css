@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* CSS Document */
+*{padding:0; margin:0 auto}
+body{padding:0px; margin:0px auto; font-size:14px; text-align:center}
+a{text-decoration:none}
+ul,li{margin:0px auto; padding:0px}
+.top-back{width:100%; height:60px; text-align:center; clear:both; background-color:#666}
+.top{text-align:left; height:100%; width:960px; line-height:60px}
+.top ul{ list-style-type:none}
+.top li{float:left; margin-left:26px}
+.top li a{color:#CCC}
+
+.name-float{float:left !important; font-size:20px; margin:0px !important}
+.name-float a{color:#F00 !important;}
+
+.banner{margin-top:40px; margin-bottom:40px; height:200px; width:960px; clear:both}
+.banner-left{float:left; margin-right:20px; width:690px; height:200px}
+.banner-left img{width:690px; height:200px}
+.banner-right{float:right; height:200px; width:250px; background-color:#F2F2F2}
+
+.download{width:210px; height:36px; line-height:36px; color:#FFF; background-color:#099; margin-top:20px}
+.about{width:210px; height:100px; line-height:26px; text-align:left; text-indent:2em; color:#033; margin-top:20px}
+
+.wrap{width:960px; height:auto; clear:both}
+.wrap-left{width:690px; height:528px; margin-right:20px; float:left}
+.wrap-right{width:250px; height:auto; float:right}
+
+.new-list{width:250px; height:270px; text-align:left}
+.new-title{width:250px;height:36px; line-height:36px; border-left:#099 2px solid; text-indent:1em}
+.new-list ul{margin:0px auto; padding:0px; }
+.new-list li{margin-left:-1px;height:25px;width:230px;line-height:25px; font-size:15px;list-style-position: inside; overflow: hidden;white-space: nowrap; text-overflow: ellipsis;}
+
+.pos{width:250px; height:230px; background-color:#CCC}
+
+.show-box{float:left; margin-right:15px; width:220px; height:268px; text-align:left}
+.show-box-icon{width:220px; height:130px;}
+.show-box-icon img{width:220px; height:130px;}
+.show-box-title{width:220px; height:36px; font-weight:bolder; line-height:20px; text-align:center; line-height:36px; overflow:hidden}
+.show-box-info{width:220px; height:100px; text-indent:2em; line-height:22px; color:#666}
+
+.links{width:960px; height:180px; clear:both; text-align:left; text-indent:1em}
+.links-line{width:960px; height:36px; line-height:36px; border-left:#099 2px solid; margin-bottom:24px}
+.link-list{width:960px; height:100px;}
+.link-list a{float:left; margin-right:20px; line-height:30px}
+
+.footer{width:100%; height:46px; background-color:#CCC; clear:both}
+.foot{width:960px; height:46px; line-height:46px; text-align:left}
+
+
+/*******************************************************************************/
+.line{width:690px; height:36px; line-height:36px; border-left:#099 2px solid; margin-bottom:24px; text-align:left; text-indent:1em}
+.list{width:690px; height:auto; list-style-type:none}
+.list li{width:100%; height:30px; line-height:30px;}
+
+.lister{width:690px; height:auto; list-style-type:none}
+.lister li{width:100%; height:100px; margin-bottom:20px}
+
+.page{width:690px; height:32px; line-height:32px; background-color:#EFEFEF; margin-top:20px}
