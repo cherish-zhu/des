@@ -3,8 +3,8 @@ namespace Admin\Controller;
 use Org\Util\Page;
 class linksController extends CommonController {
 	public function index(){
-		$type = M('class');
-		$arr = $type->where("`fid`=3 and `status`<>'-1'")->order('ord desc')->select();
+		$type = M('category');
+		$arr = $type->where("`parent_id`=3 and `status`<>'-1'")->order('sort desc')->select();
 		foreach ($arr as $k=>$v){
 			$arr[$k]['son'] = type_tree($arr[$k]['cid'],0);
 		}

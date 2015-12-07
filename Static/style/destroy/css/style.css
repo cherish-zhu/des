@@ -22,7 +22,7 @@ ul,li{margin:0px auto; padding:0px}
 .about{width:210px; height:100px; line-height:26px; text-align:left; text-indent:2em; color:#033; margin-top:20px}
 
 .wrap{width:960px; height:auto; clear:both}
-.wrap-left{width:690px; height:528px; margin-right:20px; float:left}
+.wrap-left{width:690px; height: auto; margin-right:20px; float:left}
 .wrap-right{width:250px; height:auto; float:right}
 
 .new-list{width:250px; height:270px; text-align:left}

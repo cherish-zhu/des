@@ -3,6 +3,10 @@
 function getList($where,$limit,$offset = NULL){
     
     $model = M('center');
+    $model->join(C('DB_PREFIX')."category ON ".C('DB_PREFIX')."center.cate_id = ".C('DB_PREFIX')."category.id","LEFT");
+    $model->field(
+            array(C('DB_PREFIX').'center.*',C('DB_PREFIX').'category.*',C('DB_PREFIX').'center.id' => 'cid')
+    );
     $map   =  array();
     if(is_int($where)){
     	if($where == 0) goto x;
@@ -17,7 +21,7 @@ function getList($where,$limit,$offset = NULL){
     }elseif(is_int($limit)){
     	$model->limit($limit);
     }
-    $array = $model->where($map)->order('id desc')->select();
+    $array = $model->where($map)->order('cid desc')->select();
 	return $array;
 
 }
@@ -33,7 +37,7 @@ function getCategory($val){
     $map   = array();
     if(is_string($val)) $map['alias'] = $val;
     if(is_int($val))    $map['id']    = $val;
-    $arr   = $model->field('id,parent_id,alias,name,links')->where( $map )->find();
+    $arr   = $model->field('id,parent_id,alias,name,links,view')->where( $map )->find();
     return $arr;
 }
 
@@ -53,6 +57,7 @@ function getCategoryList($parent_id,$limit,$offset = NULL){
 	if(!is_int($parent_id)) echo '未正确指定应用ID';
 	$model = M('category');
 	if(is_int($limit)) $model->limit($offset,$limit);
+
 	$data = $model->where( array('parent_id' => $parent_id , 'status' => '1'))->select();
 	return $data;
 }
@@ -114,7 +119,7 @@ function breadcrumbNavigation($id,$index = -1,$nav = array()){
     if($nav[$index]['parent_id'] != 0){
 		return array_reverse(breadcrumbNavigation($id,$index,$nav));
 	}	
-
+    unset($nav[$index]);
 	return array_reverse($nav);
 
 }
@@ -145,4 +150,11 @@ function userInfo($uid){
 //指定用户下内容列表
 function contentbyUserID($uid){
 	#todo
+}
+
+function URL($alias,$id = NULL){
+    if($id != NULL)
+        return '/'.$alias.'/id_'.$id.'.html';
+    else
+        return '/'.$alias;
 }

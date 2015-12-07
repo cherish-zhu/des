@@ -3,7 +3,7 @@
                <div class="new-title"><span style="font-size:18px">最近更新</span></div>
                <ul>
                    <?php foreach(getList(0,9) as $new => $ne){?>
-                 <li><a href="#"><?php echo $ne['title']?></a></li>
+                 <li><a href="<?php echo URL($ne['alias'],$ne['cid'])?>"><?php echo $ne['title']?></a></li>
                    <?php }?>
                </ul>
           </div>

@@ -25,13 +25,20 @@ return array(
     'SHOW_PAGE_TRACE' => true,
 
 //路由
-    'URL_ROUTER_ON'   => true, 
+    'URL_ROUTER_ON'   => true,
+    'URL_MAP_RULES'=>array(
+        'admin'   => 'admin/Index/index',
+        'Ucenter' => 'Ucenter/Index/index',
+    ),
     'URL_ROUTE_RULES'=>array(
-//    'news/:year/:month/:day' => array('News/archive', 'status=1'),
-        //'^new' => 'Content/Center/:1',
-        // 'admin/\w'                =>'admin/:1',
-        ':alias'               => 'Content/Center/:1',
-//    'news/read/:id'          => '/news/:1',
+        'admin/:c/:a'                   => 'admin/:1/:2',
+        'Ucenter/:c/:a'                 => 'Ucenter/:1/:2', 
+        'admin/:id'                     => 'admin/:1/index',
+        'Ucenter/:id'                   => 'Ucenter/:1/index',
+        ':alias^admin/:id'              => 'Content/Center/:1?id=:2',
+        ':alias^Ucenter/:id'            => 'Content/Center/:1?id=:2',
+        ':alias^admin'                  => 'Content/Center/:1',
+        ':alias^Ucenter'                => 'Content/Center/:1',      
     ),
 
     /* 用户相关设置 */

@@ -47,25 +47,50 @@ class CenterController extends BaseController {
 	}
 
 	public function __call($method,$args){
-var_dump($_GET);
-		if(!isset($_GET['id'])){
-			$gid = (int)getCategoryId(ACTION_NAME);
+
+        $gid = (int)getCategoryId(ACTION_NAME);
+        $exp = explode("_", $_GET['id']);
+        $id  = (int)$exp[1];
+
+		if(!isset($_GET['id'])){			
 			if($gid == 0){
 				$this->display("public:tips");
 				return false;
 			}
 			$this->cate_list($gid);
-			$this->display('list');
+			$cate_info = getCategory($gid);
+			$this->assign('cate_info',$cate_info);
+			$this->assign('title',$this->title);
+            $this->assign('keywords',$cate_info['keywords']);
+            $this->assign('description',$cate_info['description']);
+		    if(!empty($cate_info['view'])){
+			    $this->display($arr['view']);
+		    }else{
+			    $this->display('list');
+		    }
+
             return false;
 		}
+
+        $this->assign("bng",breadcrumbNavigation($id));
+
+		$this->center($gid,$id);
 		
 	}
 	
 	public function center($cate_id,$id){
 		$center = M("center");
 		$center->join(C('DB_PREFIX')."center_count ON ".C('DB_PREFIX')."center_count.center_id = ".C('DB_PREFIX')."center.id","LEFT")
-		->join(C('DB_PREFIX')."center_hits ON ".C('DB_PREFIX')."center.id = ".C('DB_PREFIX')."center_hits.center_id","LEFT");
-		$arr = $center->where(array('id'=>$id))->find();
+		->join(C('DB_PREFIX')."center_hits ON ".C('DB_PREFIX')."center.id = ".C('DB_PREFIX')."center_hits.center_id","LEFT")
+		->join(C('DB_PREFIX')."category ON ".C('DB_PREFIX')."center.cate_id = ".C('DB_PREFIX')."category.id","LEFT");
+		$center->field(
+			array(C('DB_PREFIX').'center.*',C('DB_PREFIX').'center_count.*',C('DB_PREFIX').'center_hits.*',C('DB_PREFIX').'category.*',C('DB_PREFIX').'center.id' => 'cid')
+		);
+		$arr = $center->where(array(C('DB_PREFIX').'center.id'=>$id))->find();
+		if(empty($arr)){
+				$this->display("public:tips");
+				return false;
+		} 
 		M("center_hits")->where(array('center_id'=>$_GET['id']))->setInc("hits");
 		$this->assign('center',$arr);
 		$this->assign('title',$arr['title'] .' - '.self::$title );
@@ -90,52 +115,28 @@ var_dump($_GET);
 		
 		$center = M("center");
 		
-		
-		// if($_GET['alias'] == 'meifa'){
-		// 	$nums = 12;
-		// }elseif ($_GET['alias'] == 'hufu'){
-		// 	$nums = 5;
-		// }else{
 		$nums = 13;
-		//}
 		
 		$map['cate_id'] = $ret['id'];
-		$map['status'] = 1;
+		$map[C('DB_PREFIX').'center.status'] = '1';
 		
 		import('ORG.Util.Page');//导入分页类
 		$count = $center->where($map)->count();
 		$page       = new Page($count,$nums);
-		$show       = $page->show();
-		
+		$show       = $page->show();	
 		$center->join(C('DB_PREFIX')."center_count ON ".C('DB_PREFIX')."center_count.center_id = ".C('DB_PREFIX')."center.id","LEFT")
-		->join(C('DB_PREFIX')."center_hits ON ".C('DB_PREFIX')."center.id = ".C('DB_PREFIX')."center_hits.center_id","LEFT");
-		
-		
-		$center->where($map)->order('id asc');
+		->join(C('DB_PREFIX')."center_hits ON ".C('DB_PREFIX')."center.id = ".C('DB_PREFIX')."center_hits.center_id","LEFT")
+		->join(C('DB_PREFIX')."category ON ".C('DB_PREFIX')."center.cate_id = ".C('DB_PREFIX')."category.id","LEFT");
+		$center->field(
+			array(C('DB_PREFIX').'center.*',C('DB_PREFIX').'center_count.*',C('DB_PREFIX').'center_hits.*',C('DB_PREFIX').'category.*',C('DB_PREFIX').'center.id' => 'cid')
+		);
+		$center->where($map)->order(C('DB_PREFIX').'center.id asc');
 		
 		$center->limit($page->firstRow . ',' . $page->listRows);
 		$arr = $center->select();
 
-		$cate  = M("category");
-	    for ($i=0;$i<$page->listRows;$i++){
-			if(empty($arr[$i]['id'])) break;
-			$cat = $cate->where(array('id'=>$arr[$i]['cate_id']))->find();
-			$arr[$i]['cate_name'] = $cat['name'];
-			$arr[$i]['cate_alias'] = $cat['alias'];
-		}
-
 		$this->assign('arr',$arr);
 		$this->assign('page',$show);// 赋值分页输出
-		
-		// if($_GET['alias'] == 'meifa'){
-		// 	$this->display('index2');
-		// }elseif ($_GET['alias'] == 'hufu'){
-		// 	$pse = $center->where($map)->join(C('DB_PREFIX')."center_count ON ".C('DB_PREFIX')."center_count.center_id = ".C('DB_PREFIX')."center.id","LEFT")->order('praise desc')->limit(4)->select();
-		// 	$this->assign('pse',$pse);
-		// 	$this->display('index1');
-		// }else{
-		// 	$this->display('index');
-		// }
 		
 	}
 	

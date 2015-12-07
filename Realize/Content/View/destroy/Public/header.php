@@ -1,8 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Destroy - Powered By Destory</title>
+<title><?php echo $title?>,Powered By Destory</title>
 <link rel="stylesheet" href="/Static/style/destroy/css/style.css" />
+<meta name="keywords" content="<?php echo $keywords?>" />
+<meta name="description" content="<?php echo $description?>" />
+
 </head>
 
 <body>

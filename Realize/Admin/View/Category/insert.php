@@ -52,7 +52,14 @@
                                             <input id="keyword" type="text" class="form-control" name="keyword">
                                         </div>
                                     </div>
-                                  <div class="form-group">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">指定视图模板：</label>
+                                        <div class="col-sm-8">
+                                             <input type="checkbox" name="checkbox" id="check_view"  style="float:left; margin-right:16px" > 
+                                          <input id="view" type="text" class="form-control" name="view" style="width:200px !important;float:left" disabled> &nbsp;&nbsp;(仅输入名称即可，无须后缀)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-3">
                                         <input type="hidden" name="thumb" id="thumb" value="<?php echo $_GET['thumb'];?>">
                                         <input type="hidden" name="parent_id" value="<?php echo $_GET['id'];?>">
@@ -81,6 +88,15 @@
     <script src="./admin/js/plugins/validate/jquery.validate.min.js"></script>
     <script src="./admin/js/plugins/validate/messages_zh.min.js"></script>
     <script>
+	
+	$("#check_view").click(function(){ 
+        if($(this).is(':checked')) {
+            $("#view").prop("disabled",true); 
+	        $("#view").prop("disabled",false);
+        }else{ 
+            $("#view").prop("disabled",true);  
+        } 
+    });
         //以下为修改jQuery Validation插件兼容Bootstrap的方法，没有直接写在插件中是为了便于插件升级
         $.validator.setDefaults({
             highlight: function (element) {
