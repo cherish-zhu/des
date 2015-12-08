@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>菜单管理 - 我的控制台</title>
+<title>用户角色 - 我的控制台</title>
 <?php require_once('./Realize/Admin/View/Public/head.php');?>
 </head>
 
@@ -15,70 +15,23 @@
             <div class="col-lg-6" style="width:100% !important">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>编辑分类</h5>
+                                <h5>编辑角色</h5>
                             </div>
                             <div class="ibox-content">
-                                <form class="form-horizontal m-t" action="/admin/Category/form?id=<?php echo $_GET['id']?>" method="post" id="commentForm">
-                                <div class="form-group">
-                                        <label class="col-sm-3 control-label">封面图标：</label>
-                                        <div class="col-sm-8">
-                                            <div id="change-ico" class="cont-check" style="float:left; margin-right:20px; margin-top:0px">选择图标</div>
-                                            <div class="cont-img" style="float:left"><img src="<?php if($x['icon'] != '') echo $x['icon']; else echo '/Static/icon/wold.jpg';?>" /></div>
-                                        </div>
-                                  </div>
-                                  <div class="form-group">
-                                        <label class="col-sm-3 control-label">上级分类：</label>
-                                        <div class="col-sm-8">
-                                            <select name="parent_id" id="select">
-                                              <?php switch($_GET['app']){
-												  case 1:
-                                                  echo '<option value="1">文章</option>';
-												  break;
-												  case 2:
-												  echo '<option value="2">相册</option>';
-												  break;
-												  case 3:
-												  echo '<option value="3">链接</option>';
-												  break;
-                                              }?>
-                                              <?php echo $options ?>
-                                            </select>
-                                        </div>
-                                    </div>
+                                <form class="form-horizontal m-t" action="/admin/Role/edit?id=<?php echo $_GET['id']?>" method="post" id="commentForm">
+
+
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">分类名称：</label>
+                                        <label class="col-sm-3 control-label">角色名称：</label>
                                         <div class="col-sm-8">
-                                            <input id="name" name="name" minlength="2" type="text" class="form-control" value="<?php echo $x['name']?>" required aria-required="true">
+                                            <input id="name" name="name" minlength="2" value="<?php echo $role['name']?>" type="text" class="form-control" required aria-required="true">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">分类别名：</label>
-                                        <div class="col-sm-8">
-                                            <input id="alias" type="text" class="form-control" name="alias"  value="<?php echo $x['alias']?>"  required aria-required="true">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">描述：</label>
-                                        <div class="col-sm-8">
-                                            <input id="description" type="text" class="form-control" name="description" value="<?php echo $x['description']?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">关键字：</label>
-                                        <div class="col-sm-8">
-                                            <input id="keyword" type="text" class="form-control" name="keyword" value="<?php echo $x['keyword']?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">指定视图模板：</label>
-                                        <div class="col-sm-8">
-                                          <input type="checkbox" name="checkbox" id="check_view"  style="float:left; margin-right:16px" >
-                                          <input id="view" type="text" class="form-control" name="view" style="width:200px !important; float:left" value="<?php echo $x['view']?>" disabled> &nbsp;&nbsp;(仅输入名称即可，无须后缀)
-                                      </div>
-                                    </div>
+
+                                   
                                     <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-3">
-                                        <input type="hidden" name="thumb" id="thumb" value="<?php echo $x['thumb']?>">
+                                        <input type="hidden" name="thumb" id="thumb" value="<?php echo $_GET['thumb'];?>">
                                         <button class="btn btn-primary" type="submit">提交</button>
                                         </div>
                                     </div>
@@ -104,7 +57,6 @@
     <script src="./admin/js/plugins/validate/jquery.validate.min.js"></script>
     <script src="./admin/js/plugins/validate/messages_zh.min.js"></script>
     <script>
-	
 	
 	$("#check_view").click(function(){ 
         if($(this).is(':checked')) {

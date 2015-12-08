@@ -37,7 +37,7 @@ function getCategory($val){
     $map   = array();
     if(is_string($val)) $map['alias'] = $val;
     if(is_int($val))    $map['id']    = $val;
-    $arr   = $model->field('id,parent_id,alias,name,links,view')->where( $map )->find();
+    $arr   = $model->field('id,parent_id,alias,name,url,view')->where( $map )->find();
     return $arr;
 }
 

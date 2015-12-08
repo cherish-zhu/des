@@ -14,6 +14,66 @@ class RoleController extends CommonController {
 		$this->assign('menus',array('A'=>'用户','B'=>'用户角色'));
 		$this->display();
 	}
+
+	public function delete(){
+		$model = M($this->table);
+		$result = $model->where(array('id'=>I('get.id')))->delete();
+		if($result)
+			echo json_encode(array(
+					'status' => 1,
+					'msg'  => '删除成功'
+			));
+		else
+			echo json_encode(array(
+					'code' => 0,
+					'status'  => '删除失败'
+			));
+	}
+
+	public function add(){
+
+		 if(IS_POST){
+            
+            $model = D($this->table);
+
+            if($model->create()){
+            	$model->create_time = time();
+                $model->update_time = time();
+                $model->status = 1;
+                if($model->add()){
+                    $this->success("操作成功");
+                }else{
+                    $this->error($model->getDbError());
+                }
+            }else{
+                $this->error($model->getError());
+            }
+            return ;
+
+        }
+        $this->assign('menus',array('A'=>'用户','B'=>'用户角色'));
+        $this->display();
+
+	}
+
+	public function edit(){
+
+        $model = D($this->table);
+        
+		if(IS_POST){
+            $model->create();
+            if($model->where(array('id'=>I('get.id')))->save()){
+                $this->success("操作成功");
+            }else{
+                $this->error($model->getError());
+            }
+            return ;
+        }
+        $this->assign('role',$model->where(array('id'=>I('get.id')))->find());
+        $this->assign('menus',array('A'=>'用户','B'=>'用户角色'));
+        $this->display();
+
+	}
 //     function _filter(&$map){
 //         if(!empty($_POST['name'])) {
 //         $map['title'] = array('like',"%".$_POST['name']."%");

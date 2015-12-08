@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<title>系统首页 - 我的控制台</title>
+<title>留言评论 - 我的控制台</title>
 <?php require_once('./Realize/Admin/View/Public/head.php');?>
 <link type="text/css" rel="stylesheet" href="/Static/admin/css/app.css" />
 <link type="text/css" rel="stylesheet" href="/Static/Semantic-UI/css/semantic.min.css" />

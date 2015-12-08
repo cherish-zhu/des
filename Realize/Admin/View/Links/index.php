@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<title>系统首页 - 我的控制台</title>
+<title>友情链接 - 我的控制台</title>
 <?php require_once('./Realize/Admin/View/Public/head.php');?>
 <link type="text/css" rel="stylesheet" href="/Static/admin/css/index.css" />
 <link type="text/css" rel="stylesheet" href="/Static/admin/css/link.css" />
@@ -28,7 +28,7 @@
               <input type="submit" name="button" class="smile-butt" value="查找" />
             </form>
           </div>
-          <div class="setect-right"><div class="setting"><i class="fa fa-cog"></i>  添加</div></div>
+          <div class="setect-right"><a href="/admin/links/add?app=3" style="color:#FFF"><div class="setting"><i class="fa fa-cog"></i> &nbsp; 添加</div></a></div>
      </div>
       
       <div class="face">
@@ -45,13 +45,13 @@
                    <div class="link-from">所属分类</div>                 
                </li>
                 <?php foreach($link as $k => $u){?>
-                <li>    
+                <li id="link-<?php echo $u['id']?>">    
                    <div class="link-check">
                        <input type="checkbox" name="checkbox" id="checkbox" />
                    </div>
                    <div class="link-id"><?php echo $u['name']?></div>
-                   <div class="link-name"><?php echo $u['links']?></div>
-                   <div class="link-action"><i class="fa fa-eye" title="查看详情"></i><i class="fa fa-times" title="删除用户"></i></div>
+                   <div class="link-name"><?php echo $u['link']?></div>
+                   <div class="link-action"><a href="<?php echo $u['link']?>" target="_blank"><i class="fa fa-eye" title="查看详情"></i></a><i link-id="<?php echo $u['id']?>" class="fa fa-times delete_link" title="删除用户"></i></div>
                    <div class="link-from"><?php echo $u['sort']?></div>              
                 </li>
 				<?php }?>
@@ -96,5 +96,23 @@
 
 
 </body>
-
+<script type="text/javascript">
+$(function(){
+	$(".delete_link").click(function(){
+		$id = $(this).attr("link-id");
+		art.dialog.confirm('您确定要删除吗？', function () {
+			$.get("/admin/links/delete?id="+$id,function(data){
+				if(data.status == 1){
+					art.dialog.tips('删除成功');
+					$("#link-"+$id).remove();
+				}else{
+					art.dialog.tips('删除失败');
+				}
+		    },"json");
+        }, function () {
+               art.dialog.tips('执行取消删除');
+        });
+	});
+});
+</script>
 </html>

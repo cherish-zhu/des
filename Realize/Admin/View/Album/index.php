@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<title>系统首页 - 我的控制台</title>
+<title>图片相册 - 我的控制台</title>
 <?php require_once('./Realize/Admin/View/Public/head.php');?>
 <meta HTTP-EQUIV="pragma" CONTENT="no-cache">  
 <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">  
