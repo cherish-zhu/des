@@ -198,7 +198,7 @@ function cate_tree($fid,$count,$list=NULL,$id){
         if($id == $v['id']) $check = ' checked="checked"';
         else $check = '';
   		  $str.='<div class="category-id"><input type="radio" class="ed" id="square-radio-'.$v['id'].'" name="cate_id" '.$check.'></div>
-                  <div class="category-name">'.$n.$v['name'].'</div>
+                  <div class="category-name" style="width:160px !important">'.$n.$v['name'].'</div>
                   <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>';
   		  if(is_array($tree)){
   			    $ret[$k]['son'] = true;

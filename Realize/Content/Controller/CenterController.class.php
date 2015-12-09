@@ -54,7 +54,7 @@ class CenterController extends BaseController {
 
 		if(!isset($_GET['id'])){			
 			if($gid == 0){
-				$this->display("public:tips");
+				$this->display("Public:tips");
 				return false;
 			}
 			$this->cate_list($gid);
@@ -88,7 +88,7 @@ class CenterController extends BaseController {
 		);
 		$arr = $center->where(array(C('DB_PREFIX').'center.id'=>$id))->find();
 		if(empty($arr)){
-				$this->display("public:tips");
+				$this->display("Public:tips");
 				return false;
 		} 
 		M("center_hits")->where(array('center_id'=>$_GET['id']))->setInc("hits");
