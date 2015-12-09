@@ -1,13 +1,5 @@
 <?php
-// +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK IT ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2009 http://thinkphp.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
-// +----------------------------------------------------------------------
-// | Author: liu21st <liu21st@gmail.com>
-// +----------------------------------------------------------------------
+
 namespace Org\Util;
 use Think\Db;
 /**
@@ -27,51 +19,7 @@ use Think\Db;
 // RBAC_USER_TABLE 用户表名称
 // RBAC_ACCESS_TABLE 权限表名称
 // RBAC_NODE_TABLE 节点表名称
-/*
--- --------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `think_access` (
-  `role_id` smallint(6) unsigned NOT NULL,
-  `node_id` smallint(6) unsigned NOT NULL,
-  `level` tinyint(1) NOT NULL,
-  `module` varchar(50) DEFAULT NULL,
-  KEY `groupId` (`role_id`),
-  KEY `nodeId` (`node_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `think_node` (
-  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  `title` varchar(50) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '0',
-  `remark` varchar(255) DEFAULT NULL,
-  `sort` smallint(6) unsigned DEFAULT NULL,
-  `pid` smallint(6) unsigned NOT NULL,
-  `level` tinyint(1) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `level` (`level`),
-  KEY `pid` (`pid`),
-  KEY `status` (`status`),
-  KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS `think_role` (
-  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  `pid` smallint(6) DEFAULT NULL,
-  `status` tinyint(1) unsigned DEFAULT NULL,
-  `remark` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `pid` (`pid`),
-  KEY `status` (`status`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
-
-CREATE TABLE IF NOT EXISTS `think_role_user` (
-  `role_id` mediumint(9) unsigned DEFAULT NULL,
-  `user_id` char(32) DEFAULT NULL,
-  KEY `group_id` (`role_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-*/
 class Rbac {
     // 认证方法
     static public function authenticate($map,$model='') {
@@ -201,7 +149,7 @@ class Rbac {
     static public function getAccessList($authId) {
         // Db方式权限数据
         $db     =   Db::getInstance(C('RBAC_DB_DSN'));
-        $table = array('role'=>C('RBAC_ROLE_TABLE'),'user'=>C('RBAC_USER_TABLE'),'access'=>C('RBAC_ACCESS_TABLE'),'node'=>C('RBAC_NODE_TABLE'));
+        $table = array('role'=>C('DB_PREFIX').C('RBAC_ROLE_TABLE'),'user'=>C('DB_PREFIX').C('RBAC_USER_TABLE'),'access'=>C('DB_PREFIX').C('RBAC_ACCESS_TABLE'),'node'=>C('DB_PREFIX').C('RBAC_NODE_TABLE'));
         $sql    =   "select node.id,node.name from ".
                     $table['role']." as role,".
                     $table['user']." as user,".
@@ -269,7 +217,7 @@ class Rbac {
 	static public function getModuleAccessList($authId,$module) {
         // Db方式
         $db     =   Db::getInstance(C('RBAC_DB_DSN'));
-        $table = array('role'=>C('RBAC_ROLE_TABLE'),'user'=>C('RBAC_USER_TABLE'),'access'=>C('RBAC_ACCESS_TABLE'));
+        $table = array('role'=>C('DB_PREFIX').C('RBAC_ROLE_TABLE'),'user'=>C('DB_PREFIX').C('RBAC_USER_TABLE'),'access'=>C('DB_PREFIX').C('RBAC_ACCESS_TABLE'));
         $sql    =   "select access.node_id from ".
                     $table['role']." as role,".
                     $table['user']." as user,".
