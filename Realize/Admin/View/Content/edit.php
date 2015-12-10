@@ -73,7 +73,7 @@
                                </div>
                                 <div class="tab-list">
                                      <p>&nbsp;</p>
-                                     <p><label>请填写模版文件： </label><input type="text" name="view" id="view" value="<?php echo $alt['description']?>" /></p>
+                                     <p><label>请填写模版文件： </label><input type="text" name="view" id="view" value="<?php echo $alt['view']?>" /></p>
                                 </div>
                                 <div class="tab-list">
                                      <p>&nbsp;</p>

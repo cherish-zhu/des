@@ -65,7 +65,7 @@ class contentController extends CommonController {
             	$count_id = M('center_count')->add(array('center_id'=>$center_id));
             }
             
-            if($center_id > 0 and $limit_id > 0) $this->success('新增成功', 'write');
+            if($center_id > 0 and $limit_id > 0) $this->success('新增成功');
 		    else $this->error($add->getError());
 		 	   
 		    return ;
@@ -78,7 +78,7 @@ class contentController extends CommonController {
 	
 	public function edit(){
 		$where['id'] = $map['center_id'] = $_GET['id'];
-		//->join("center_limit ON center.id = center_limit.center_id")
+
 		$arr = M('center')->where($where)->find();
 	    $this->assign('alt',$arr);
 		
@@ -102,12 +102,11 @@ class contentController extends CommonController {
 			$center['type']        = $_POST['type'];
 			$center['comm']        = $_POST['comm'] ? $_POST['comm'] : 1;
 			$center_id = $add->where($where)->save($center);
-		//echo $add->getLastSql();
-		//return  ;
+
 			if($center_id > 0){
 				$limit = M('center_limit');
 				$data  = array();
-				$data['center_id'] = $center_id;
+				$data['center_id'] = $map['center_id'];
 				if(!empty($_POST['passwd'])){
 					$data['type']      = $_POST['passwd'];
 					$data['value']     = $_POST['passwd_value'];
@@ -137,10 +136,11 @@ class contentController extends CommonController {
 					$data['type']      = 'all';
 					$data['value']     = '';
 				}
+
 				$limit_id = $limit->where($map)->save($data);
 			}
-		
-			if($center_id > 0 and $limit_id > 0) $this->success('修改成功', 'write');
+
+			if($center_id > 0 and $limit_id > 0) $this->success('修改成功');
 			else $this->error($add->getError());
 				
 			return ;
@@ -215,11 +215,6 @@ class contentController extends CommonController {
 	}
 	
 	public function type(){
-// 		$type = M('class');
-// 		$arr = $type->where("`fid`=1 and `status`<>'-1'")->order('ord desc')->select();
-// 		foreach ($arr as $k=>$v){
-// 			$arr[$k]['son'] = type_tree($arr[$k]['cid'],0);
-// 		}
 		$this->assign('type',type_tree(1,1,0));
 		$this->assign('bj',array(
 		   'xp' => 'app',
@@ -253,7 +248,7 @@ class contentController extends CommonController {
         $type->alias = trim($_POST['alias']);
 		$data['alias'] = trim($_POST['alias']);		
 		if($type->add())
-			$this->success('新增成功', 'type');
+			$this->success('新增成功');
 		else
 			$this->error($type->getError());
 	}
