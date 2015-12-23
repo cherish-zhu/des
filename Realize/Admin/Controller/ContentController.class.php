@@ -10,8 +10,7 @@ class contentController extends CommonController {
 		$this->assign('cate_tree',cate_tree(1,0));
 		
 		if($_POST){
-			
-			$add = M('center');
+			$conter = M('center');
             $center = array();
 			$center['id']          = NULL;
 			$center['cate_id']     = $_POST['cateid'];
@@ -22,11 +21,11 @@ class contentController extends CommonController {
 			$center['description'] = $_POST['description'];
 			$center['view']        = $_POST['view'];
 			$center['user_id']     = $_SESSION['user_id'] ? $_SESSION['user_id'] : 1;
-			$center['create_time'] = time();	
+			$center['create_time'] = time();
+			$center['update_time'] = time();
 			$center['type']        = $_POST['type'];
 			$center['comm']        = $_POST['comm'] ? $_POST['comm'] : 1;
-			$center_id = $add->add($center);
-
+			$center_id = $conter->add($center);
             if($center_id > 0){
             	$limit = M('center_limit');
             	$data  = array();
@@ -64,7 +63,6 @@ class contentController extends CommonController {
             	$hits_id  = M('center_hits')->add(array('center_id'=>$center_id));
             	$count_id = M('center_count')->add(array('center_id'=>$center_id));
             }
-            
             if($center_id > 0 and $limit_id > 0) $this->success('新增成功');
 		    else $this->error($add->getError());
 		 	   
@@ -98,7 +96,7 @@ class contentController extends CommonController {
 			$center['description'] = $_POST['description'];
 			$center['view']        = $_POST['view'];
 			$center['user_id']     = $_SESSION['user_id'] ? $_SESSION['user_id'] : 1;
-			$center['create_time'] = time();
+			$center['update_time'] = time();
 			$center['type']        = $_POST['type'];
 			$center['comm']        = $_POST['comm'] ? $_POST['comm'] : 1;
 			$center_id = $add->where($where)->save($center);

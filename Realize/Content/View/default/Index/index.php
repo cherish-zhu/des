@@ -28,7 +28,7 @@ body{background-image:url(/Static/background/bg2.jpg);background-size:100%; text
       </tr>
       <?php foreach(getCategoryList(1,6) as $get => $li){?>
       <tr>
-        <td height="36" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="#"><?php echo $li['name']?></a></td>
+        <td height="36" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="<?php echo URL($li['alias']) ?>"><?php echo $li['name']?></a></td>
       </tr>
       <?php }?>
     </table></td>

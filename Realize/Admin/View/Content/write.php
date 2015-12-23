@@ -103,7 +103,7 @@
                 
                 <div class="cont-sub">
                      <input type="hidden" name="thumb" id="thumb" />
-                     <input type="hidden" name="cateid" id="cateid" />
+                     <input type="hidden" name="cateid" id="cateid" value="<?php echo $alt['cate_id']?>" />
                      <input type="submit" name="button" class="ui huge teal button" value="发 &nbsp; 布" />
                      <p style=" font-size:12px; line-height:36px" id="tips">系统自动检测内容完善程度后将自动保存到草稿箱</p>
                 </div>
@@ -163,6 +163,12 @@ $('.category-cap').click(function(e){
     e.preventDefault(); //阻止元素的默认动作（如果存在） 
 });
 
+$(".ed").click(function(){
+	$id = $(this).attr("id");
+	$id = $id.split("-");
+	$id = $id[2];
+	$("#cateid").val($id);
+});
 
 function sendfrom(){
 	 title = $("#title").val();

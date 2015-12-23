@@ -158,6 +158,12 @@ $('.category-cap').click(function(e){
     e.preventDefault(); //阻止元素的默认动作（如果存在） 
 });
 
+$(".ed").click(function(){
+	$id = $(this).attr("id");
+	$id = $id.split("-");
+	$id = $id[2];
+	$("#cateid").val($id);
+});
 
 function sendfrom(){
 	 title = $("#title").val();

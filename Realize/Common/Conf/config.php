@@ -20,7 +20,7 @@ return array(
 //路由
     'URL_ROUTER_ON'   => true,
     'URL_MAP_RULES'=>array(
-        'admin'   => 'admin/Index/index',
+        'admin'   => 'index.php?s=/admin/Public/login',
         'Ucenter' => 'Ucenter/Index/index',
     ),
     'URL_ROUTE_RULES'=>array(
