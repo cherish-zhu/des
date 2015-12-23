@@ -11,8 +11,8 @@ class InstallController extends Controller{
 			$this->redirect('Index/index');
 		}
 
-		if(is_file(MODULE_PATH . 'Data/install.lock')){
-			$this->error('已经成功安装了Destroy，请不要重复安装!', '/Content/Index/index.html');
+		if(!is_file('./Realize/Install/Data/install.lock')){
+			$this->error('已经成功安装了Destroy，请不要重复安装!','/Content/Index/index');
 		}
 	}
 
@@ -112,7 +112,7 @@ class InstallController extends Controller{
 		write_config($dbconfig, $auth);
 
 		if(session('error')){
-			//show_msg();
+			show_msg();
 		} else {
 			session('step', 3);
 			$this->redirect('Index/complete');

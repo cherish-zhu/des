@@ -1,12 +1,4 @@
 <?php
-// +----------------------------------------------------------------------
-// | OneThink [ WE CAN DO IT JUST THINK IT ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2013 http://www.onethink.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
-// +----------------------------------------------------------------------
-
 /**
  * 系统环境检测
  * @return array 系统环境数据
@@ -67,8 +59,8 @@ function check_dirfile(){
 	$items = array(
 		array('dir',  '可写', 'success', './Data/Uploads/Download'),
 		array('dir',  '可写', 'success', './Data/Uploads/Picture'),
-		array('dir',  '可写', 'success', './Data/Uploads/Editor'),
-		array('dir',  '可写', 'success', './Cache'),
+		//array('dir',  '可写', 'success', './Data/Uploads/Editor'),
+		//array('dir',  '可写', 'success', './Cache'),
 		array('file', '可写', 'success', './index.php'),
 		array('file', '可写', 'success', './Realize/Common/Conf/config.php'),
 		array('file', '可写', 'success', './Realize/Ucenter/Conf/config.php'),
@@ -246,7 +238,6 @@ function show_msg($msg, $class = ''){
 
 /**
  * 生成系统AUTH_KEY
- * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 function build_auth_key(){
 	$chars  = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';

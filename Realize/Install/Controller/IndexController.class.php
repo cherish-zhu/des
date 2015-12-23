@@ -6,9 +6,9 @@ use Think\Controller;
 class IndexController extends Controller{
 	//安装首页
 	public function index(){ 
-		if(is_file(MODULE_PATH . 'Data/install.lock')){
-			$this->error('已经成功安装了Destroy，请不要重复安装!', U('Content/Index/index'));
-		}
+		// if(!is_file('./Realize/Install/Data/install.lock')){
+		// 	$this->error('已经成功安装了Destroy，请不要重复安装!','/Content/Index/index');
+		// }
 		session('step', 0);
 		session('error', false);
 		$this->display();

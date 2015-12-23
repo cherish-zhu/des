@@ -213,6 +213,8 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
     }
 
 }
+input,select{color:#333 !important}
+.create-database div{height:46px !important}
 
 /* Masthead (docs home)
 ------------------------- */

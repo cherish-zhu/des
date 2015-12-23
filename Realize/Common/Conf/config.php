@@ -1,4 +1,11 @@
 <?php
+// +----------------------------------------------------------------------
+// | OneThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2013 http://www.onethink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
+// +----------------------------------------------------------------------
 
 /**
  * 系统配文件
@@ -7,32 +14,14 @@
 return array(
     /* 模块相关配置 */
     'AUTOLOAD_NAMESPACE' => array('Addons' => ONETHINK_ADDON_PATH), //扩展模块列表
-    'DEFAULT_MODULE'     => 'Content',
-    'MODULE_DENY_LIST'   => array('Common','User' ),
-    'MODULE_ALLOW_LIST'   => array('Content','Ucenter'),
+    'DEFAULT_MODULE'     => 'Home',
+    'MODULE_DENY_LIST'   => array('Common', 'User'),
 
     /* 系统数据加密设置 */
-    'DATA_AUTH_KEY' => 'rP2s"/qpC0|Vv3,`XyHSTu+E}_%1Z6c>K$!4.]~I', //默认数据加密KEY
+    'DATA_AUTH_KEY' => 'xZ80,qc/GE+m$t>RJ)=_DYS:U<u7hTH}@?.6i59l', //默认数据加密KEY
 
     /* 调试配置 */
     'SHOW_PAGE_TRACE' => true,
-
-//路由
-    'URL_ROUTER_ON'   => true,
-    'URL_MAP_RULES'=>array(
-        'admin'   => 'index.php?s=/admin/Public/login',
-        'Ucenter' => 'Ucenter/Index/index',
-    ),
-    'URL_ROUTE_RULES'=>array(
-        'admin/:c/:a'                   => 'admin/:1/:2',
-        'Ucenter/:c/:a'                 => 'Ucenter/:1/:2', 
-        'admin/:id'                     => 'admin/:1/index',
-        'Ucenter/:id'                   => 'Ucenter/:1/index',
-        ':alias^admin/:id'              => 'Content/Center/:1?id=:2',
-        ':alias^Ucenter/:id'            => 'Content/Center/:1?id=:2',
-        ':alias^admin'                  => 'Content/Center/:1',
-        ':alias^Ucenter'                => 'Content/Center/:1',      
-    ),
 
     /* 用户相关设置 */
     'USER_MAX_CACHE'     => 1000, //最大缓存用户数
@@ -49,10 +38,10 @@ return array(
 
     /* 数据库配置 */
     'DB_TYPE'   => 'mysql', // 数据库类型
-    'DB_HOST'   => '120.25.220.53', // 服务器地址
-    'DB_NAME'   => 'des', // 数据库名
-    'DB_USER'   => 'develop', // 用户名
-    'DB_PWD'    => '123456',  // 密码
+    'DB_HOST'   => '127.0.0.1', // 服务器地址
+    'DB_NAME'   => 'destroy01', // 数据库名
+    'DB_USER'   => 'root', // 用户名
+    'DB_PWD'    => '19880614',  // 密码
     'DB_PORT'   => '3306', // 端口
     'DB_PREFIX' => 'des_', // 数据库表前缀
 

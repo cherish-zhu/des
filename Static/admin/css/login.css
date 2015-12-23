@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-body{ background-image:url(/Static/admin/background/bg3.png)}
+body{ background-image:url(/Static/background/bg3.png)}
 .login-back{width:600px; height:300px; position:absolute; top:25%; left:30%; border:#000 1px solid; background-color:#333; padding:10px;
       filter:alpha(opacity=50);  
       -moz-opacity:0.5;  

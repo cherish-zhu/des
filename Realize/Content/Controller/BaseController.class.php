@@ -7,7 +7,8 @@ class BaseController extends Controller {
 	
 	public function __construct(){
         parent::__construct();
-		if(is_file(MODULE_PATH . 'Data/install.lock')){
+
+		if(is_file('./Realize/Install/Data/install.lock')){
 			$this->error('请安装Destroy!', U('Install/Index/index'));
 		}
 		$option = M('option');
