@@ -12,7 +12,7 @@ class InstallController extends Controller{
 		}
 
 		if(!is_file('./Realize/Install/Data/install.lock')){
-			$this->error('已经成功安装了Destroy，请不要重复安装!','/Content/Index/index');
+			$this->error('已经成功安装了Destroy，请不要重复安装!','/');
 		}
 	}
 
@@ -72,7 +72,7 @@ class InstallController extends Controller{
 			}
 
 			//跳转到数据库安装页面
-			header('Location: /install/Install/step3');
+			header('Location: /Install/Install/step3');
 			//$this->redirect('step3');
 		} else {
 
@@ -117,5 +117,6 @@ class InstallController extends Controller{
 			session('step', 3);
 			$this->redirect('Index/complete');
 		}
+
 	}
 }
