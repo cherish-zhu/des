@@ -130,8 +130,8 @@ function check_func(){
 function write_config($config, $auth){
 	if(is_array($config)){
 		//读取配置内容
-		$conf = file_get_contents(MODULE_PATH . 'Data/conf.tpl');
-		$user = file_get_contents(MODULE_PATH . 'Data/user.tpl');
+		$conf = file_get_contents('./Realize/Install/Data/conf.tpl');
+		$user = file_get_contents('./Realize/Install/Data/user.tpl');
 		//替换配置项
 		foreach ($config as $name => $value) {
 			$conf = str_replace("[{$name}]", $value, $conf);
@@ -142,8 +142,8 @@ function write_config($config, $auth){
 		$user = str_replace('[AUTH_KEY]', $auth, $user);
 
 		//写入应用配置文件
-		if(file_put_contents(APP_PATH . 'Common/Conf/config.php', $conf) &&
-		   file_put_contents(APP_PATH . 'Ucenter/Conf/config.php', $user)){
+		if(file_put_contents('./Realize/Common/Conf/config.php', $conf) &&
+		   file_put_contents('./Realize/Ucenter/Conf/config.php', $user)){
 			show_msg('配置文件写入成功');
 		} else {
 			show_msg('配置文件写入失败！', 'error');
