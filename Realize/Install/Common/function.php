@@ -205,10 +205,10 @@ function create_tables($db, $prefix = ''){
 
 function register_administrator($db, $prefix, $admin, $auth){
 	show_msg('开始注册创始人帐号...');
-	$sql = "INSERT INTO `[PREFIX]ucenter_member` VALUES " . 
+	$sql = "INSERT INTO `[PREFIX]user` VALUES " . 
 		   "('1', '[NAME]', '[PASS]', '[EMAIL]', '', '[TIME]', '[IP]', 0, 0, '[TIME]', '1')";
 
-	$password = user_md5($admin['password'], $auth);
+	$password = md5($admin['password'].'3sd7');
 	$sql = str_replace(
 		array('[PREFIX]', '[NAME]', '[PASS]', '[EMAIL]', '[TIME]', '[IP]'), 
 		array($prefix, $admin['username'], $password, $admin['email'], NOW_TIME, get_client_ip(1)), 
@@ -216,13 +216,13 @@ function register_administrator($db, $prefix, $admin, $auth){
 	//执行sql
 	$db->execute($sql);
 
-	$sql = "INSERT INTO `[PREFIX]member` VALUES ".
-		   "('1', '[NAME]', '0', '0', '', '0', '1', '0', '[TIME]', '0', '[TIME]', '1');";
-	$sql = str_replace(
-		array('[PREFIX]', '[NAME]', '[TIME]'), 
-		array($prefix, $admin['username'], NOW_TIME),
-		$sql);
-	$db->execute($sql);
+	// $sql = "INSERT INTO `[PREFIX]member` VALUES ".
+	// 	   "('1', '[NAME]', '0', '0', '', '0', '1', '0', '[TIME]', '0', '[TIME]', '1');";
+	// $sql = str_replace(
+	// 	array('[PREFIX]', '[NAME]', '[TIME]'), 
+	// 	array($prefix, $admin['username'], NOW_TIME),
+	// 	$sql);
+	// $db->execute($sql);
 	show_msg('创始人帐号注册完成！');
 }
 
