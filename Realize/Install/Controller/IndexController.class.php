@@ -29,10 +29,10 @@ class IndexController extends Controller{
 		file_put_contents(MODULE_PATH . 'Data/install.lock', '');
 		unlink('./Realize/Install/Data/install.lock');
 		rmdir('./Realize/Install/Data/install.lock');
-		rmdir('./Cache');
 		rename('./Realize/Install/Data/install.lock','./Realize/Install/Data/install.yes');
 		session('step', null);
 		session('error', null);
 		$this->display();
+		rmdir('./Cache');
 	}
 }
