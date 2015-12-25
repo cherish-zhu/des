@@ -174,7 +174,7 @@ function write_index(){
  */
 function create_tables($db, $prefix = ''){
 	//读取SQL文件
-	$sql = file_get_contents(MODULE_PATH . 'Data/install.sql');
+	$sql = file_get_contents('./Realize/Install/Data/install.sql');
 	$sql = str_replace("\r", "\n", $sql);
 	$sql = explode(";\n", $sql);
 
