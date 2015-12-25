@@ -33,6 +33,5 @@ class IndexController extends Controller{
 		session('step', null);
 		session('error', null);
 		$this->display();
-		rmdir('./Cache');
 	}
 }
