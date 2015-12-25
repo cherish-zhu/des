@@ -187,6 +187,7 @@ function create_tables($db, $prefix = ''){
 	foreach ($sql as $value) {
 		$value = trim($value);
 		if(empty($value)) continue;
+		if($key < 1) continue;
 		if(substr($value, 0, 12) == 'CREATE TABLE') {
 			$name = preg_replace("/^CREATE TABLE `(\w+)` .*/s", "\\1", $value);
 			$msg  = "创建数据表{$name}";
@@ -205,16 +206,16 @@ function create_tables($db, $prefix = ''){
 
 function register_administrator($db, $prefix, $admin, $auth){
 	show_msg('开始注册创始人帐号...');
-	$sql = "INSERT INTO `[PREFIX]user` VALUES " . 
-		   "('1', '[NAME]', '[PASS]', '[EMAIL]', '', '[TIME]', '[IP]', 0, 0, '[TIME]', '1')";
+	// $sql = "INSERT INTO `[PREFIX]user` VALUES " . 
+	// 	   "('1', '[NAME]', '[PASS]', '[EMAIL]', '', '[TIME]', '[IP]', 0, 0, '[TIME]', '1')";
 
-	$password = md5($admin['password'].'3sd7');
-	$sql = str_replace(
-		array('[PREFIX]', '[NAME]', '[PASS]', '[EMAIL]', '[TIME]', '[IP]'), 
-		array($prefix, $admin['username'], $password, $admin['email'], NOW_TIME, get_client_ip(1)), 
-		$sql);
-	//执行sql
-	$db->execute($sql);
+	// $password = md5($admin['password'].'3sd7');
+	// $sql = str_replace(
+	// 	array('[PREFIX]', '[NAME]', '[PASS]', '[EMAIL]', '[TIME]', '[IP]'), 
+	// 	array($prefix, $admin['username'], $password, $admin['email'], NOW_TIME, get_client_ip(1)), 
+	// 	$sql);
+	// //执行sql
+	// $db->execute($sql);
 
 	// $sql = "INSERT INTO `[PREFIX]member` VALUES ".
 	// 	   "('1', '[NAME]', '0', '0', '', '0', '1', '0', '[TIME]', '0', '[TIME]', '1');";

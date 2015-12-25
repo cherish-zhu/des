@@ -1,43 +1,29 @@
-﻿-- phpMyAdmin SQL Dump
--- version 3.3.7
--- http://www.phpmyadmin.net
---
--- 主机: localhost
--- 生成日期: 2015 年 12 月 23 日 17:35
--- 服务器版本: 5.1.69
--- PHP 版本: 5.2.17p1
+﻿CREATE TABLE IF NOT EXISTS `des_action_log` (
+  `id` int(11) NOT NULL COMMENT '主键',
+  `user_id` int(11) NOT NULL COMMENT '用户ID',
+  `from` text NOT NULL COMMENT 'IP',
+  `action` int(11) NOT NULL COMMENT '动作类型',
+  `name` int(11) NOT NULL COMMENT '名称',
+  `create_time` int(11) NOT NULL COMMENT '操作时间'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='系统变更日志';
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- 数据库: `des`
---
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_access`
---
+CREATE TABLE IF NOT EXISTS `des_action_log` (
+  `id` int(11) NOT NULL COMMENT '主键',
+  `user_id` int(11) NOT NULL COMMENT '用户ID',
+  `from` text NOT NULL COMMENT 'IP',
+  `action` int(11) NOT NULL COMMENT '动作类型',
+  `name` int(11) NOT NULL COMMENT '名称',
+  `create_time` int(11) NOT NULL COMMENT '操作时间'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='系统变更日志';
 
 CREATE TABLE IF NOT EXISTS `des_access` (
   `role_id` smallint(6) unsigned NOT NULL,
   `node_id` smallint(6) unsigned NOT NULL,
   `level` tinyint(1) NOT NULL,
   `pid` smallint(6) NOT NULL,
-  `module` varchar(50) DEFAULT NULL,
-  KEY `groupId` (`role_id`),
-  KEY `nodeId` (`node_id`)
+  `module` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `des_access`
---
 
 INSERT INTO `des_access` (`role_id`, `node_id`, `level`, `pid`, `module`) VALUES
 (2, 1, 1, 0, NULL),
@@ -135,32 +121,6 @@ INSERT INTO `des_access` (`role_id`, `node_id`, `level`, `pid`, `module`) VALUES
 (7, 39, 3, 30, NULL),
 (7, 49, 3, 30, NULL);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `des_action_log`
---
-
-CREATE TABLE IF NOT EXISTS `des_action_log` (
-  `id` int(11) NOT NULL COMMENT '主键',
-  `user_id` int(11) NOT NULL COMMENT '用户ID',
-  `from` text NOT NULL COMMENT 'IP',
-  `action` int(11) NOT NULL COMMENT '动作类型',
-  `name` int(11) NOT NULL COMMENT '名称',
-  `create_time` int(11) NOT NULL COMMENT '操作时间'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='系统变更日志';
-
---
--- 转存表中的数据 `des_action_log`
---
-
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_album`
---
-
 CREATE TABLE IF NOT EXISTS `des_album` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cate_id` int(11) NOT NULL,
@@ -174,9 +134,7 @@ CREATE TABLE IF NOT EXISTS `des_album` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='相册' AUTO_INCREMENT=86 ;
 
---
--- 转存表中的数据 `des_album`
---
+
 
 INSERT INTO `des_album` (`id`, `cate_id`, `path`, `title`, `keyword`, `description`, `create_time`, `update_time`, `status`) VALUES
 (1, 1031, '/Data/Uploads/Picture/20150722/1437579109.jpg', '01024265', '', '', 1437579109, 0, 1),
@@ -263,11 +221,7 @@ INSERT INTO `des_album` (`id`, `cate_id`, `path`, `title`, `keyword`, `descripti
 (83, 1035, '/Data/Uploads/Picture/20150723/1437640441.jpg', '441052032_1920_1080', '', '', 1437640441, 0, 1),
 (84, 1035, '/Data/Uploads/Picture/20150723/1437640444.jpg', '491019866_1920_1080', '', '', 1437640444, 0, 1);
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_category`
---
 
 CREATE TABLE IF NOT EXISTS `des_category` (
   `id` mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -286,9 +240,7 @@ CREATE TABLE IF NOT EXISTS `des_category` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1095 ;
 
---
--- 转存表中的数据 `des_category`
---
+
 
 INSERT INTO `des_category` (`id`, `parent_id`, `sort`, `status`, `alias`, `name`, `keyword`, `description`, `url`, `icon`, `view`, `create_time`, `update_time`) VALUES
 (1, 0, 0, '1', 'content', '文章', '文章', '文章', '', '', '', 0, 0),
@@ -327,11 +279,7 @@ INSERT INTO `des_category` (`id`, `parent_id`, `sort`, `status`, `alias`, `name`
 (1070, 1067, 999, '1', 'discuz', 'Discuz', '', '', '', '', '', 0, 0),
 (1089, 2, 0, '1', '', '护肤', '', '', '', '', '', 1437577546, 0);
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_center`
---
 
 CREATE TABLE IF NOT EXISTS `des_center` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -351,9 +299,7 @@ CREATE TABLE IF NOT EXISTS `des_center` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='内容中心' AUTO_INCREMENT=37 ;
 
---
--- 转存表中的数据 `des_center`
---
+
 
 INSERT INTO `des_center` (`id`, `type`, `cate_id`, `user_id`, `thumb`, `title`, `center`, `view`, `comm`, `tags`, `description`, `status`, `create_time`, `update_time`) VALUES
 (3, 0, 1055, 1, '', '浅析Android系统架构及内核', 'Android是Google公司开发的基于Linux平台的开源手机操作系统,它包括操作系统、中间件、用户界面和应用程序,而且不存在任何以往阻碍移动产业创新的专利权障碍,并由Google公司于2007年11月5日正式发布。同时,Google公司组建了一个开放手机联盟,这个联盟由中国移动、摩托罗拉、高通、宏达电和T-Mobile等在内的全球30多家技术和无线应用的领军企业组成,Google通过与运营商、设备制造商、开发商和其他有关各方结成深层次的合作伙伴关系,希望借助建立标准化、开放式的移动电话软件平台,在移动产业内形成一个开放式的生态系统;可预见地,生产和使用基于Android系统的嵌入式手持移动设备将是未来的发展趋势,对相应软件的需求量也将日趋增长,因此对Android系统内部作一个完整和深入的分析,对基于Android平台的软件移植和开发是很有益处的。 ', '', 0, '', '', -1, 1403939790, 1403939790),
@@ -393,27 +339,14 @@ INSERT INTO `des_center` (`id`, `type`, `cate_id`, `user_id`, `thumb`, `title`, 
 (34, 1, 1091, 1, '/Data/Uploads/Picture/20150723/1437583447.jpeg', '四大美白祛斑绝招，让你的肌肤零瑕疵', '<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	我们知道祛斑是美容护肤的一部分。想让自己的肌肤光滑光滑的，那就得祛斑。说到它，你有什么好方法吗?下面，小编为大家介绍四大美白祛斑绝招。到底这些绝招是哪些呢?是产品护理?自行保养还是化妆?一起来看看美容护肤之祛斑篇。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/45931434071949.jpeg" width="600" height="800" border="0" title="四大美白祛斑绝招，让你的肌肤零瑕疵" style="border:medium none;width:600px;height:800px;" alt="" />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　绝招1祛雀斑第一名方---时珍正容散\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　《医宗金鉴》中记载有用“时珍正容散”治雀斑。书中记载此方效果是：“用至七八日，其斑皆没，神效”。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　时珍正容散对面上雀斑，蝴蝶斑，妊娠斑等均有极为明显的消除、淡化作用，同时可以抑制斑点再生，兼有美白之效果。在众多美容美颜类中药面膜中独树一帜。坚持使用30天就能去除斑点，均匀肌肤色泽，脸面洁净无瑕，光彩照人。这个方子在某宝上也广受欢迎，追捧的人很多,淘宝一搜时珍正容散有很多家卖。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/53311434071965.jpeg" width="600" height="851" border="0" title="四大美白祛斑绝招，让你的肌肤零瑕疵" style="border:medium none;width:600px;height:851px;" alt="" />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　绝招2 产品护理：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　A 龙胆草、甘草、熊果苷、桑葚、绿茶、木瓜及人参等中药美容药材，可深入肌肤内层，排除新陈代谢废物和游离基美白祛斑。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　B 精纯维他命C能抑制黑色素最终形成的氧化过程，促进皮肤表面含有色素细胞的自然消亡，还能作为表皮脱落剂，加速表皮黑色素的脱落。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　C 维生素C、防晒剂等也具有美白祛斑作用。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　绝招3 自行保养：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　A 用手掌的摩擦力量，促进血液循环，这样有利于舒展皮肤组织，舒缓肌肉组织的疲劳。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　B 坚持良好的饮食习惯，参加运动，调节情绪，必要时辅助中医治疗，调节内分泌。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　绝招4 化妆：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　A 市场上有专门的遮斑粉底，可有选择性地使用。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　B 祛斑笔可以立即使斑点消失在视线中。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　战果实报：想让色斑在视线里立即消失很容易，化妆可以马上达到美白祛斑效果，但调理内分泌还是需要长期而规律的疗程坚持。\r\n</p>\r\n<div>\r\n	<br />\r\n</div>', '我们知道祛斑是美容护肤的一部分。想让自己的肌肤光滑光滑的，那就得祛斑。说到它，你有什么好方法吗?下面，小编为大家介绍四大美白祛斑绝招。到底这些绝招是哪些呢?是产品护理?自行保养还是化妆?一起来看看美容护肤之祛斑篇。', 1, '四大美白祛斑绝招,肌肤零瑕疵', '我们知道祛斑是美容护肤的一部分。想让自己的肌肤光滑光滑的，那就得祛斑。说到它，你有什么好方法吗?下面，小编为大家介绍四大美白祛斑绝招。到底这些绝招是哪些呢?是产品护理?自行保养还是化妆?一起来看看美容护肤之祛斑篇。', 1, 1449211284, 0),
 (35, 1, 1091, 1, '/Data/Uploads/Picture/20150722/1437579978.jpg', '【怎样更好彻底美白】如何更好彻底美白', '<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	怎样更好彻底美白？在生活当中里，很多美眉们都想自己拥有一张美白的面孔，因此去购买各种美白产品，可是效果并不显著，那么怎样更好彻底美白呢？以下由小编为大家介绍一下吧。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/78471433907241.JPEG" width="480" height="300" border="0" title="" style="border:medium none;width:480px;height:300px;" alt="" />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　脸部美白有妙招\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　一白遮三丑的美丽观念在无数人的心中荡漾，美白无暇的脸蛋自然也成为无数美眉疯狂追逐的目标。如何美白脸部皮肤呢，不少的美眉愁眉大展。春夏是一个绽放美丽，展现魅力的时节，很多美眉更是将如何美白脸部皮肤提上了护肤美容的日程。在美白肌肤的大道上，除了选择一些美白产品。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　所以脸部是美眉的第一招牌，关系到面子的问题都是大问题，很多美眉们用各种化妆品来修饰脸部，达到一个脸部美容的目的，脸部美容包括脸颊美容、眼部美容、唇部美容。然而更多的美眉们都想做个白白净净的小仙女，皮肤上面洁白如新，就像刚生出的婴儿般的肌肤，白白滑滑嫩嫩的，但是随着时间的推移，皮肤开始从活力的状态转变成衰老状态，皮肤的修复速度明显降低，在此小编为各位美眉们推荐两个小妙招，让您的脸部肌肤达到彻底美白的效果：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　妙招一，美白肌底：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　属于脸上肌肤偏黄的美眉们，因为是来自天生的氧化造成的黯淡暗黄，因此要做到脸部的肌肤达到彻底美白，就要从肌肤底层开始，这样抗氧化才能从根源阻止糖分和蛋白质的几何，彻底祛除真皮层内的糖化物质以及达到彻底美白效果。然而像这种情况的美眉们，在生活上?选择多吃一些含有氨基酸、维生素C、葡萄籽、日本蜜柑果皮成分的抗氧化产品，让肌肤从内而外的排除毒素，透出亮白肌肤。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　妙招二，修复色斑：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　属于脸上肌肤有色斑的美眉们，因为来自脸上的痘印或者斑点所导致的色斑，然而色斑是由皮肤内黑色素堆积而造成的黑色小斑，多由日晒引起，皮肤中的络氨酸经紫外线氧化为多巴再经转化为形成黑色素，因此要懂得修复和预防脸部的保护层，以及应对脸部色斑的方法快速美白就是以预防为主，再配合美白去黑产品。尽早开始尝试使用密集美白护理的产品，制定密集焕白方案，越早处理对亮白、均匀肤色越好。含烟酰胺的亮白精华，可有效抑制黑色素的生成，集中亮白肌肤。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　怎样更好彻底美白？上面小编已经为大家介绍了一下，相信各位美眉们对于如何彻底美白也有一定的了解了吧。综上所述，其实要做到脸部肌肤彻底美白，关键是要懂得如何更好彻底美白的方法，这一点是要靠一点一滴去持续美白，才能达到彻底美白的效果，这样才是护肤之道。\r\n</p>', '怎样更好彻底美白？在生活当中里，很多美眉们都想自己拥有一张美白的面孔，因此去购买各种美白产品，可是效果并不显著，那么怎样更好彻底美白呢？以下由小编为大家介绍一下吧。', 1, '彻底美白', '怎样更好彻底美白？在生活当中里，很多美眉们都想自己拥有一张美白的面孔，因此去购买各种美白产品，可是效果并不显著，那么怎样更好彻底美白呢？以下由小编为大家介绍一下吧。', 1, 1449211269, 0);
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_center_attachment`
---
 
 CREATE TABLE IF NOT EXISTS `des_center_attachment` (
   `center_id` int(11) NOT NULL,
   `link` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='附件';
 
---
--- 转存表中的数据 `des_center_attachment`
---
 
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_center_count`
---
 
 CREATE TABLE IF NOT EXISTS `des_center_count` (
   `center_id` int(11) NOT NULL,
@@ -423,9 +356,7 @@ CREATE TABLE IF NOT EXISTS `des_center_count` (
   `comments` int(11) NOT NULL DEFAULT '0' COMMENT '评论'
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk COMMENT='统计';
 
---
--- 转存表中的数据 `des_center_count`
---
+
 
 INSERT INTO `des_center_count` (`center_id`, `foot`, `praise`, `Concern`, `comments`) VALUES
 (13, 1, 5, 1, 0),
@@ -452,11 +383,6 @@ INSERT INTO `des_center_count` (`center_id`, `foot`, `praise`, `Concern`, `comme
 (34, 1, 15, 1, 0),
 (35, 1, 1, 1, 0);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `des_center_hits`
---
 
 CREATE TABLE IF NOT EXISTS `des_center_hits` (
   `center_id` int(11) NOT NULL,
@@ -470,9 +396,7 @@ CREATE TABLE IF NOT EXISTS `des_center_hits` (
   KEY `art_id` (`center_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- 转存表中的数据 `des_center_hits`
---
+
 
 INSERT INTO `des_center_hits` (`center_id`, `hits`, `today_hits`, `week_hits`, `month_hits`, `yesterday_hits`, `last_week_hits`, `last_month_hits`) VALUES
 (13, 15, 1, 1, 1, 1, 1, 1),
@@ -499,11 +423,7 @@ INSERT INTO `des_center_hits` (`center_id`, `hits`, `today_hits`, `week_hits`, `
 (34, 1, 1, 1, 1, 1, 1, 1),
 (35, 1, 1, 1, 1, 1, 1, 1);
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_center_limit`
---
 
 CREATE TABLE IF NOT EXISTS `des_center_limit` (
   `center_id` int(11) NOT NULL,
@@ -512,9 +432,7 @@ CREATE TABLE IF NOT EXISTS `des_center_limit` (
   UNIQUE KEY `art_id` (`center_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='浏览权限';
 
---
--- 转存表中的数据 `des_center_limit`
---
+
 
 INSERT INTO `des_center_limit` (`center_id`, `type`, `value`) VALUES
 (7, 'all', ''),
@@ -546,11 +464,7 @@ INSERT INTO `des_center_limit` (`center_id`, `type`, `value`) VALUES
 (34, 'all', ''),
 (35, 'all', '');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_center_setting`
---
 
 CREATE TABLE IF NOT EXISTS `des_center_setting` (
   `key` varchar(125) CHARACTER SET latin1 NOT NULL,
@@ -558,16 +472,7 @@ CREATE TABLE IF NOT EXISTS `des_center_setting` (
   UNIQUE KEY `key` (`key`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `des_center_setting`
---
 
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_center_type`
---
 
 CREATE TABLE IF NOT EXISTS `des_center_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
@@ -575,9 +480,6 @@ CREATE TABLE IF NOT EXISTS `des_center_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='内容类型' AUTO_INCREMENT=5 ;
 
---
--- 转存表中的数据 `des_center_type`
---
 
 INSERT INTO `des_center_type` (`id`, `name`) VALUES
 (1, '普通'),
@@ -585,11 +487,7 @@ INSERT INTO `des_center_type` (`id`, `name`) VALUES
 (3, '推荐'),
 (4, '置顶');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_city`
---
 
 CREATE TABLE IF NOT EXISTS `des_city` (
   `serialId` int(3) NOT NULL AUTO_INCREMENT,
@@ -607,9 +505,7 @@ CREATE TABLE IF NOT EXISTS `des_city` (
   PRIMARY KEY (`serialId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=362 ;
 
---
--- 转存表中的数据 `des_city`
---
+
 
 INSERT INTO `des_city` (`serialId`, `cityId`, `cityName`, `cityUpId`, `cityUpIdNum`, `cityPath`, `cityType`, `cityTypeNum`, `shortName`, `spell`, `areaId`, `postCode`) VALUES
 (1, '001001001', '东城', '001001', 1, '中国/北京/东城', '区', 3, 'dc', 'dongcheng', '010', '100010'),
@@ -974,11 +870,7 @@ INSERT INTO `des_city` (`serialId`, `cityId`, `cityName`, `cityUpId`, `cityUpIdN
 (360, '001002001', '市辖区', '001002', 2, '中国/天津/市辖区', 'null', 3, 'null', 'null', 'null', 'null'),
 (361, '001002002', '县', '001002', 2, '中国/天津/县', 'null', 3, 'null', 'null', 'null', 'null');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_comm`
---
 
 CREATE TABLE IF NOT EXISTS `des_comm` (
   `comm_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -992,9 +884,6 @@ CREATE TABLE IF NOT EXISTS `des_comm` (
   PRIMARY KEY (`comm_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
---
--- 转存表中的数据 `des_comm`
---
 
 INSERT INTO `des_comm` (`comm_id`, `sort`, `fid`, `user_id`, `sys_id`, `status`, `comm`, `ctime`) VALUES
 (1, 0, 0, 0, 0, 1, '3245fghdfhdf', 0),
@@ -1018,11 +907,7 @@ INSERT INTO `des_comm` (`comm_id`, `sort`, `fid`, `user_id`, `sys_id`, `status`,
 (19, 0, 0, 0, 0, 1, '3245fghdfhdf', 0),
 (20, 0, 0, 0, 0, 1, '3245fghdfhdf', 0);
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_config`
---
 
 CREATE TABLE IF NOT EXISTS `des_config` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',
@@ -1041,9 +926,7 @@ CREATE TABLE IF NOT EXISTS `des_config` (
   UNIQUE KEY `uk_name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
---
--- 转存表中的数据 `des_config`
---
+
 
 INSERT INTO `des_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `remark`, `create_time`, `update_time`, `status`, `value`, `sort`) VALUES
 (4, 'WEB_SITE_CLOSE', 4, '关闭站点', 1, '0:关闭,1:开启', '站点关闭后其他用户不能访问，管理员可以正常访问', 1378898976, 1379235296, 1, '1', 0),
@@ -1065,11 +948,7 @@ INSERT INTO `des_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `rema
 (31, 'DATA_BACKUP_COMPRESS_LEVEL', 4, '数据库备份文件压缩级别', 4, '1:普通\r\n4:一般\r\n9:最高', '数据库备份文件的压缩级别，该配置在开启压缩时生效', 1381713408, 1381713408, 1, '9', 0),
 (32, 'DEVELOP_MODE', 4, '开启开发者模式', 4, '0:关闭\r\n1:开启', '是否开启开发者模式', 1383105995, 1383291877, 1, '1', 0);
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_country`
---
 
 CREATE TABLE IF NOT EXISTS `des_country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -1079,16 +958,7 @@ CREATE TABLE IF NOT EXISTS `des_country` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=2 ;
 
---
--- 转存表中的数据 `des_country`
---
 
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_district`
---
 
 CREATE TABLE IF NOT EXISTS `des_district` (
   `serialId` int(4) NOT NULL AUTO_INCREMENT,
@@ -1106,9 +976,7 @@ CREATE TABLE IF NOT EXISTS `des_district` (
   PRIMARY KEY (`serialId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=2769 ;
 
---
--- 转存表中的数据 `des_district`
---
+
 
 INSERT INTO `des_district` (`serialId`, `districtId`, `districtName`, `districtUpId`, `districtUpIdNum`, `districtPath`, `districtType`, `districtTypeNum`, `shortName`, `spell`, `areaId`, `postCode`) VALUES
 (1, '001002001002', '河东', '001002001', 360, '中国/天津/市辖区/河东', '区', 4, 'hd', 'hedong', '022', '300171'),
@@ -3887,11 +3755,7 @@ INSERT INTO `des_district` (`serialId`, `districtId`, `districtName`, `districtU
 (2767, '001019002006', '福田', '001019002', 214, '中国/广东/深圳/福田', '区', 4, 'null', 'null', 'null', 'null'),
 (2768, '001020001011', '青秀', '001020001', 234, '中国/广西/南宁/青秀', '区', 4, 'null', 'null', 'null', 'null');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_group`
---
 
 CREATE TABLE IF NOT EXISTS `des_group` (
   `id` smallint(3) unsigned NOT NULL AUTO_INCREMENT,
@@ -3905,18 +3769,12 @@ CREATE TABLE IF NOT EXISTS `des_group` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
---
--- 转存表中的数据 `des_group`
---
+
 
 INSERT INTO `des_group` (`id`, `name`, `title`, `create_time`, `update_time`, `status`, `sort`, `show`) VALUES
 (2, 'App', '应用中心', 1222841259, 0, 1, 0, 0);
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_links`
---
 
 CREATE TABLE IF NOT EXISTS `des_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -3929,9 +3787,6 @@ CREATE TABLE IF NOT EXISTS `des_links` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='友情链接' AUTO_INCREMENT=17 ;
 
---
--- 转存表中的数据 `des_links`
---
 
 INSERT INTO `des_links` (`id`, `sort`, `name`, `link`, `order`, `type`, `icon`) VALUES
 (1, 1, '中国美妆门户网', 'http://www.v41.cn/', 999, 1, ''),
@@ -3947,11 +3802,7 @@ INSERT INTO `des_links` (`id`, `sort`, `name`, `link`, `order`, `type`, `icon`) 
 (14, 0, '美发师网', 'http://www.mfs8.com/', 0, 1, ''),
 (15, 1052, 'asdfa', 'adsfsa ', 999, 1, '');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_menu`
---
 
 CREATE TABLE IF NOT EXISTS `des_menu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',
@@ -3969,9 +3820,7 @@ CREATE TABLE IF NOT EXISTS `des_menu` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=143 ;
 
---
--- 转存表中的数据 `des_menu`
---
+
 
 INSERT INTO `des_menu` (`id`, `icon`, `name`, `pid`, `sort`, `url`, `type`, `remark`, `controller`, `action`, `status`, `app`) VALUES
 (1, 'fa fa-gear', '系统', 0, 0, 'Index/index', 0, '', 'Index', '', 1, 'admin'),
@@ -4002,11 +3851,7 @@ INSERT INTO `des_menu` (`id`, `icon`, `name`, `pid`, `sort`, `url`, `type`, `rem
 (137, '', '模板编辑', 4, 0, '', 0, '', 'view', 'editView', 1, 'admin'),
 (138, '', '用户角色', 16, 0, '', 0, '', 'Role', 'index', 1, 'admin');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_nav`
---
 
 CREATE TABLE IF NOT EXISTS `des_nav` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
@@ -4019,9 +3864,7 @@ CREATE TABLE IF NOT EXISTS `des_nav` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='导航菜单' AUTO_INCREMENT=21 ;
 
---
--- 转存表中的数据 `des_nav`
---
+
 
 INSERT INTO `des_nav` (`id`, `parent_id`, `name`, `link`, `sort`, `status`, `icon`) VALUES
 (1, 0, '日志', '/rizhi', 999, 1, ''),
@@ -4043,11 +3886,7 @@ INSERT INTO `des_nav` (`id`, `parent_id`, `name`, `link`, `sort`, `status`, `ico
 (19, 11, '这是一个令人难忘的秋天', '/', 0, -1, '/Data/Uploads/Picture/20150723/1437640441.jpg'),
 (20, 11, '今天一定要美美的', '/', 0, -1, '/Data/Uploads/Picture/20150723/1437640444.jpg');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_node`
---
 
 CREATE TABLE IF NOT EXISTS `des_node` (
   `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
@@ -4067,9 +3906,7 @@ CREATE TABLE IF NOT EXISTS `des_node` (
   KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=83 ;
 
---
--- 转存表中的数据 `des_node`
---
+
 
 INSERT INTO `des_node` (`id`, `name`, `title`, `status`, `remark`, `sort`, `pid`, `level`, `type`, `group_id`) VALUES
 (49, 'node', '节点管理', 1, '', NULL, 5, 3, 0, 0),
@@ -4090,11 +3927,7 @@ INSERT INTO `des_node` (`id`, `name`, `title`, `status`, `remark`, `sort`, `pid`
 (1, 'system', '系统', 1, '', NULL, 0, 1, 0, 0),
 (50, 'main', '广告管理', 1, '', NULL, 1, 3, 0, 0);
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_option`
---
 
 CREATE TABLE IF NOT EXISTS `des_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -4104,9 +3937,7 @@ CREATE TABLE IF NOT EXISTS `des_option` (
   KEY `key` (`key`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='全局参数' AUTO_INCREMENT=35 ;
 
---
--- 转存表中的数据 `des_option`
---
+
 
 INSERT INTO `des_option` (`id`, `key`, `value`) VALUES
 (1, 'host_url', 'http://u.com'),
@@ -4144,11 +3975,7 @@ INSERT INTO `des_option` (`id`, `key`, `value`) VALUES
 (33, 'host_code', '无'),
 (34, 'host_dir', '/');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_province`
---
 
 CREATE TABLE IF NOT EXISTS `des_province` (
   `serialId` int(3) NOT NULL AUTO_INCREMENT,
@@ -4166,9 +3993,7 @@ CREATE TABLE IF NOT EXISTS `des_province` (
   PRIMARY KEY (`serialId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=35 ;
 
---
--- 转存表中的数据 `des_province`
---
+
 
 INSERT INTO `des_province` (`serialId`, `provinceId`, `provinceName`, `provinceUpId`, `provinceUpIdNum`, `provincePath`, `provinceType`, `provinceTypeNum`, `shortName`, `spell`, `areaId`, `postCode`) VALUES
 (1, '001001', '北京', '001', 0, '中国/北京', '市', 2, 'bj', 'beijing', '010', '100000'),
@@ -4206,11 +4031,7 @@ INSERT INTO `des_province` (`serialId`, `provinceId`, `provinceName`, `provinceU
 (33, '001033', '澳门', '001', 0, '中国/澳门', '特别行政区', 2, 'am', 'aomen', '853', 'null'),
 (34, '001034', '台湾', '001', 0, '中国/台湾', '省', 2, 'tw', 'taiwan', '886', 'null');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_role`
---
 
 CREATE TABLE IF NOT EXISTS `des_role` (
   `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
@@ -4227,9 +4048,7 @@ CREATE TABLE IF NOT EXISTS `des_role` (
   KEY `status` (`status`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
---
--- 转存表中的数据 `des_role`
---
+
 
 INSERT INTO `des_role` (`id`, `name`, `pid`, `status`, `remark`, `ename`, `create_time`, `update_time`) VALUES
 (1, '领导组', 0, 1, '', '', 1208784792, 1254325558),
@@ -4237,11 +4056,7 @@ INSERT INTO `des_role` (`id`, `name`, `pid`, `status`, `remark`, `ename`, `creat
 (7, '演示组', 0, 1, '', NULL, 1254325787, 0),
 (8, 'aaaaaa', NULL, 1, NULL, NULL, 0, 0);
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_role_user`
---
 
 CREATE TABLE IF NOT EXISTS `des_role_user` (
   `role_id` mediumint(9) unsigned DEFAULT NULL,
@@ -4250,9 +4065,7 @@ CREATE TABLE IF NOT EXISTS `des_role_user` (
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `des_role_user`
---
+
 
 INSERT INTO `des_role_user` (`role_id`, `user_id`) VALUES
 (4, '27'),
@@ -4274,11 +4087,7 @@ INSERT INTO `des_role_user` (`role_id`, `user_id`) VALUES
 (2, '3'),
 (7, '2');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_user`
---
 
 CREATE TABLE IF NOT EXISTS `des_user` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
@@ -4305,9 +4114,7 @@ CREATE TABLE IF NOT EXISTS `des_user` (
   UNIQUE KEY `account` (`account`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
---
--- 转存表中的数据 `des_user`
---
+
 
 INSERT INTO `des_user` (`id`, `sort`, `number`, `account`, `face`, `nickname`, `password`, `phone`, `bind_account`, `last_login_time`, `last_login_ip`, `login_count`, `verify`, `email`, `remark`, `create_time`, `update_time`, `status`, `type_id`, `info`) VALUES
 (1, 0, 0, 'admin', '1312', 'Cherish', '21232f297a57a5a743894a0e4a801fc3', '', '', 1450338681, '127.0.0.1', 969, '8888', 'liu21st@gmail.com', '备注信息', 1222907803, 1326266696, 1, 0, ''),
@@ -4315,11 +4122,7 @@ INSERT INTO `des_user` (`id`, `sort`, `number`, `account`, `face`, `nickname`, `
 (3, 0, 0, 'member', '', '员工', 'aa08769cdcb26674c6706093503ff0a3', '', '', 1326266720, '127.0.0.1', 17, '', '', '', 1253514375, 1254325728, 1, 0, ''),
 (4, 0, 0, 'leader', '', '领导', 'c444858e0aaeb727da73d2eae62321ad', '', '', 1254325906, '127.0.0.1', 15, '', '', '领导', 1253514575, 1254325705, 1, 0, '');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_user_communication`
---
 
 CREATE TABLE IF NOT EXISTS `des_user_communication` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
@@ -4332,9 +4135,7 @@ CREATE TABLE IF NOT EXISTS `des_user_communication` (
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户通信表' AUTO_INCREMENT=5 ;
 
---
--- 转存表中的数据 `des_user_communication`
---
+
 
 INSERT INTO `des_user_communication` (`uid`, `address`, `country`, `province`, `city`, `county`, `postalcode`) VALUES
 (1, '', '', '001018', '001018011', '001018011004', 0),
@@ -4342,11 +4143,7 @@ INSERT INTO `des_user_communication` (`uid`, `address`, `country`, `province`, `
 (3, '', '', '', '', '', 0),
 (4, '', '', '', '', '', 0);
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_user_group`
---
 
 CREATE TABLE IF NOT EXISTS `des_user_group` (
   `gid` int(11) NOT NULL,
@@ -4355,16 +4152,7 @@ CREATE TABLE IF NOT EXISTS `des_user_group` (
   PRIMARY KEY (`gid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户组';
 
---
--- 转存表中的数据 `des_user_group`
---
 
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_user_honour`
---
 
 CREATE TABLE IF NOT EXISTS `des_user_honour` (
   `id` tinyint(4) NOT NULL COMMENT 'id',
@@ -4373,16 +4161,7 @@ CREATE TABLE IF NOT EXISTS `des_user_honour` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户头衔';
 
---
--- 转存表中的数据 `des_user_honour`
---
 
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_user_level`
---
 
 CREATE TABLE IF NOT EXISTS `des_user_level` (
   `user_id` int(11) NOT NULL,
@@ -4396,16 +4175,7 @@ CREATE TABLE IF NOT EXISTS `des_user_level` (
   UNIQUE KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户等级';
 
---
--- 转存表中的数据 `des_user_level`
---
 
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_user_list`
---
 
 CREATE TABLE IF NOT EXISTS `des_user_list` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
@@ -4426,9 +4196,7 @@ CREATE TABLE IF NOT EXISTS `des_user_list` (
   KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户个人信息' AUTO_INCREMENT=5 ;
 
---
--- 转存表中的数据 `des_user_list`
---
+
 
 INSERT INTO `des_user_list` (`uid`, `home`, `qq`, `name`, `sex`, `birthday`, `believe`, `Individual`, `job`, `blood`, `school`, `edu`, `love`, `marriage`) VALUES
 (1, '', 0, '', 0, '0000-00-00', '没个性不签名', '', '', '', '大学', '大专', '', ''),
@@ -4436,11 +4204,7 @@ INSERT INTO `des_user_list` (`uid`, `home`, `qq`, `name`, `sex`, `birthday`, `be
 (3, '', 0, '', 0, '0000-00-00', '', '', '', '', '', '', '', ''),
 (4, '', 0, '', 0, '0000-00-00', '', '', '', '', '', '', '', '');
 
--- --------------------------------------------------------
 
---
--- 表的结构 `des_user_log`
---
 
 CREATE TABLE IF NOT EXISTS `des_user_log` (
   `user_id` int(11) NOT NULL,
@@ -4452,16 +4216,7 @@ CREATE TABLE IF NOT EXISTS `des_user_log` (
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户日志';
 
---
--- 转存表中的数据 `des_user_log`
---
 
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_user_menu`
---
 
 CREATE TABLE IF NOT EXISTS `des_user_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -4470,16 +4225,7 @@ CREATE TABLE IF NOT EXISTS `des_user_menu` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户管理菜单' AUTO_INCREMENT=1 ;
 
---
--- 转存表中的数据 `des_user_menu`
---
 
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_user_property`
---
 
 CREATE TABLE IF NOT EXISTS `des_user_property` (
   `pid` int(11) NOT NULL AUTO_INCREMENT,
@@ -4493,32 +4239,14 @@ CREATE TABLE IF NOT EXISTS `des_user_property` (
   PRIMARY KEY (`pid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户财务' AUTO_INCREMENT=1 ;
 
---
--- 转存表中的数据 `des_user_property`
---
 
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_user_set`
---
 
 CREATE TABLE IF NOT EXISTS `des_user_set` (
   `uid` int(11) NOT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='量的转换';
 
---
--- 转存表中的数据 `des_user_set`
---
 
-
--- --------------------------------------------------------
-
---
--- 表的结构 `des_user_vip`
---
 
 CREATE TABLE IF NOT EXISTS `des_user_vip` (
   `id` tinyint(4) NOT NULL COMMENT 'id',
@@ -4526,8 +4254,3 @@ CREATE TABLE IF NOT EXISTS `des_user_vip` (
   `icon` varchar(255) NOT NULL COMMENT '图标',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户会员';
-
---
--- 转存表中的数据 `des_user_vip`
---
-
