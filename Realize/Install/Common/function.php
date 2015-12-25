@@ -184,7 +184,7 @@ function create_tables($db, $prefix = ''){
 
 	//开始安装
 	show_msg('开始安装数据库...');
-	foreach ($sql as $value) {
+	foreach ($sql as $key => $value) {
 		$value = trim($value);
 		if(empty($value)) continue;
 		if($key < 1) continue;
