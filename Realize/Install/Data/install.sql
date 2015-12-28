@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `des_album` (
   `update_time` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='相册' AUTO_INCREMENT=86 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='相册' AUTO_INCREMENT=1 ;
 
 
 
@@ -238,7 +238,7 @@ CREATE TABLE IF NOT EXISTS `des_category` (
   `create_time` int(11) NOT NULL,
   `update_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1095 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 
@@ -297,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `des_center` (
   `create_time` int(11) NOT NULL,
   `update_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='内容中心' AUTO_INCREMENT=37 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='内容中心' AUTO_INCREMENT=1 ;
 
 
 
@@ -478,7 +478,7 @@ CREATE TABLE IF NOT EXISTS `des_center_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `name` varchar(125) NOT NULL COMMENT '名词',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='内容类型' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='内容类型' AUTO_INCREMENT=1 ;
 
 
 INSERT INTO `des_center_type` (`id`, `name`) VALUES
@@ -503,7 +503,7 @@ CREATE TABLE IF NOT EXISTS `des_city` (
   `areaId` varchar(11) DEFAULT NULL,
   `postCode` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`serialId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=362 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=1 ;
 
 
 
@@ -882,7 +882,7 @@ CREATE TABLE IF NOT EXISTS `des_comm` (
   `comm` text NOT NULL COMMENT '内容',
   `ctime` int(11) NOT NULL COMMENT '提交时间',
   PRIMARY KEY (`comm_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 INSERT INTO `des_comm` (`comm_id`, `sort`, `fid`, `user_id`, `sys_id`, `status`, `comm`, `ctime`) VALUES
@@ -924,7 +924,7 @@ CREATE TABLE IF NOT EXISTS `des_config` (
   `sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 
@@ -956,7 +956,7 @@ CREATE TABLE IF NOT EXISTS `des_country` (
   `countryIdNum` int(11) DEFAULT NULL,
   `countryName` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=1 ;
 
 
 
@@ -974,7 +974,7 @@ CREATE TABLE IF NOT EXISTS `des_district` (
   `areaId` varchar(11) DEFAULT NULL,
   `postCode` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`serialId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=2769 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=1 ;
 
 
 
@@ -3767,7 +3767,7 @@ CREATE TABLE IF NOT EXISTS `des_group` (
   `sort` smallint(3) unsigned NOT NULL DEFAULT '0',
   `show` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 
@@ -3785,7 +3785,7 @@ CREATE TABLE IF NOT EXISTS `des_links` (
   `type` int(11) NOT NULL COMMENT '类型',
   `icon` varchar(255) NOT NULL COMMENT '图标',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='友情链接' AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='友情链接' AUTO_INCREMENT=1 ;
 
 
 INSERT INTO `des_links` (`id`, `sort`, `name`, `link`, `order`, `type`, `icon`) VALUES
@@ -3818,7 +3818,7 @@ CREATE TABLE IF NOT EXISTS `des_menu` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否仅开发者模式可见',
   `app` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=143 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 
@@ -3862,7 +3862,7 @@ CREATE TABLE IF NOT EXISTS `des_nav` (
   `status` int(11) NOT NULL COMMENT '类型{1：在自动排序中显示，0：否}',
   `icon` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='导航菜单' AUTO_INCREMENT=21 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='导航菜单' AUTO_INCREMENT=1 ;
 
 
 
@@ -3904,7 +3904,7 @@ CREATE TABLE IF NOT EXISTS `des_node` (
   KEY `pid` (`pid`),
   KEY `status` (`status`),
   KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=83 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 
@@ -3935,7 +3935,7 @@ CREATE TABLE IF NOT EXISTS `des_option` (
   `value` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `key` (`key`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='全局参数' AUTO_INCREMENT=35 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='全局参数' AUTO_INCREMENT=1 ;
 
 
 
@@ -3991,7 +3991,7 @@ CREATE TABLE IF NOT EXISTS `des_province` (
   `areaId` varchar(11) DEFAULT NULL,
   `postCode` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`serialId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=35 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=1 ;
 
 
 
@@ -4046,7 +4046,7 @@ CREATE TABLE IF NOT EXISTS `des_role` (
   KEY `parentId` (`pid`),
   KEY `ename` (`ename`),
   KEY `status` (`status`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 
@@ -4112,7 +4112,7 @@ CREATE TABLE IF NOT EXISTS `des_user` (
   `info` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 
@@ -4133,7 +4133,7 @@ CREATE TABLE IF NOT EXISTS `des_user_communication` (
   `county` varchar(25) NOT NULL COMMENT '县区',
   `postalcode` smallint(6) NOT NULL COMMENT '邮编',
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户通信表' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户通信表' AUTO_INCREMENT=1 ;
 
 
 
@@ -4194,7 +4194,7 @@ CREATE TABLE IF NOT EXISTS `des_user_list` (
   `marriage` varchar(15) NOT NULL COMMENT '婚恋史',
   PRIMARY KEY (`uid`),
   KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户个人信息' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户个人信息' AUTO_INCREMENT=1 ;
 
 
 
