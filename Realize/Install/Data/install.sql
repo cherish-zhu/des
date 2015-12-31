@@ -21,8 +21,11 @@ CREATE TABLE IF NOT EXISTS `des_access` (
   `node_id` smallint(6) unsigned NOT NULL,
   `level` tinyint(1) NOT NULL,
   `pid` smallint(6) NOT NULL,
-  `module` varchar(50) DEFAULT NULL
+  `module` varchar(50) DEFAULT NULL,
+  KEY `groupId` (`role_id`),
+  KEY `nodeId` (`node_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 
 
 INSERT INTO `des_access` (`role_id`, `node_id`, `level`, `pid`, `module`) VALUES
@@ -121,6 +124,7 @@ INSERT INTO `des_access` (`role_id`, `node_id`, `level`, `pid`, `module`) VALUES
 (7, 39, 3, 30, NULL),
 (7, 49, 3, 30, NULL);
 
+
 CREATE TABLE IF NOT EXISTS `des_album` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cate_id` int(11) NOT NULL,
@@ -132,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `des_album` (
   `update_time` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='相册' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='相册' AUTO_INCREMENT=86 ;
 
 
 
@@ -234,11 +238,11 @@ CREATE TABLE IF NOT EXISTS `des_category` (
   `description` varchar(500) NOT NULL COMMENT '描述',
   `url` varchar(255) NOT NULL COMMENT '链接',
   `icon` varchar(255) DEFAULT NULL COMMENT '图标',
-  `view` varchar(255) NOT NULL,
+  `view` varchar(255) NULL,
   `create_time` int(11) NOT NULL,
   `update_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1095 ;
 
 
 
@@ -297,8 +301,7 @@ CREATE TABLE IF NOT EXISTS `des_center` (
   `create_time` int(11) NOT NULL,
   `update_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='内容中心' AUTO_INCREMENT=1 ;
-
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='内容中心' AUTO_INCREMENT=37 ;
 
 
 INSERT INTO `des_center` (`id`, `type`, `cate_id`, `user_id`, `thumb`, `title`, `center`, `view`, `comm`, `tags`, `description`, `status`, `create_time`, `update_time`) VALUES
@@ -334,10 +337,10 @@ INSERT INTO `des_center` (`id`, `type`, `cate_id`, `user_id`, `thumb`, `title`, 
 (30, 1, 1067, 1, '/Data/Uploads/Picture/20150722/1437579219.jpg', '模特潜规则 容貌非天成', '<span style="color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">容貌天成，风韵难有的时代已经一去不复返。当今这个时代，你在娱乐圈能找到几个真美女?硕果仅存的天然美女明星大多上了一定的年纪，让人不禁感叹：人工美占据了成了娱乐圈的主流色彩。&nbsp;</span><br style="color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;" /><br style="color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;" /><img alt="" src="http://www.v41.cn/uploads/allimg/121113/15562H1O-0.jpg" style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;" /><br />', '', 1, '模特,潜规则', '容貌天成，风韵难有的时代已经一去不复返。当今这个时代，你在娱乐圈能找到几个真美女?硕果仅存的天然美女明星大多上了一定的年纪，让人不禁感叹：人工美占据了成了娱乐圈的主流色彩。 ', 1, 1437582824, 0),
 (31, 1, 1067, 1, '/Data/Uploads/Picture/20150722/1437579112.jpg', '初冬套头毛衣百搭造型，教你怎么穿出气质范', '<p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;">寒冬来袭，为了抵抗寒冷，美眉们又不得不穿的厚厚的了，衣服太厚不仅显得臃肿还毫无美感，想要抵抗的住寒冷又能穿的美美的，确实是考验衣服搭配的一大难题，今天小编为大家带来了8款超简单套头毛衣搭配，简单时尚寒冬也能秀出好身材！</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px; text-align: center;">　<img src="http://www.v41.cn/uploads/5551416619577.jpg" title="初冬套头毛衣百搭造型，教你怎么穿出气质范" width="400" height="599" border="0" hspace="0" vspace="0" style="border: medium none; margin: 0px; padding: 0px; width: 400px; height: 599px;" alt="" /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;　今年很流行这样乖巧甜美的套头毛衣款式，简单的图案设计更显时尚范儿也很好搭配，这款深色的毛衣款式，给一身好气质装扮，搭配上一款牛仔包臀裙款式，不仅清新减龄风。秀出好身材就这么穿。</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;"></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px; text-align: center;"><img src="http://www.v41.cn/uploads/65531416619578.jpg" title="初冬套头毛衣百搭造型，教你怎么穿出气质范" width="400" height="591" border="0" hspace="0" vspace="0" style="border: medium none; margin: 0px; padding: 0px; width: 400px; height: 591px;" alt="" /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;">　　从夏天流行到冬季的短款单品，以前的长款可不能放到一边，把上衣长款的衣服束在裤子裙子里面穿搭，也能穿出时尚有型的短打搭配来，这款宽松日系范儿的套头毛衣款式，束在牛仔裙里面穿显主场身材。</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px; text-align: center;"><img src="http://www.v41.cn/uploads/7621416619579.jpg" title="初冬套头毛衣百搭造型，教你怎么穿出气质范" width="400" height="600" border="0" hspace="0" vspace="0" style="border: medium none; margin: 0px; padding: 0px; width: 400px; height: 600px;" alt="" /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;">　　现在大街上看很多妹子都喜欢用套头毛衣款式+短裙+打底袜的装扮，穿出甜美范儿清新减龄不做作的套头毛衣款式，每个女生秋冬都应该有几款，搭配一件百搭的小黑裙款式，即使是穿很多的秋冬，打底袜也能拥有筷子腿。</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px; text-align: center;"><img src="http://www.v41.cn/uploads/6681416619579.jpg" title="初冬套头毛衣百搭造型，教你怎么穿出气质范" width="400" height="600" border="0" hspace="0" vspace="0" style="border: medium none; margin: 0px; padding: 0px; width: 400px; height: 600px;" alt="" /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; line-height: 25px; font-size: 16px;">　　矩形的毛衣款式也受到了很多妹子的喜爱，颜色轻快活泼的这款套头毛衣款式，不管是上学妹子还是上班族，都是很好的一款减龄单品。搭配上有蓬度的小短裙，想要大长腿，穿短靴就对了。</p><br />', '', 1, '百搭造型', '寒冬来袭，为了抵抗寒冷，美眉们又不得不穿的厚厚的了，衣服太厚不仅显得臃肿还毫无美感，想要抵抗的住寒冷又能穿的美美的，确实是考验衣服搭配的一大难题，今天小编为大家带来了8款超简单套头毛衣搭配，简单时尚寒冬也能秀出好身材！', -1, 1437582976, 0);
 INSERT INTO `des_center` (`id`, `type`, `cate_id`, `user_id`, `thumb`, `title`, `center`, `view`, `comm`, `tags`, `description`, `status`, `create_time`, `update_time`) VALUES
-(32, 1, 1067, 1, '/Data/Uploads/Picture/20150722/1437579929.jpg', '迎战“露腹肌” 双周甩肉法来了还怕什么鬼', '<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　随着亚热带季风的阵阵席卷，短裙短裤短上衣惹醉了多少异性们的遐想，不想NG在本该卖弄性感风情的那一寸腹肌，就来速速挑战下我们的双周甩肉法，通过排毒的食物与撕裂腹肌的强化运动，你会发现自己的腹部脂肪被魔法般的甩掉了！\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/5041437121296.jpg" width="417" height="500" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:417px;height:500px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　PART1 WHY? WHY? WHY?腰围数字的关系\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　腰围数字，腹部肉肉多少总是少女和大婶的分水岭，为什么身长1米多，就这个地方那么肯养膘？！不要说坐久了….水准太业余！真正高大上的原因是： 腹部肌肉的防守性很强，但不具体很强的主动攻击性。腹部是内脏忠实的卫士，它的防守性就是指保护内脏，因此想减掉腹部脂肪听起来微微有些逆天噢！\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　不过既然找准症结，自然不愁解决之道，双周瘦腹逆天之旅还不赶紧joinin！\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/72141437121303.jpg" width="371" height="500" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:371px;height:500px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　PART2 瘦腹核心——“肠整形”\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　别只把那点儿小九九停留在那几厘米的脂肪上，要知道你腹部体积从根本上说是由肠道环境决定的！天天叫嚷瘦肚皮，以下几个“恶习”究竟占了几条？\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　1、进食的速度快得惊人，总是狼吞虎咽。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　2、总是喜欢晚上吃夜宵，吃完后习惯马上睡觉。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　3、早晨从来不吃早餐，而且不会感觉到饥饿。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　4、无肉不欢型，餐桌上除了肉还是肉，无限油腻。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　5、久坐在办公室，很少起身运动一下。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　6、房间内冷气很大，而且总是习惯喝冰镇饮料。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　7、总喜欢喝一杯，无论是果酒还是啤酒总是贪杯。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　8、总是穿很紧的内裤，导致肠道挤压变形。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　9、睡眠不足，肠道不能得到很好的休息。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　10、过度减肥，膳食营养不平衡，每天吃很少。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/41291437121341.jpg" width="500" height="297" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:500px;height:297px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　四大锦上添花的“肠整形”食材\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　肠道这个脆弱而敏感的器官，比精神还容易崩溃，所以食物的呵护就更加重要，让肠道更加“年轻”的精选食材马上活用起来吧！\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　1.蜂蜜\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　减少肠内脂肪的最好方法就是多喝蜂蜜，在日常的饮料中加入蜂蜜，也能达到通便润肠的效果。冲蜂蜜的水最好不要超过80℃，否则会破坏蜂蜜中的营养成分。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　2.杏仁\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　杏仁含有的植物纤维，是肠道内乳酸菌的饵料，和乳酸菌共同食用可达到最好的通便作用。而且减肥时特别需要一些油类，杏仁中还含有不饱和脂肪酸，和酸奶混合食用可以有很强烈的饱腹感。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　3.肉桂\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　肉桂具有提高代谢的作用，还能促进血液循环，去除堆积的脂肪，用肉桂粉少许撒到酸奶上食用即可。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　4.生姜\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　可以提高体温的生姜，能够帮助保持消化能力，在没食欲的时候就是身体寒冷的时候，或在肚子被胀气撑得很难受的时候可以用生姜末+酸奶搅拌喝。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/38881437121356.jpg" width="334" height="500" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:334px;height:500px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　PART3 美腹升级——维纳斯腰身锻炼法\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　step1\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　正确站立伸展背部肌肉群后背紧贴墙壁站立，注意脚后跟、臀部、肩胛骨和后脑勺部位要紧靠墙壁，让后背的肌肉群得到伸展，每天一次，每次保持１分钟。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/19281437121388.jpg" width="334" height="500" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:334px;height:500px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　step2\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　拧转运动伸展腰部侧面肌肉双臂向上伸直，两个手腕交叉拧转于头部上方。身体向左侧拧转的同时，左脚向前迈出。然后身体向右侧拧转，右脚迈出。左右交替进行３组。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/81161437121397.jpg" width="369" height="500" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:369px;height:500px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　step3\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　向后抬腿提升大腰肌柔软度单侧腿从大腿根部向后抬起，然后向后大幅度甩腿，上半身不动，两手臂保持身体平衡。感受大腰肌的伸展，左右腿各做３次。\r\n</p>\r\n<br />', '随着亚热带季风的阵阵席卷，短裙短裤短上衣惹醉了多少异性们的遐想，不想NG在本该卖弄性感风情的那一寸腹肌，就来速速挑战下我们的双周甩肉法，通过排毒的食物与撕裂腹肌的强化运动，你会发现自己的腹部脂肪被魔法般的甩掉了！', 1, '甩肉', '随着亚热带季风的阵阵席卷，短裙短裤短上衣惹醉了多少异性们的遐想，不想NG在本该卖弄性感风情的那一寸腹肌，就来速速挑战下我们的双周甩肉法，通过排毒的食物与撕裂腹肌的强化运动，你会发现自己的腹部脂肪被魔法般的甩掉了！', 1, 1449211295, 0),
+(32, 1, 1067, 1, '/Data/Uploads/Picture/20150722/1437579929.jpg', '迎战“露腹肌” 双周甩肉法来了还怕什么鬼', '<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  　随着亚热带季风的阵阵席卷，短裙短裤短上衣惹醉了多少异性们的遐想，不想NG在本该卖弄性感风情的那一寸腹肌，就来速速挑战下我们的双周甩肉法，通过排毒的食物与撕裂腹肌的强化运动，你会发现自己的腹部脂肪被魔法般的甩掉了！\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n <img src="http://www.v41.cn/uploads/5041437121296.jpg" width="417" height="500" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:417px;height:500px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　PART1 WHY? WHY? WHY?腰围数字的关系\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　腰围数字，腹部肉肉多少总是少女和大婶的分水岭，为什么身长1米多，就这个地方那么肯养膘？！不要说坐久了….水准太业余！真正高大上的原因是： 腹部肌肉的防守性很强，但不具体很强的主动攻击性。腹部是内脏忠实的卫士，它的防守性就是指保护内脏，因此想减掉腹部脂肪听起来微微有些逆天噢！\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　不过既然找准症结，自然不愁解决之道，双周瘦腹逆天之旅还不赶紧joinin！\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n <img src="http://www.v41.cn/uploads/72141437121303.jpg" width="371" height="500" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:371px;height:500px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　PART2 瘦腹核心——“肠整形”\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　别只把那点儿小九九停留在那几厘米的脂肪上，要知道你腹部体积从根本上说是由肠道环境决定的！天天叫嚷瘦肚皮，以下几个“恶习”究竟占了几条？\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　1、进食的速度快得惊人，总是狼吞虎咽。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　2、总是喜欢晚上吃夜宵，吃完后习惯马上睡觉。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　3、早晨从来不吃早餐，而且不会感觉到饥饿。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　4、无肉不欢型，餐桌上除了肉还是肉，无限油腻。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　5、久坐在办公室，很少起身运动一下。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　6、房间内冷气很大，而且总是习惯喝冰镇饮料。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　7、总喜欢喝一杯，无论是果酒还是啤酒总是贪杯。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　8、总是穿很紧的内裤，导致肠道挤压变形。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　9、睡眠不足，肠道不能得到很好的休息。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　10、过度减肥，膳食营养不平衡，每天吃很少。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n <img src="http://www.v41.cn/uploads/41291437121341.jpg" width="500" height="297" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:500px;height:297px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　四大锦上添花的“肠整形”食材\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　肠道这个脆弱而敏感的器官，比精神还容易崩溃，所以食物的呵护就更加重要，让肠道更加“年轻”的精选食材马上活用起来吧！\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　1.蜂蜜\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　减少肠内脂肪的最好方法就是多喝蜂蜜，在日常的饮料中加入蜂蜜，也能达到通便润肠的效果。冲蜂蜜的水最好不要超过80℃，否则会破坏蜂蜜中的营养成分。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　2.杏仁\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　杏仁含有的植物纤维，是肠道内乳酸菌的饵料，和乳酸菌共同食用可达到最好的通便作用。而且减肥时特别需要一些油类，杏仁中还含有不饱和脂肪酸，和酸奶混合食用可以有很强烈的饱腹感。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　3.肉桂\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　肉桂具有提高代谢的作用，还能促进血液循环，去除堆积的脂肪，用肉桂粉少许撒到酸奶上食用即可。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　4.生姜\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　可以提高体温的生姜，能够帮助保持消化能力，在没食欲的时候就是身体寒冷的时候，或在肚子被胀气撑得很难受的时候可以用生姜末+酸奶搅拌喝。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n <img src="http://www.v41.cn/uploads/38881437121356.jpg" width="334" height="500" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:334px;height:500px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　PART3 美腹升级——维纳斯腰身锻炼法\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　step1\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　正确站立伸展背部肌肉群后背紧贴墙壁站立，注意脚后跟、臀部、肩胛骨和后脑勺部位要紧靠墙壁，让后背的肌肉群得到伸展，每天一次，每次保持１分钟。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n  <img src="http://www.v41.cn/uploads/19281437121388.jpg" width="334" height="500" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:334px;height:500px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　step2\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　拧转运动伸展腰部侧面肌肉双臂向上伸直，两个手腕交叉拧转于头部上方。身体向左侧拧转的同时，左脚向前迈出。然后身体向右侧拧转，右脚迈出。左右交替进行３组。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n <img src="http://www.v41.cn/uploads/81161437121397.jpg" width="369" height="500" border="0" title="迎战“露腹肌” 双周甩肉法来了还怕什么鬼" style="border:medium none;width:369px;height:500px;" alt="" /> \r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　step3\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　向后抬腿提升大腰肌柔软度单侧腿从大腿根部向后抬起，然后向后大幅度甩腿，上半身不动，两手臂保持身体平衡。感受大腰肌的伸展，左右腿各做３次。\r\n</p>\r\n<br />', '随着亚热带季风的阵阵席卷，短裙短裤短上衣惹醉了多少异性们的遐想，不想NG在本该卖弄性感风情的那一寸腹肌，就来速速挑战下我们的双周甩肉法，通过排毒的食物与撕裂腹肌的强化运动，你会发现自己的腹部脂肪被魔法般的甩掉了！', 1, '甩肉', '随着亚热带季风的阵阵席卷，短裙短裤短上衣惹醉了多少异性们的遐想，不想NG在本该卖弄性感风情的那一寸腹肌，就来速速挑战下我们的双周甩肉法，通过排毒的食物与撕裂腹肌的强化运动，你会发现自己的腹部脂肪被魔法般的甩掉了！', 1, 1449211295, 0),
 (33, 1, 1091, 1, '/Data/Uploads/Picture/20150722/1437579870.jpg', '美容养颜茶 助你红润肤色面若桃花', '<p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">女人面色红润如桃花儿开，想必这是非常吸引人的健康美。想要变得美丽动人，我们可以通过饮用一些美容养颜的茶来获得健康红润肤色啊!让大家面若桃花儿开，看着都心欢喜。</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　几款美容养颜茶：</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px; text-align: center;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　1、葡萄茶</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px; text-align: center;"><img src="http://www.v41.cn/uploads/20150710/14365117114023.png" width="443" height="355" border="0" hspace="0" vspace="0" title="美容养颜茶 助你红润肤色面若桃花" style="border: medium none; margin: 0px; padding: 0px; width: 443px; height: 355px;" alt="" /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　看清楚了，不是葡萄酒，是葡萄茶哦，自制的葡萄茶又好喝又美容，还别具一格呢，家里来闺蜜了泡一壶大家一起享用，非常有情调哦!准备适量的葡萄，洗干净后备用;再来一点绿茶和蜂蜜即可。</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　绿茶用热开水冲泡后，再将葡萄和蜂蜜用凉开水调匀后于绿茶搭配饮用，口感新颖、创意独特，一定会受到别人的好评。最重要的是，这款饮料非常的养颜润肤哦!</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px; text-align: center;"><img src="http://www.v41.cn/uploads/20150710/143651176669.png" width="296" height="296" border="0" hspace="0" vspace="0" title="美容养颜茶 助你红润肤色面若桃花" style="border: medium none; margin: 0px; padding: 0px; width: 296px; height: 296px;" alt="" /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　2、何首乌茶</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　何首乌美艳润发，是非常养生的保健品，将何首乌自制成美容茶，效果非常好。取何首乌和丹参、绿茶适量，一起用水煎煮，取汁饮用，坚持饮用一段时间，你会发现自己的肤质会有明显改善哦!</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　3、绿茶</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　在所有的茶中，绿茶拥有最强的抗氧化功效，很早以前就有护肤高手将喝剩下的绿茶渣敷在脸上当做面膜。除了卓越的抗氧化功效，绿茶中的咖啡因能够有效消除水肿，单宁酸能收敛肌肤，让松弛的肤质变得紧致结实。</p><br /><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　4、白茶</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　白茶具高效抗氧化功能，可强化肌肤抵抗力，当中的多酚成分有效压制游离基活动，能改善人体排毒和防御功效，给肌肤带来前所未有的清新感觉。</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　喝茶的注意事项</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　1、不宜饮浓茶</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　茶水一般在人体内能滞留3小时左右，而浓茶滞留时间则更长，这样茶碱在人体内积聚过多，致使神经功能失调。由于茶叶中鞣酸的作用，可使肠粘膜分泌粘液功能下降，发生便秘。茶量一般每天以5～10克，分二次泡饮为宜。</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　2、不宜空腹饮茶</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　早晨空腹不宜饮茶，因为空腹饮茶，冲淡了胃液，降低了胃酸的功能，妨碍消化，并影响对蛋白质的吸收，易引起胃粘膜炎症。</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　不宜用茶水服药：茶叶中含有大量鞣酸。如果用茶水服药，鞣酸同药物中的生物碱、蛋白质及金属盐等发生化学作用而产生沉淀，势必影响药物疗效，甚至失效。茶叶是有兴奋中枢神经的作用，凡服安神、镇静、催眠等药物以及服用含铁补血药、酶制剂药、含蛋自质药物时，均不宜用茶水送服。</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">3、不宜睡前饮茶</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　睡前两小时，最好不要饮茶。否则会使精神过于兴奋而影响入睡，甚至引起失眠。老年人睡前饮茶，易心慌不安、多尿，更会影响睡眠。如因饮茶引起失眠，即使服用安眠药，也是无济于事的。</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　4、不宜饮茶过度</p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;"><br /></p><p style="border: medium none; margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica; font-size: 14px; line-height: 25px;">　　由于茶叶里有咖啡因，过度饮茶会引起烦躁、焦急、心悸、不安等症，从而产生失眠;还会抑制胃肠，妨碍消化，降低食欲。所以要注意饮茶适量。</p><br />', '', 1, '美容养颜茶,面若桃花', '女人面色红润如桃花儿开，想必这是非常吸引人的健康美。想要变得美丽动人，我们可以通过饮用一些美容养颜的茶来获得健康红润肤色啊!让大家面若桃花儿开，看着都心欢喜。', -1, 1437583334, 0),
-(34, 1, 1091, 1, '/Data/Uploads/Picture/20150723/1437583447.jpeg', '四大美白祛斑绝招，让你的肌肤零瑕疵', '<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	我们知道祛斑是美容护肤的一部分。想让自己的肌肤光滑光滑的，那就得祛斑。说到它，你有什么好方法吗?下面，小编为大家介绍四大美白祛斑绝招。到底这些绝招是哪些呢?是产品护理?自行保养还是化妆?一起来看看美容护肤之祛斑篇。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/45931434071949.jpeg" width="600" height="800" border="0" title="四大美白祛斑绝招，让你的肌肤零瑕疵" style="border:medium none;width:600px;height:800px;" alt="" />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　绝招1祛雀斑第一名方---时珍正容散\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　《医宗金鉴》中记载有用“时珍正容散”治雀斑。书中记载此方效果是：“用至七八日，其斑皆没，神效”。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　时珍正容散对面上雀斑，蝴蝶斑，妊娠斑等均有极为明显的消除、淡化作用，同时可以抑制斑点再生，兼有美白之效果。在众多美容美颜类中药面膜中独树一帜。坚持使用30天就能去除斑点，均匀肌肤色泽，脸面洁净无瑕，光彩照人。这个方子在某宝上也广受欢迎，追捧的人很多,淘宝一搜时珍正容散有很多家卖。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/53311434071965.jpeg" width="600" height="851" border="0" title="四大美白祛斑绝招，让你的肌肤零瑕疵" style="border:medium none;width:600px;height:851px;" alt="" />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　绝招2 产品护理：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　A 龙胆草、甘草、熊果苷、桑葚、绿茶、木瓜及人参等中药美容药材，可深入肌肤内层，排除新陈代谢废物和游离基美白祛斑。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　B 精纯维他命C能抑制黑色素最终形成的氧化过程，促进皮肤表面含有色素细胞的自然消亡，还能作为表皮脱落剂，加速表皮黑色素的脱落。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　C 维生素C、防晒剂等也具有美白祛斑作用。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　绝招3 自行保养：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　A 用手掌的摩擦力量，促进血液循环，这样有利于舒展皮肤组织，舒缓肌肉组织的疲劳。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　B 坚持良好的饮食习惯，参加运动，调节情绪，必要时辅助中医治疗，调节内分泌。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　绝招4 化妆：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　A 市场上有专门的遮斑粉底，可有选择性地使用。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　B 祛斑笔可以立即使斑点消失在视线中。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　战果实报：想让色斑在视线里立即消失很容易，化妆可以马上达到美白祛斑效果，但调理内分泌还是需要长期而规律的疗程坚持。\r\n</p>\r\n<div>\r\n	<br />\r\n</div>', '我们知道祛斑是美容护肤的一部分。想让自己的肌肤光滑光滑的，那就得祛斑。说到它，你有什么好方法吗?下面，小编为大家介绍四大美白祛斑绝招。到底这些绝招是哪些呢?是产品护理?自行保养还是化妆?一起来看看美容护肤之祛斑篇。', 1, '四大美白祛斑绝招,肌肤零瑕疵', '我们知道祛斑是美容护肤的一部分。想让自己的肌肤光滑光滑的，那就得祛斑。说到它，你有什么好方法吗?下面，小编为大家介绍四大美白祛斑绝招。到底这些绝招是哪些呢?是产品护理?自行保养还是化妆?一起来看看美容护肤之祛斑篇。', 1, 1449211284, 0),
-(35, 1, 1091, 1, '/Data/Uploads/Picture/20150722/1437579978.jpg', '【怎样更好彻底美白】如何更好彻底美白', '<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	怎样更好彻底美白？在生活当中里，很多美眉们都想自己拥有一张美白的面孔，因此去购买各种美白产品，可是效果并不显著，那么怎样更好彻底美白呢？以下由小编为大家介绍一下吧。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n	<img src="http://www.v41.cn/uploads/78471433907241.JPEG" width="480" height="300" border="0" title="" style="border:medium none;width:480px;height:300px;" alt="" />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　脸部美白有妙招\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　一白遮三丑的美丽观念在无数人的心中荡漾，美白无暇的脸蛋自然也成为无数美眉疯狂追逐的目标。如何美白脸部皮肤呢，不少的美眉愁眉大展。春夏是一个绽放美丽，展现魅力的时节，很多美眉更是将如何美白脸部皮肤提上了护肤美容的日程。在美白肌肤的大道上，除了选择一些美白产品。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　所以脸部是美眉的第一招牌，关系到面子的问题都是大问题，很多美眉们用各种化妆品来修饰脸部，达到一个脸部美容的目的，脸部美容包括脸颊美容、眼部美容、唇部美容。然而更多的美眉们都想做个白白净净的小仙女，皮肤上面洁白如新，就像刚生出的婴儿般的肌肤，白白滑滑嫩嫩的，但是随着时间的推移，皮肤开始从活力的状态转变成衰老状态，皮肤的修复速度明显降低，在此小编为各位美眉们推荐两个小妙招，让您的脸部肌肤达到彻底美白的效果：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　妙招一，美白肌底：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　属于脸上肌肤偏黄的美眉们，因为是来自天生的氧化造成的黯淡暗黄，因此要做到脸部的肌肤达到彻底美白，就要从肌肤底层开始，这样抗氧化才能从根源阻止糖分和蛋白质的几何，彻底祛除真皮层内的糖化物质以及达到彻底美白效果。然而像这种情况的美眉们，在生活上?选择多吃一些含有氨基酸、维生素C、葡萄籽、日本蜜柑果皮成分的抗氧化产品，让肌肤从内而外的排除毒素，透出亮白肌肤。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　妙招二，修复色斑：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　属于脸上肌肤有色斑的美眉们，因为来自脸上的痘印或者斑点所导致的色斑，然而色斑是由皮肤内黑色素堆积而造成的黑色小斑，多由日晒引起，皮肤中的络氨酸经紫外线氧化为多巴再经转化为形成黑色素，因此要懂得修复和预防脸部的保护层，以及应对脸部色斑的方法快速美白就是以预防为主，再配合美白去黑产品。尽早开始尝试使用密集美白护理的产品，制定密集焕白方案，越早处理对亮白、均匀肤色越好。含烟酰胺的亮白精华，可有效抑制黑色素的生成，集中亮白肌肤。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	<br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n	　　怎样更好彻底美白？上面小编已经为大家介绍了一下，相信各位美眉们对于如何彻底美白也有一定的了解了吧。综上所述，其实要做到脸部肌肤彻底美白，关键是要懂得如何更好彻底美白的方法，这一点是要靠一点一滴去持续美白，才能达到彻底美白的效果，这样才是护肤之道。\r\n</p>', '怎样更好彻底美白？在生活当中里，很多美眉们都想自己拥有一张美白的面孔，因此去购买各种美白产品，可是效果并不显著，那么怎样更好彻底美白呢？以下由小编为大家介绍一下吧。', 1, '彻底美白', '怎样更好彻底美白？在生活当中里，很多美眉们都想自己拥有一张美白的面孔，因此去购买各种美白产品，可是效果并不显著，那么怎样更好彻底美白呢？以下由小编为大家介绍一下吧。', 1, 1449211269, 0);
+(34, 1, 1091, 1, '/Data/Uploads/Picture/20150723/1437583447.jpeg', '四大美白祛斑绝招，让你的肌肤零瑕疵', '<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  我们知道祛斑是美容护肤的一部分。想让自己的肌肤光滑光滑的，那就得祛斑。说到它，你有什么好方法吗?下面，小编为大家介绍四大美白祛斑绝招。到底这些绝招是哪些呢?是产品护理?自行保养还是化妆?一起来看看美容护肤之祛斑篇。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n <img src="http://www.v41.cn/uploads/45931434071949.jpeg" width="600" height="800" border="0" title="四大美白祛斑绝招，让你的肌肤零瑕疵" style="border:medium none;width:600px;height:800px;" alt="" />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　绝招1祛雀斑第一名方---时珍正容散\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　《医宗金鉴》中记载有用“时珍正容散”治雀斑。书中记载此方效果是：“用至七八日，其斑皆没，神效”。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　时珍正容散对面上雀斑，蝴蝶斑，妊娠斑等均有极为明显的消除、淡化作用，同时可以抑制斑点再生，兼有美白之效果。在众多美容美颜类中药面膜中独树一帜。坚持使用30天就能去除斑点，均匀肌肤色泽，脸面洁净无瑕，光彩照人。这个方子在某宝上也广受欢迎，追捧的人很多,淘宝一搜时珍正容散有很多家卖。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n <img src="http://www.v41.cn/uploads/53311434071965.jpeg" width="600" height="851" border="0" title="四大美白祛斑绝招，让你的肌肤零瑕疵" style="border:medium none;width:600px;height:851px;" alt="" />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　绝招2 产品护理：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　A 龙胆草、甘草、熊果苷、桑葚、绿茶、木瓜及人参等中药美容药材，可深入肌肤内层，排除新陈代谢废物和游离基美白祛斑。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　B 精纯维他命C能抑制黑色素最终形成的氧化过程，促进皮肤表面含有色素细胞的自然消亡，还能作为表皮脱落剂，加速表皮黑色素的脱落。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　C 维生素C、防晒剂等也具有美白祛斑作用。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　绝招3 自行保养：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　A 用手掌的摩擦力量，促进血液循环，这样有利于舒展皮肤组织，舒缓肌肉组织的疲劳。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　B 坚持良好的饮食习惯，参加运动，调节情绪，必要时辅助中医治疗，调节内分泌。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　绝招4 化妆：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　A 市场上有专门的遮斑粉底，可有选择性地使用。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　B 祛斑笔可以立即使斑点消失在视线中。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　战果实报：想让色斑在视线里立即消失很容易，化妆可以马上达到美白祛斑效果，但调理内分泌还是需要长期而规律的疗程坚持。\r\n</p>\r\n<div>\r\n  <br />\r\n</div>', '我们知道祛斑是美容护肤的一部分。想让自己的肌肤光滑光滑的，那就得祛斑。说到它，你有什么好方法吗?下面，小编为大家介绍四大美白祛斑绝招。到底这些绝招是哪些呢?是产品护理?自行保养还是化妆?一起来看看美容护肤之祛斑篇。', 1, '四大美白祛斑绝招,肌肤零瑕疵', '我们知道祛斑是美容护肤的一部分。想让自己的肌肤光滑光滑的，那就得祛斑。说到它，你有什么好方法吗?下面，小编为大家介绍四大美白祛斑绝招。到底这些绝招是哪些呢?是产品护理?自行保养还是化妆?一起来看看美容护肤之祛斑篇。', 1, 1449211284, 0),
+(35, 1, 1091, 1, '/Data/Uploads/Picture/20150722/1437579978.jpg', '【怎样更好彻底美白】如何更好彻底美白', '<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  怎样更好彻底美白？在生活当中里，很多美眉们都想自己拥有一张美白的面孔，因此去购买各种美白产品，可是效果并不显著，那么怎样更好彻底美白呢？以下由小编为大家介绍一下吧。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;text-align:center;">\r\n <img src="http://www.v41.cn/uploads/78471433907241.JPEG" width="480" height="300" border="0" title="" style="border:medium none;width:480px;height:300px;" alt="" />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　脸部美白有妙招\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　一白遮三丑的美丽观念在无数人的心中荡漾，美白无暇的脸蛋自然也成为无数美眉疯狂追逐的目标。如何美白脸部皮肤呢，不少的美眉愁眉大展。春夏是一个绽放美丽，展现魅力的时节，很多美眉更是将如何美白脸部皮肤提上了护肤美容的日程。在美白肌肤的大道上，除了选择一些美白产品。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　所以脸部是美眉的第一招牌，关系到面子的问题都是大问题，很多美眉们用各种化妆品来修饰脸部，达到一个脸部美容的目的，脸部美容包括脸颊美容、眼部美容、唇部美容。然而更多的美眉们都想做个白白净净的小仙女，皮肤上面洁白如新，就像刚生出的婴儿般的肌肤，白白滑滑嫩嫩的，但是随着时间的推移，皮肤开始从活力的状态转变成衰老状态，皮肤的修复速度明显降低，在此小编为各位美眉们推荐两个小妙招，让您的脸部肌肤达到彻底美白的效果：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　妙招一，美白肌底：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　属于脸上肌肤偏黄的美眉们，因为是来自天生的氧化造成的黯淡暗黄，因此要做到脸部的肌肤达到彻底美白，就要从肌肤底层开始，这样抗氧化才能从根源阻止糖分和蛋白质的几何，彻底祛除真皮层内的糖化物质以及达到彻底美白效果。然而像这种情况的美眉们，在生活上?选择多吃一些含有氨基酸、维生素C、葡萄籽、日本蜜柑果皮成分的抗氧化产品，让肌肤从内而外的排除毒素，透出亮白肌肤。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　妙招二，修复色斑：\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n  <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　属于脸上肌肤有色斑的美眉们，因为来自脸上的痘印或者斑点所导致的色斑，然而色斑是由皮肤内黑色素堆积而造成的黑色小斑，多由日晒引起，皮肤中的络氨酸经紫外线氧化为多巴再经转化为形成黑色素，因此要懂得修复和预防脸部的保护层，以及应对脸部色斑的方法快速美白就是以预防为主，再配合美白去黑产品。尽早开始尝试使用密集美白护理的产品，制定密集焕白方案，越早处理对亮白、均匀肤色越好。含烟酰胺的亮白精华，可有效抑制黑色素的生成，集中亮白肌肤。\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n <br />\r\n</p>\r\n<p style="color:#333333;font-family:Simsun, ''Microsoft YaHei'', Tahoma, Verdana, ''Arial Unicode MS'', Mingliu, Arial, Helvetica;font-size:14px;">\r\n 　　怎样更好彻底美白？上面小编已经为大家介绍了一下，相信各位美眉们对于如何彻底美白也有一定的了解了吧。综上所述，其实要做到脸部肌肤彻底美白，关键是要懂得如何更好彻底美白的方法，这一点是要靠一点一滴去持续美白，才能达到彻底美白的效果，这样才是护肤之道。\r\n</p>', '怎样更好彻底美白？在生活当中里，很多美眉们都想自己拥有一张美白的面孔，因此去购买各种美白产品，可是效果并不显著，那么怎样更好彻底美白呢？以下由小编为大家介绍一下吧。', 1, '彻底美白', '怎样更好彻底美白？在生活当中里，很多美眉们都想自己拥有一张美白的面孔，因此去购买各种美白产品，可是效果并不显著，那么怎样更好彻底美白呢？以下由小编为大家介绍一下吧。', 1, 1449211269, 0);
 
 
 
@@ -354,8 +357,7 @@ CREATE TABLE IF NOT EXISTS `des_center_count` (
   `praise` int(11) NOT NULL DEFAULT '1' COMMENT '赞',
   `Concern` int(11) NOT NULL DEFAULT '1' COMMENT '关注',
   `comments` int(11) NOT NULL DEFAULT '0' COMMENT '评论'
-) ENGINE=MyISAM DEFAULT CHARSET=gbk COMMENT='统计';
-
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='统计';
 
 
 INSERT INTO `des_center_count` (`center_id`, `foot`, `praise`, `Concern`, `comments`) VALUES
@@ -384,6 +386,7 @@ INSERT INTO `des_center_count` (`center_id`, `foot`, `praise`, `Concern`, `comme
 (35, 1, 1, 1, 0);
 
 
+
 CREATE TABLE IF NOT EXISTS `des_center_hits` (
   `center_id` int(11) NOT NULL,
   `hits` int(11) NOT NULL DEFAULT '1',
@@ -394,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `des_center_hits` (
   `last_week_hits` int(11) NOT NULL DEFAULT '1',
   `last_month_hits` int(11) NOT NULL DEFAULT '1',
   KEY `art_id` (`center_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
 
@@ -422,7 +425,6 @@ INSERT INTO `des_center_hits` (`center_id`, `hits`, `today_hits`, `week_hits`, `
 (33, 8, 1, 1, 1, 1, 1, 1),
 (34, 1, 1, 1, 1, 1, 1, 1),
 (35, 1, 1, 1, 1, 1, 1, 1);
-
 
 
 CREATE TABLE IF NOT EXISTS `des_center_limit` (
@@ -473,12 +475,12 @@ CREATE TABLE IF NOT EXISTS `des_center_setting` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-
 CREATE TABLE IF NOT EXISTS `des_center_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `name` varchar(125) NOT NULL COMMENT '名词',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='内容类型' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='内容类型' AUTO_INCREMENT=5 ;
+
 
 
 INSERT INTO `des_center_type` (`id`, `name`) VALUES
@@ -491,19 +493,19 @@ INSERT INTO `des_center_type` (`id`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `des_city` (
   `serialId` int(3) NOT NULL AUTO_INCREMENT,
-  `cityId` varchar(20) DEFAULT NULL,
-  `cityName` varchar(20) DEFAULT NULL,
-  `cityUpId` varchar(20) DEFAULT NULL,
+  `cityId` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `cityName` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `cityUpId` varchar(20) CHARACTER SET gbk DEFAULT NULL,
   `cityUpIdNum` int(11) DEFAULT NULL,
-  `cityPath` varchar(100) DEFAULT NULL,
-  `cityType` varchar(20) DEFAULT NULL,
+  `cityPath` varchar(100) CHARACTER SET gbk DEFAULT NULL,
+  `cityType` varchar(20) CHARACTER SET gbk DEFAULT NULL,
   `cityTypeNum` int(11) DEFAULT NULL,
-  `shortName` varchar(11) DEFAULT NULL,
-  `spell` varchar(11) DEFAULT NULL,
-  `areaId` varchar(11) DEFAULT NULL,
-  `postCode` varchar(11) DEFAULT NULL,
+  `shortName` varchar(11) CHARACTER SET gbk DEFAULT NULL,
+  `spell` varchar(11) CHARACTER SET gbk DEFAULT NULL,
+  `areaId` varchar(11) CHARACTER SET gbk DEFAULT NULL,
+  `postCode` varchar(11) CHARACTER SET gbk DEFAULT NULL,
   PRIMARY KEY (`serialId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED AUTO_INCREMENT=362 ;
 
 
 
@@ -691,7 +693,7 @@ INSERT INTO `des_city` (`serialId`, `cityId`, `cityName`, `cityUpId`, `cityUpIdN
 (181, '001016015', '信阳', '001016', 16, '中国/河南/信阳', '市', 3, 'xy', 'xinyang', '0376', '464000'),
 (182, '001016016', '周口', '001016', 16, '中国/河南/周口', '市', 3, 'zk', 'zhoukou', '0394', '466000'),
 (183, '001016017', '驻马店', '001016', 16, '中国/河南/驻马店', '市', 3, 'zmd', 'zhumadian', '0396', '463000'),
-(184, '001016018', '直辖行政单位', '001016', 16, '中国/河南/直辖行政单位', 'null', 3, 'zxxzdw', 'zhixiaxingz', '0391		', '454650'),
+(184, '001016018', '直辖行政单位', '001016', 16, '中国/河南/直辖行政单位', 'null', 3, 'zxxzdw', 'zhixiaxingz', '0391    ', '454650'),
 (185, '001017001', '武汉', '001017', 17, '中国/湖北/武汉', '市', 3, 'wh', 'wuhan', '027', '430014'),
 (186, '001017002', '黄石', '001017', 17, '中国/湖北/黄石', '市', 3, 'hs', 'huangshi', '0714', '435003'),
 (187, '001017003', '襄樊', '001017', 17, '中国/湖北/襄樊', '市', 3, 'xf', 'xiangfan', '0710', '441021'),
@@ -882,7 +884,7 @@ CREATE TABLE IF NOT EXISTS `des_comm` (
   `comm` text NOT NULL COMMENT '内容',
   `ctime` int(11) NOT NULL COMMENT '提交时间',
   PRIMARY KEY (`comm_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 
 INSERT INTO `des_comm` (`comm_id`, `sort`, `fid`, `user_id`, `sys_id`, `status`, `comm`, `ctime`) VALUES
@@ -924,7 +926,7 @@ CREATE TABLE IF NOT EXISTS `des_config` (
   `sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 
 
@@ -952,29 +954,29 @@ INSERT INTO `des_config` (`id`, `name`, `type`, `title`, `group`, `extra`, `rema
 
 CREATE TABLE IF NOT EXISTS `des_country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `countryId` varchar(11) DEFAULT NULL,
+  `countryId` varchar(11) CHARACTER SET gbk DEFAULT NULL,
   `countryIdNum` int(11) DEFAULT NULL,
-  `countryName` varchar(50) DEFAULT NULL,
+  `countryName` varchar(50) CHARACTER SET gbk DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 
 
 CREATE TABLE IF NOT EXISTS `des_district` (
   `serialId` int(4) NOT NULL AUTO_INCREMENT,
-  `districtId` varchar(20) DEFAULT NULL,
-  `districtName` varchar(20) DEFAULT NULL,
-  `districtUpId` varchar(20) DEFAULT NULL,
+  `districtId` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `districtName` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `districtUpId` varchar(20) CHARACTER SET gbk DEFAULT NULL,
   `districtUpIdNum` int(11) DEFAULT NULL,
-  `districtPath` varchar(100) DEFAULT NULL,
-  `districtType` varchar(20) DEFAULT NULL,
+  `districtPath` varchar(100) CHARACTER SET gbk DEFAULT NULL,
+  `districtType` varchar(20) CHARACTER SET gbk DEFAULT NULL,
   `districtTypeNum` int(11) DEFAULT NULL,
-  `shortName` varchar(11) DEFAULT NULL,
-  `spell` varchar(11) DEFAULT NULL,
-  `areaId` varchar(11) DEFAULT NULL,
-  `postCode` varchar(11) DEFAULT NULL,
+  `shortName` varchar(11) CHARACTER SET gbk DEFAULT NULL,
+  `spell` varchar(11) CHARACTER SET gbk DEFAULT NULL,
+  `areaId` varchar(11) CHARACTER SET gbk DEFAULT NULL,
+  `postCode` varchar(11) CHARACTER SET gbk DEFAULT NULL,
   PRIMARY KEY (`serialId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED AUTO_INCREMENT=2769 ;
 
 
 
@@ -3654,7 +3656,7 @@ INSERT INTO `des_district` (`serialId`, `districtId`, `districtName`, `districtU
 (2667, '001031010007', '和硕', '001031010', 349, '中国/新疆/巴音郭楞/和硕', '县', 4, 'hs', 'heshuo', 'null', '841200'),
 (2668, '001031010008', '博湖', '001031010', 349, '中国/新疆/巴音郭楞/博湖', '县', 4, 'bh', 'bohu', 'null', '841400'),
 (2669, '001031010009', '焉耆', '001031010', 349, '中国/新疆/巴音郭楞/焉耆', '回族自治县', 4, 'yzz', 'yanzizhi', 'null', '841100'),
-(2670, '001031011001', '	昌吉', '001031011', 350, '中国/新疆/昌吉/	昌吉', '市', 4, '	cj', '	changji', 'null', '831100'),
+(2670, '001031011001', '  昌吉', '001031011', 350, '中国/新疆/昌吉/ 昌吉', '市', 4, '  cj', '  changji', 'null', '831100'),
 (2671, '001031011002', '阜康', '001031011', 350, '中国/新疆/昌吉/阜康', '市', 4, 'fk', 'fukang', 'null', '831500'),
 (2672, '001031011003', '米泉', '001031011', 350, '中国/新疆/昌吉/米泉', '市', 4, 'mq', 'miquan', 'null', '831400'),
 (2673, '001031011004', '呼图壁', '001031011', 350, '中国/新疆/昌吉/呼图壁', '县', 4, 'htb', 'hutubi', 'null', '831200'),
@@ -3756,7 +3758,6 @@ INSERT INTO `des_district` (`serialId`, `districtId`, `districtName`, `districtU
 (2768, '001020001011', '青秀', '001020001', 234, '中国/广西/南宁/青秀', '区', 4, 'null', 'null', 'null', 'null');
 
 
-
 CREATE TABLE IF NOT EXISTS `des_group` (
   `id` smallint(3) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(25) NOT NULL,
@@ -3767,7 +3768,7 @@ CREATE TABLE IF NOT EXISTS `des_group` (
   `sort` smallint(3) unsigned NOT NULL DEFAULT '0',
   `show` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 
 
@@ -3785,7 +3786,7 @@ CREATE TABLE IF NOT EXISTS `des_links` (
   `type` int(11) NOT NULL COMMENT '类型',
   `icon` varchar(255) NOT NULL COMMENT '图标',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='友情链接' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='友情链接' AUTO_INCREMENT=17 ;
 
 
 INSERT INTO `des_links` (`id`, `sort`, `name`, `link`, `order`, `type`, `icon`) VALUES
@@ -3818,8 +3819,7 @@ CREATE TABLE IF NOT EXISTS `des_menu` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否仅开发者模式可见',
   `app` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=143 ;
 
 
 INSERT INTO `des_menu` (`id`, `icon`, `name`, `pid`, `sort`, `url`, `type`, `remark`, `controller`, `action`, `status`, `app`) VALUES
@@ -3862,7 +3862,7 @@ CREATE TABLE IF NOT EXISTS `des_nav` (
   `status` int(11) NOT NULL COMMENT '类型{1：在自动排序中显示，0：否}',
   `icon` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='导航菜单' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='导航菜单' AUTO_INCREMENT=21 ;
 
 
 
@@ -3887,7 +3887,6 @@ INSERT INTO `des_nav` (`id`, `parent_id`, `name`, `link`, `sort`, `status`, `ico
 (20, 11, '今天一定要美美的', '/', 0, -1, '/Data/Uploads/Picture/20150723/1437640444.jpg');
 
 
-
 CREATE TABLE IF NOT EXISTS `des_node` (
   `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
@@ -3904,8 +3903,7 @@ CREATE TABLE IF NOT EXISTS `des_node` (
   KEY `pid` (`pid`),
   KEY `status` (`status`),
   KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=83 ;
 
 
 INSERT INTO `des_node` (`id`, `name`, `title`, `status`, `remark`, `sort`, `pid`, `level`, `type`, `group_id`) VALUES
@@ -3928,15 +3926,13 @@ INSERT INTO `des_node` (`id`, `name`, `title`, `status`, `remark`, `sort`, `pid`
 (50, 'main', '广告管理', 1, '', NULL, 1, 3, 0, 0);
 
 
-
 CREATE TABLE IF NOT EXISTS `des_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `key` varchar(125) NOT NULL,
   `value` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `key` (`key`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='全局参数' AUTO_INCREMENT=1 ;
-
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='全局参数' AUTO_INCREMENT=35 ;
 
 
 INSERT INTO `des_option` (`id`, `key`, `value`) VALUES
@@ -3979,19 +3975,19 @@ INSERT INTO `des_option` (`id`, `key`, `value`) VALUES
 
 CREATE TABLE IF NOT EXISTS `des_province` (
   `serialId` int(3) NOT NULL AUTO_INCREMENT,
-  `provinceId` varchar(20) DEFAULT NULL,
-  `provinceName` varchar(20) DEFAULT NULL,
-  `provinceUpId` varchar(20) DEFAULT NULL,
+  `provinceId` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `provinceName` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `provinceUpId` varchar(20) CHARACTER SET gbk DEFAULT NULL,
   `provinceUpIdNum` int(11) DEFAULT NULL,
-  `provincePath` varchar(100) DEFAULT NULL,
-  `provinceType` varchar(20) DEFAULT NULL,
+  `provincePath` varchar(100) CHARACTER SET gbk DEFAULT NULL,
+  `provinceType` varchar(20) CHARACTER SET gbk DEFAULT NULL,
   `provinceTypeNum` int(11) DEFAULT NULL,
-  `shortName` varchar(11) DEFAULT NULL,
-  `spell` varchar(11) DEFAULT NULL,
-  `areaId` varchar(11) DEFAULT NULL,
-  `postCode` varchar(11) DEFAULT NULL,
+  `shortName` varchar(11) CHARACTER SET gbk DEFAULT NULL,
+  `spell` varchar(11) CHARACTER SET gbk DEFAULT NULL,
+  `areaId` varchar(11) CHARACTER SET gbk DEFAULT NULL,
+  `postCode` varchar(11) CHARACTER SET gbk DEFAULT NULL,
   PRIMARY KEY (`serialId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk ROW_FORMAT=FIXED AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED AUTO_INCREMENT=35 ;
 
 
 
@@ -4032,7 +4028,6 @@ INSERT INTO `des_province` (`serialId`, `provinceId`, `provinceName`, `provinceU
 (34, '001034', '台湾', '001', 0, '中国/台湾', '省', 2, 'tw', 'taiwan', '886', 'null');
 
 
-
 CREATE TABLE IF NOT EXISTS `des_role` (
   `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
@@ -4046,16 +4041,13 @@ CREATE TABLE IF NOT EXISTS `des_role` (
   KEY `parentId` (`pid`),
   KEY `ename` (`ename`),
   KEY `status` (`status`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 
 INSERT INTO `des_role` (`id`, `name`, `pid`, `status`, `remark`, `ename`, `create_time`, `update_time`) VALUES
 (1, '领导组', 0, 1, '', '', 1208784792, 1254325558),
 (2, '员工组', 0, 1, '', '', 1215496283, 1254325566),
-(7, '演示组', 0, 1, '', NULL, 1254325787, 0),
-(8, 'aaaaaa', NULL, 1, NULL, NULL, 0, 0);
-
+(7, '演示组', 0, 1, '', NULL, 1254325787, 0);
 
 
 CREATE TABLE IF NOT EXISTS `des_role_user` (
@@ -4064,7 +4056,6 @@ CREATE TABLE IF NOT EXISTS `des_role_user` (
   KEY `group_id` (`role_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
 
 
 INSERT INTO `des_role_user` (`role_id`, `user_id`) VALUES
@@ -4112,7 +4103,7 @@ CREATE TABLE IF NOT EXISTS `des_user` (
   `info` text NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 
 
@@ -4121,7 +4112,6 @@ INSERT INTO `des_user` (`id`, `sort`, `number`, `account`, `face`, `nickname`, `
 (2, 0, 0, 'demo', '', '演示', 'fe01ce2a7fbac8fafaed7c982a04e229', '', '', 1254326091, '127.0.0.1', 90, '8888', '', '', 1239783735, 1254325770, 1, 0, ''),
 (3, 0, 0, 'member', '', '员工', 'aa08769cdcb26674c6706093503ff0a3', '', '', 1326266720, '127.0.0.1', 17, '', '', '', 1253514375, 1254325728, 1, 0, ''),
 (4, 0, 0, 'leader', '', '领导', 'c444858e0aaeb727da73d2eae62321ad', '', '', 1254325906, '127.0.0.1', 15, '', '', '领导', 1253514575, 1254325705, 1, 0, '');
-
 
 
 CREATE TABLE IF NOT EXISTS `des_user_communication` (
@@ -4133,7 +4123,7 @@ CREATE TABLE IF NOT EXISTS `des_user_communication` (
   `county` varchar(25) NOT NULL COMMENT '县区',
   `postalcode` smallint(6) NOT NULL COMMENT '邮编',
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户通信表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户通信表' AUTO_INCREMENT=5 ;
 
 
 
@@ -4144,7 +4134,6 @@ INSERT INTO `des_user_communication` (`uid`, `address`, `country`, `province`, `
 (4, '', '', '', '', '', 0);
 
 
-
 CREATE TABLE IF NOT EXISTS `des_user_group` (
   `gid` int(11) NOT NULL,
   `name` varchar(25) NOT NULL COMMENT '组名称',
@@ -4153,14 +4142,12 @@ CREATE TABLE IF NOT EXISTS `des_user_group` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户组';
 
 
-
 CREATE TABLE IF NOT EXISTS `des_user_honour` (
   `id` tinyint(4) NOT NULL COMMENT 'id',
   `honour_name` varchar(25) NOT NULL COMMENT '名称',
   `icon` varchar(255) NOT NULL COMMENT '图标',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户头衔';
-
 
 
 CREATE TABLE IF NOT EXISTS `des_user_level` (
@@ -4174,7 +4161,6 @@ CREATE TABLE IF NOT EXISTS `des_user_level` (
   `com_amount` int(11) NOT NULL COMMENT '发表评论数',
   UNIQUE KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户等级';
-
 
 
 CREATE TABLE IF NOT EXISTS `des_user_list` (
@@ -4194,8 +4180,7 @@ CREATE TABLE IF NOT EXISTS `des_user_list` (
   `marriage` varchar(15) NOT NULL COMMENT '婚恋史',
   PRIMARY KEY (`uid`),
   KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户个人信息' AUTO_INCREMENT=1 ;
-
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户个人信息' AUTO_INCREMENT=5 ;
 
 
 INSERT INTO `des_user_list` (`uid`, `home`, `qq`, `name`, `sex`, `birthday`, `believe`, `Individual`, `job`, `blood`, `school`, `edu`, `love`, `marriage`) VALUES
@@ -4203,7 +4188,6 @@ INSERT INTO `des_user_list` (`uid`, `home`, `qq`, `name`, `sex`, `birthday`, `be
 (2, '', 0, '', 0, '0000-00-00', '', '', '', '', '', '', '', ''),
 (3, '', 0, '', 0, '0000-00-00', '', '', '', '', '', '', '', ''),
 (4, '', 0, '', 0, '0000-00-00', '', '', '', '', '', '', '', '');
-
 
 
 CREATE TABLE IF NOT EXISTS `des_user_log` (
@@ -4217,14 +4201,12 @@ CREATE TABLE IF NOT EXISTS `des_user_log` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户日志';
 
 
-
 CREATE TABLE IF NOT EXISTS `des_user_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户管理菜单' AUTO_INCREMENT=1 ;
-
 
 
 CREATE TABLE IF NOT EXISTS `des_user_property` (
