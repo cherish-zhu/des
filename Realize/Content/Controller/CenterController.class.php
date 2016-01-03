@@ -91,7 +91,7 @@ class CenterController extends BaseController {
 				$this->display("Public:tips");
 				return false;
 		} 
-		M("center_hits")->where(array('center_id'=>$_GET['id']))->setInc("hits");
+		M("center_hits")->where(array('center_id'=>$id))->setInc("hits");
 		$this->assign('center',$arr);
 		$this->assign('title',$arr['title'] .' - '.self::$title );
 		$this->assign('keywords',$arr['tags']);// 赋值分页输出
@@ -115,7 +115,7 @@ class CenterController extends BaseController {
 		
 		$center = M("center");
 		
-		$nums = 13;
+		$nums = 12;
 		
 		$map['cate_id'] = $ret['id'];
 		$map[C('DB_PREFIX').'center.status'] = '1';

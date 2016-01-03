@@ -1,12 +1,14 @@
 <?php
 
-function getList($where,$limit,$offset = NULL){
+function getList($where,$limit,$type = NULL,$offset = NULL){
     
     $model = M('center');
     $model->join(C('DB_PREFIX')."category ON ".C('DB_PREFIX')."center.cate_id = ".C('DB_PREFIX')."category.id","LEFT");
+    $model->join(C('DB_PREFIX').'center_hits ON '.C('DB_PREFIX')."center.id = ".C('DB_PREFIX')."center_hits.center_id",'LEFT');
     $model->field(
-            array(C('DB_PREFIX').'center.*',C('DB_PREFIX').'category.*',C('DB_PREFIX').'center.id' => 'cid')
+            array(C('DB_PREFIX').'center.*',C('DB_PREFIX').'category.*',C('DB_PREFIX').'center_hits.*',C('DB_PREFIX').'center.id' => 'cid')
     );
+    
     $map   =  array();
     if(is_int($where)){
     	if($where == 0) goto x;
@@ -21,7 +23,12 @@ function getList($where,$limit,$offset = NULL){
     }elseif(is_int($limit)){
     	$model->limit($limit);
     }
-    $array = $model->where($map)->order('cid desc')->select();
+    if($type == NULL){
+    	$model->order('cid desc');
+    }elseif($type == 'hit'){
+    	$model->order(C('DB_PREFIX').'center_hits.hits desc');
+    }
+    $array = $model->where($map)->select();
 	return $array;
 
 }
@@ -124,6 +131,59 @@ function breadcrumbNavigation($id,$index = -1,$nav = array()){
 
 }
 
+//得到所有列表内容,支持两级
+function getAllList($index = 6,$app = 1){
+    
+	$data  = array();
+	$model = M('category');
+	$data  = $model->where(array('parent_id' => $app, 'status'=>'1'))->select();
+	$ca    = array();
+	foreach ($data as $key => $val){
+		$ca[$val['id']] = array(
+				'name' => $val['name'],
+				'alias' => $val['alias']
+		);
+		$list  = array();
+		$list = M('center')->field('id,cate_id,thumb,title,create_time,update_time')->where(array('cate_id' => $val['id'],'status'=>'1'))->limit($index)->select();		
+		$data[$key]['son'] = $cate = $model->where(array('parent_id' => $val['id'],'status'=>'1' ))->select();
+		foreach ($cate as $k => $v){
+			$ca[$v['id']] = array(
+					'name' => $v['name'],
+					'alias' => $v['alias']
+			);
+			$cent[$k] = M('center')->field('id,cate_id,thumb,title,create_time,update_time')->where(array('cate_id' => $v['id'],'status'=>'1'))->limit($index)->select();
+			$list = array_merge($list, $cent[$k]);					
+		}
+
+		$count = floor(count($list)/$index);
+		
+		if($count <= 1){
+			foreach($list as $m => $n){
+				if($m < $index){
+					$data[$key]['list'][$m] = $list[$m];
+					$data[$key]['list'][$m]['cate'] = $ca[$list[$m]['cate_id']];
+				}
+				
+			}
+		}else{
+			
+			foreach($list as $m => $n){
+				
+				if($m < $index){
+					$i = $count*$m+2;
+					$data[$key]['list'][$m] = $list[$i];
+					$data[$key]['list'][$m]['cate'] = $ca[$list[$i]['cate_id']];
+				}
+				
+			}
+		}
+
+	}
+	
+	return $data;
+
+}
+
 //得到指定一篇内容
 function getContent($id){
 
@@ -157,4 +217,12 @@ function URL($alias,$id = NULL){
         return '/'.$alias.'/id_'.$id.'.html';
     else
         return '/'.$alias;
+}
+
+function nav($id = '0',$nav = array()){
+	$nav = M("nav")->where(array('status'=>'1','parent_id'=>$id))->select();
+	foreach ($nav as $key => $val){
+		$nav[$key]['son'] = M("nav")->where(array('status'=>'1','parent_id'=>$val['id']))->select();
+	}
+	return $nav;
 }
