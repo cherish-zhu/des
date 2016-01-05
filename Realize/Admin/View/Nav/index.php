@@ -29,7 +29,7 @@
 	       <div class="pageLeft">
 	         <table width="427" border="0" align="left">
 	           <tr>
-	             <td width="36"><div  style="float:left; width:100px" id="app-2" class="add-action">添加主导航</div></td>
+	             <td width="36"><a href="/admin/nav/insert?id=0" style="float:left; width:100px" id="app-2">添加主导航</a></td>
 	             <td width="36"></td>
 	             <td width="230">
 	                      

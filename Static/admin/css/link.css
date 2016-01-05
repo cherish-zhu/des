@@ -11,7 +11,7 @@
 .link-name{float:left; width:300px; height:auto; line-height:38px}
 .link-from{float:right; width:200px; height:auto}
 .link-time{width:190px; float:right; height:auto}
-.link-action{float:right; width:100px; height:auto;}
+.link-action{float:right; width:120px; height:auto;}
 .link-node{ float:right; width:120px; height:auto}
 .link-action i{line-height:38px; margin-right:22px; color:#096; cursor:pointer}
 .botton-type{border:#CCC 1px solid}

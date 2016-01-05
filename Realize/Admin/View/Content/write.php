@@ -47,7 +47,7 @@
                              <div class="tab-list">
                                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                          <tr>
-                                             <td height="36"><label for="textfield2">标签</label> <input type="text" name="tags" id="tags" /></td>
+                                             <td height="36"><label for="textfield2">标签</label> <input type="text" name="tags" id="tags" value=""/></td>
                                          </tr>
                                          <tr>
                                              <td height="36"><label for="textarea2">描述</label><textarea name="description" id="description" cols="60" rows="3"></textarea></td>

@@ -51,7 +51,7 @@
                    </div>
                    <div class="link-id"><?php echo $u['name']?></div>
                    <div class="link-name"><?php echo $u['link']?></div>
-                   <div class="link-action"><a href="<?php echo $u['link']?>" target="_blank"><i class="fa fa-eye" title="查看详情"></i></a><i link-id="<?php echo $u['id']?>" class="fa fa-times delete_link" title="删除用户"></i></div>
+                   <div class="link-action"><a href="<?php echo $u['link']?>" target="_blank"><i class="fa fa-eye" title="查看详情"></i></a> <a href="/admin/links/edit?app=3&id=<?php echo $u['id']?>"><i class="fa fa-pencil"></i></a> <i link-id="<?php echo $u['id']?>" class="fa fa-times delete_link" title="删除用户"></i></div>
                    <div class="link-from"><?php echo $u['sort']?></div>              
                 </li>
 				<?php }?>

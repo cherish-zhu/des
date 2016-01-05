@@ -65,6 +65,24 @@ class linksController extends CommonController {
 					'status'  => '删除失败'
 			)));
 	}
+	
+	public function edit(){
+		$model  = M('links');
+		$result = $model->where(array('id'=>I('get.id')))->find();
+		if(IS_POST){
+			$data = array(
+					'name' => I('post.name'),
+					'link' => I('post.link')
+			);
+			$rel = $model->where(array('id'=>I('get.id')))->save($data);
+			if($rel) $this->success('修改成功');
+			else $this->error('修改失败');
+			return false;
+		}
+		$this->assign('menus',array('A'=>'应用','B'=>'网络链接'));
+		$this->assign('link',$result);
+		$this->display();
+	}
 
 	public function delete(){
 		$model  = M('links');
