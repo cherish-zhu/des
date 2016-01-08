@@ -366,6 +366,33 @@ function nav_tree($fid,$count,$list=NULL){
      return $str;
  
 }
+
+function file_tree($view,$count = 0){
+	$count = $count + 1;
+
+	$n   = str_pad('',$count,'-',STR_PAD_RIGHT);
+	$n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
+	$file = './Realize/Content/View/'.$view;
+	$content  = scandir($file);
+	foreach($content as $k => $v){
+		if($v != '.' && $v != '..'){
+		$vi[$k] = $view.'/'.$v;
+		$l = $file.'/'.$v;
+		    if(is_dir($l)){	
+			  echo '<div class="category-line category-id-'.$k.'" level="'.$count.'"><div class="category-id"></div><div class="category-name" style="width:160px !important">'.$n.$v.'</div><div class="category-clear"></div></div>';
+			   file_tree($vi[$k],$count);
+
+		    }else{
+			    echo '<div class="category-line category-id-'.$k.'" level="'.$count.'"><div class="category-id"></div> <div class="category-name" style="width:160px !important">'.$n.'<a href="?file='.$l.'">'.$v.'</a></div><div class="category-cap"  id="id-'.$k.'"></div> <div class="category-clear"></div></div>';
+		    }
+		}
+		
+	}
+
+
+}
+
+
  
 function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=false){
  

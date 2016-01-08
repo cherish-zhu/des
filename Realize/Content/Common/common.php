@@ -1,15 +1,24 @@
 <?php
 
-function getList($where,$limit,$type = NULL,$offset = NULL){
+function getList($where,$limit,$offset = NULL,$type = NULL){
     
     $model = M('center');
     $model->join(C('DB_PREFIX')."category ON ".C('DB_PREFIX')."center.cate_id = ".C('DB_PREFIX')."category.id","LEFT");
     $model->join(C('DB_PREFIX').'center_hits ON '.C('DB_PREFIX')."center.id = ".C('DB_PREFIX')."center_hits.center_id",'LEFT');
     $model->field(
-            array(C('DB_PREFIX').'center.*',C('DB_PREFIX').'category.*',C('DB_PREFIX').'center_hits.*',C('DB_PREFIX').'center.id' => 'cid')
+            array(
+            		C('DB_PREFIX').'center.*',
+            		C('DB_PREFIX').'category.id',
+            		C('DB_PREFIX').'center_hits.*',
+            		C('DB_PREFIX').'category.name',
+            		C('DB_PREFIX').'category.alias',
+            		C('DB_PREFIX').'category.icon',
+            		C('DB_PREFIX').'center.id' => 'cid'
+            )
     );
     
     $map   =  array();
+    $map[C('DB_PREFIX').'center.status'] = '1';
     if(is_int($where)){
     	if($where == 0) goto x;
         $map['cate_id'] = $where;
@@ -27,6 +36,8 @@ function getList($where,$limit,$type = NULL,$offset = NULL){
     	$model->order('cid desc');
     }elseif($type == 'hit'){
     	$model->order(C('DB_PREFIX').'center_hits.hits desc');
+    }else{
+    	$map['type'] = $type;
     }
     $array = $model->where($map)->select();
 	return $array;
@@ -138,11 +149,13 @@ function getAllList($index = 6,$app = 1){
 	$model = M('category');
 	$data  = $model->where(array('parent_id' => $app, 'status'=>'1'))->select();
 	$ca    = array();
+	$cate_id  = array();
 	foreach ($data as $key => $val){
 		$ca[$val['id']] = array(
 				'name' => $val['name'],
 				'alias' => $val['alias']
 		);
+		$cate_id[$key][] = $val['id'];
 		$list  = array();
 		$list = M('center')->field('id,cate_id,thumb,title,create_time,update_time')->where(array('cate_id' => $val['id'],'status'=>'1'))->limit($index)->select();		
 		$data[$key]['son'] = $cate = $model->where(array('parent_id' => $val['id'],'status'=>'1' ))->select();
@@ -151,31 +164,16 @@ function getAllList($index = 6,$app = 1){
 					'name' => $v['name'],
 					'alias' => $v['alias']
 			);
-			$cent[$k] = M('center')->field('id,cate_id,thumb,title,create_time,update_time')->where(array('cate_id' => $v['id'],'status'=>'1'))->limit($index)->select();
-			$list = array_merge($list, $cent[$k]);					
+			$cate_id[$key][] = $v['id'];			
 		}
+		$cate_ids = implode(',', $cate_id[$key]);
+		$map['status']  = '1';
+		$map['cate_id'] = array('in',$cate_ids);
 
-		$count = floor(count($list)/$index);
-		
-		if($count <= 1){
-			foreach($list as $m => $n){
-				if($m < $index){
-					$data[$key]['list'][$m] = $list[$m];
-					$data[$key]['list'][$m]['cate'] = $ca[$list[$m]['cate_id']];
-				}
-				
-			}
-		}else{
-			
-			foreach($list as $m => $n){
-				
-				if($m < $index){
-					$i = $count*$m+2;
-					$data[$key]['list'][$m] = $list[$i];
-					$data[$key]['list'][$m]['cate'] = $ca[$list[$i]['cate_id']];
-				}
-				
-			}
+		$data[$key]['list'] = $list = M('center')->field('id,cate_id,thumb,title,create_time,update_time')->where($map)->limit($index)->select();
+
+		foreach($list as $m => $n){
+			$data[$key]['list'][$m]['cate'] = $ca[$list[$m]['cate_id']];				
 		}
 
 	}

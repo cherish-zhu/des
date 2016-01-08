@@ -23,18 +23,18 @@ class albumController extends CommonController {
 		$type = M('category');
 		$map  = array();
 		$map['parent_id'] = 2;
-		$map['status']    = array('neq' => '-1'); 
+		$map['status']    = array('neq' , '-1'); 
 		$arr = $type->where($map)->order('sort desc')->select();
 		$where = array();
 		foreach ($arr as $k=>$v){
 			$where['parent_id'] = $v['id'];
-			$where['status']    = array('neq' => '-1'); 
+			$where['status']    = array('neq' , '-1'); 
 			$arr[$k]['son'] = $type->where($where)->order('sort desc')->select();
 		}
 		$data['cid'] = $arr[0]['parent_id'];
 		$where = array();
 		$where['parent_id'] = $data['cid'];
-		$where['status'] = array('neq' => '-1');
+		$where['status'] = array('neq' , '-1');
 		$aid = $type->where($where)->order('sort desc')->select();
 		$data['aid'] = $aid[0]['id'];
 		

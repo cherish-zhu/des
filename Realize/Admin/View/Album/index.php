@@ -24,12 +24,12 @@
             <?php require_once('./Realize/Admin/View/Public/top.php');?>
             <div class="wrapper wrapper-content">
             
-           <div class="album">
-          <ul style="width:81%; height:40px; float:left">
+                 <div class="album" style="height: auto">
+          <ul style="width:830px; height:40px; float:left">
               <li style="float:left"><?php echo !empty($album['name']) ? $album['name'] : '相册列表'?></li>
               <li style="float:right"><span id="uploadify"></span></li>
           </ul>
-          <ul class="ace-thumbnails" id="fileQueue" style="width:83%; float:left">
+          <ul class="ace-thumbnails" id="fileQueue" style="width:830px; float:left">
           <?php foreach($pic as $p => $s){?>
            <li class="pic_box">
 				<a href="#" data-rel="colorbox">
@@ -45,6 +45,7 @@
 											</div>
 				</li>
                 <?php }?>
+                <div style="width: 100%; height:1px; clear:both"></div>
                 </ul>
       
        
@@ -61,7 +62,7 @@
                  <?php }?>
            </div> 
              
-             <div class="page" style="margin-top:30px; float:left; width:81%; ">
+           <div class="page" style="margin-top:30px; float:left; width:81%; ">
 	       <div class="pageLeft">
 	         <table width="200" border="0" align="left" cellpadding="0" cellspacing="0">
 	           <tr>
@@ -77,18 +78,13 @@
              </table>
 	       </div>
          <div class="pageRight"><?php echo $page?></div>
-       </div> 
-                     
-      </div>
-   
-<div id='album_id' style="display:none"><?php echo $_GET['album'] ? $_GET['album'] : $_GET['category'];?></div>
-<script src="/Static/uploadify/jquery.uploadify.min.js?ver=<?php echo rand(0,9999);?>" type="text/javascript"></script>
-<script src="/Static/admin/js/album.js" type="text/javascript"></script>
-<script src="/Static/admin/js/upload.js" type="text/javascript"></script>
-
+         </div> 
+                        
+      <div id='album_id' style="display:none"><?php echo $_GET['album'] ? $_GET['album'] : $_GET['category'];?></div>     
+      <div style="width: 100%; height:20px; clear:both"></div>
+     </div>
+     </div>
                 
-
-            </div>
             <div class="footer">
                 <div class="pull-right">
                     By：<a href="http://www.destroy.net.cn/" target="_blank">destroy.net.cn</a>
@@ -102,5 +98,7 @@
 
 
 </body>
-
+<script src="/Static/uploadify/jquery.uploadify.min.js?ver=<?php echo rand(0,9999);?>" type="text/javascript"></script>
+<script src="/Static/admin/js/album.js" type="text/javascript"></script>
+<script src="/Static/admin/js/upload.js" type="text/javascript"></script>
 </html>

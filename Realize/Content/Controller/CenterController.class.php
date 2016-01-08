@@ -84,7 +84,16 @@ class CenterController extends BaseController {
 		->join(C('DB_PREFIX')."center_hits ON ".C('DB_PREFIX')."center.id = ".C('DB_PREFIX')."center_hits.center_id","LEFT")
 		->join(C('DB_PREFIX')."category ON ".C('DB_PREFIX')."center.cate_id = ".C('DB_PREFIX')."category.id","LEFT");
 		$center->field(
-			array(C('DB_PREFIX').'center.*',C('DB_PREFIX').'center_count.*',C('DB_PREFIX').'center_hits.*',C('DB_PREFIX').'category.*',C('DB_PREFIX').'center.id' => 'cid')
+			array(
+					C('DB_PREFIX').'center.*',
+					C('DB_PREFIX').'center_count.*',
+					C('DB_PREFIX').'center_hits.*',
+					C('DB_PREFIX').'category.id',
+					C('DB_PREFIX').'category.name',
+					C('DB_PREFIX').'category.alias',
+					C('DB_PREFIX').'category.icon',
+					C('DB_PREFIX').'center.id' => 'cid'
+			)
 		);
 		$arr = $center->where(array(C('DB_PREFIX').'center.id'=>$id))->find();
 		if(empty($arr)){
@@ -128,7 +137,16 @@ class CenterController extends BaseController {
 		->join(C('DB_PREFIX')."center_hits ON ".C('DB_PREFIX')."center.id = ".C('DB_PREFIX')."center_hits.center_id","LEFT")
 		->join(C('DB_PREFIX')."category ON ".C('DB_PREFIX')."center.cate_id = ".C('DB_PREFIX')."category.id","LEFT");
 		$center->field(
-			array(C('DB_PREFIX').'center.*',C('DB_PREFIX').'center_count.*',C('DB_PREFIX').'center_hits.*',C('DB_PREFIX').'category.*',C('DB_PREFIX').'center.id' => 'cid')
+			array(
+					C('DB_PREFIX').'center.*',
+					C('DB_PREFIX').'center_count.*',
+					C('DB_PREFIX').'center_hits.*',
+					C('DB_PREFIX').'category.id',
+					C('DB_PREFIX').'category.name',
+					C('DB_PREFIX').'category.alias',
+					C('DB_PREFIX').'category.icon',
+					C('DB_PREFIX').'center.id' => 'cid'
+			)
 		);
 		$center->where($map)->order(C('DB_PREFIX').'center.id asc');
 		

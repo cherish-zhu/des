@@ -6,6 +6,7 @@
 <link type="text/css" rel="stylesheet" href="/Static/admin/css/index.css" />
 <link type="text/css" rel="stylesheet" href="/Static/admin/css/edit-view.css" />
 <link type="text/css" rel="stylesheet" href="/Static/Semantic-UI/css/semantic.min.css" />
+<link type="text/css" rel="stylesheet" href="/Static/admin/css/type.css" />
 </head>
 
 <body>
@@ -18,7 +19,7 @@
             <div class="wrapper wrapper-content">
             
 
- <div class="edit-box">
+           <div class="edit-box">
            <form name="code-form" action="" method="post">
                  <textarea name="code"><?php echo $code?></textarea>
                  
@@ -26,26 +27,25 @@
                  <button style="border:none; background:none" class="instagram icon">保存</button>
                  </div></p>
            </form>
-      </div>
+           </div>
       
-      <?php foreach($views as $m => $n) {?>
-      <div class="file-mneu">
-           <ul>
-               <li><b><?php echo $m?></b></li>
-               <ul>
-               <?php foreach($n as $key => $val) {?>
-               <li class="indent2"><a href="javascript:viod(0)" class="content-dir" id="content-dir-<?php echo $key?>"><?php echo $val['dir']?></a></li>
-               <?php foreach($val['file'] as $k => $v) {?>
-               <li class="indent3 file content-dir-<?php echo $key?>"><a href="?file=<?php echo $v['l']?>"><?php echo $v['x']?></a></li>
-               <?php }?>
-               <?php }?>
-               </ul>
-           </ul>
-      </div>
-      <?php }?>
+      
 
+      
+           <div class="file-mneu" style="border: 0; margin-top:10px">
+                <div class="category-box">
+                <div class="category-line category-id-'">
+                <div class="category-name">Content</div>
+                <div class="category-cap"  id="id-"><i class="angle right icon"></i></div>
+                <div class="category-clear"></div></div>
+                <?php file_tree($views);?>
+
+                <div class="category-clear"></div></div>
+           
+           </div>
                 
-
+           <div style="width: 100%; height:1px; clear:both"></div>
+           
             </div>
             <div class="footer">
                 <div class="pull-right">
