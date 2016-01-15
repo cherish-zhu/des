@@ -59,7 +59,7 @@ class Admin {
      * @return boolean 失败返回false，成功返回当前登陆用户基本信息
      */
     public function isLogin() {
-        $userId = decode(session(self::userUidKey));
+        $userId = json_decode(session(self::userUidKey));
         if (empty($userId)) {
             return false;
         }

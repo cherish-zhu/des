@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Util;
 
-class Rbac {
+class RBAC {
 	/**
 	 * 当前登录下权限检查
 	 * @param type $map [模块/控制器/方法]，没有时，自动获取当前进行判断
@@ -26,7 +26,7 @@ class Rbac {
 		// 如果使用普通权限模式，保存当前用户的访问权限列表
 		// 对管理员开发所有权限
 		if (C('USER_AUTH_TYPE') != 2 && Admin::getInstance()->isAdministrator($authId) !== true)
-			session("_ACCESS_LIST", Rbac::getAccessList($authId));
+			session("_ACCESS_LIST", RBAC::getAccessList($authId));
 		return;
 	}
 	
@@ -70,7 +70,7 @@ class Rbac {
 	// 登录检查
 	static public function checkLogin() {
 		//检查当前操作是否需要认证
-		if (Rbac::checkAccess()) {
+		if (RBAC::checkAccess()) {
 			//检查认证识别号
 			if (Admin::getInstance()->isLogin() == false) {
 				return false;
@@ -82,7 +82,7 @@ class Rbac {
 	//权限认证的过滤器方法 第一步
 	static public function AccessDecision($appName = MODULE_NAME) {
 		//检查是否需要认证
-		if (Rbac::checkAccess()) {
+		if (RBAC::checkAccess()) {
 			//存在认证识别号，则进行进一步的访问决策
 			$accessGuid = md5($appName . CONTROLLER_NAME . ACTION_NAME);
 			//判断是否超级管理员，是无需进行权限认证
@@ -91,7 +91,7 @@ class Rbac {
 				if (C('USER_AUTH_TYPE') == 2) {
 					//加强验证和即时验证模式 更加安全 后台权限修改可以即时生效
 					//通过数据库进行访问检查
-					$accessList = Rbac::getAccessList(Admin::getInstance()->id);
+					$accessList = RBAC::getAccessList(Admin::getInstance()->id);
 				} else {
 					// 如果是管理员或者当前操作已经认证过，无需再次认证
 					if (session($accessGuid)) {

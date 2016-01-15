@@ -7,6 +7,9 @@
 <link type="text/css" rel="stylesheet" href="/Static/admin/css/edit-view.css" />
 <link type="text/css" rel="stylesheet" href="/Static/Semantic-UI/css/semantic.min.css" />
 <link type="text/css" rel="stylesheet" href="/Static/admin/css/type.css" />
+<script src="/Static/js/plugins/codemirror/codemirror.js"></script>
+<script src="/Static/js/plugins/codemirror/codemirror.css"></script>
+<script src="/Static/js/plugins/codemirror/mode/javascript/javascript.js"></script>
 </head>
 
 <body>
@@ -21,7 +24,7 @@
 
            <div class="edit-box">
            <form name="code-form" action="" method="post">
-                 <textarea name="code"><?php echo $code?></textarea>
+                 <textarea name="code" id="code"><?php echo $code?></textarea>
                  
                  <p><div class="ui instagram button">
                  <button style="border:none; background:none" class="instagram icon">保存</button>
@@ -29,9 +32,7 @@
            </form>
            </div>
       
-      
-
-      
+            
            <div class="file-mneu" style="border: 0; margin-top:10px">
                 <div class="category-box">
                 <div class="category-line category-id-'">
@@ -44,9 +45,10 @@
            
            </div>
                 
-           <div style="width: 100%; height:1px; clear:both"></div>
-           
-            </div>
+           <div style="width: 100%; height:20px; clear:both"></div>
+     </div>
+     </div>
+
             <div class="footer">
                 <div class="pull-right">
                     By：<a href="http://www.destroy.net.cn/" target="_blank">destroy.net.cn</a>
@@ -55,6 +57,7 @@
                     <strong>Copyright</strong> Destroy &copy; 2015
                 </div>
             </div>
+
         </div>
     </div>
 

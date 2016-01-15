@@ -210,11 +210,13 @@ function contentbyUserID($uid){
 	#todo
 }
 
-function URL($alias,$id = NULL){
+//flase 为不带域名
+function URL($alias,$id = NULL,$ym = true){
+    $ym ? $ym = siteTitle('host_url') : $ym = '';
     if($id != NULL)
-        return '/'.$alias.'/id_'.$id.'.html';
+        return $ym.'/'.$alias.'/id_'.$id.'.html';
     else
-        return '/'.$alias;
+        return $ym.'/'.$alias;
 }
 
 function nav($id = '0',$nav = array()){

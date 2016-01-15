@@ -74,6 +74,32 @@ class RoleController extends CommonController {
         $this->display();
 
 	}
+
+    public function node(){
+    	if(!isset($_GET['id'])){
+            echo '参数错误！';
+            return ;
+        }
+        $id = I('get.id');
+    	$this->assign('content',node_tree(0,$id));
+    	$this->assign('menus',array('A'=>'用户','B'=>'用户角色'));
+    	$this->display();
+    }
+
+    public function roleNode(){
+    	if(!isset($_GET['id'])){
+            echo '参数错误！';
+            return ;
+        }
+        $model = D('access');
+        $role_id = I('get.id');
+        $model->where(array('role_id'=>$role_id))->delete();
+        foreach ($_POST['checkbox'] as $key => $val){            
+            $model->add(array('role_id'=>$role_id,'node_id'=>$key));
+        }
+    	$this->success("操作成功");
+    }
+
 //     function _filter(&$map){
 //         if(!empty($_POST['name'])) {
 //         $map['title'] = array('like',"%".$_POST['name']."%");

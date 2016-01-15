@@ -34,7 +34,8 @@ class NodeController extends CommonController {
     	$map = array();
     	
     	$map['status'] = 1;
-    	$map['pid']    = 0;
+        if($_GET['fid']) $map['group_id']  = I('get.fid');
+    	else $map['group_id']  = 0;
     	
     	$nodes = $model->where($map)->order('id asc')->select();
     	
@@ -54,51 +55,62 @@ class NodeController extends CommonController {
     	
     	$this->assign('nodes',$nodes);
     	
-    	$this->assign('menus',array('A'=>'用户','B'=>'用户权限'));
+    	$this->assign('menus',array('A'=>'用户','B'=>'节点管理'));
     	$this->display();
     	
     }
 
-    public function _before_index() {
-        $model	=	M("Group");
-        $list	=	$model->where('status=1')->getField('id,title');
-        $this->assign('groupList',$list);
+    public function add(){
+        $model = M($this->table);
+        if(IS_POST){
+            if($data = $model->create()){
+                $model->group_id = I('post.parent_id');
+                $model->status = 1;
+                if($model->add()){
+                    $this->success("操作成功");
+                    return true;
+                }
+                $this->success("操作失败");
+            }
+            return false;
+        }
+        $this->assign('menus',array('A'=>'用户','B'=>'节点管理'));
+        $this->display();
     }
 
-    // 获取配置类型
-    public function _before_add() {
-        $model	=	M("Group");
-        $list	=	$model->where('status=1')->select();
-        $this->assign('list',$list);
-        $node	=	M("Node");
-        $node->getById($_SESSION['currentNodeId']);
-        $this->assign('pid',$node->id);
-        $this->assign('level',$node->level+1);
+    public function edit(){
+
+        $model = M($this->table);
+        $id = I('get.id');
+        $this->assign('x',$model->where(array('id'=>$id))->find());
+        if(IS_POST){
+            if($data = $model->create()){
+                if($model->where(array('id'=>$id))->save($data)){
+                    $this->success("操作成功");
+                    return true;
+                }
+                $this->success("操作失败");
+            }
+            return false;
+        }
+        $this->assign('menus',array('A'=>'用户','B'=>'节点管理'));
+        $this->display();
     }
 
-    public function _before_patch() {
-        $model	=	M("Group");
-        $list	=	$model->where('status=1')->select();
-        $this->assign('list',$list);
-        $node	=	M("Node");
-        $node->getById($_SESSION['currentNodeId']);
-        $this->assign('pid',$node->id);
-        $this->assign('level',$node->level+1);
-    }
-    public function _before_edit() {
-        $model	=	M("Group");
-        $list	=	$model->where('status=1')->select();
-        $this->assign('list',$list);
+    public function del(){
+        $id = I('get.id');
+        $model = M($this->table);
+        if($model->where(array('id'=>$id))->delete()){
+            $this->success("操作成功");
+            return true;
+        }
+        $this->success("操作失败");
     }
 
     /**
-     +----------------------------------------------------------
      * 默认排序操作
-     +----------------------------------------------------------
      * @access public
-     +----------------------------------------------------------
      * @return void
-     +----------------------------------------------------------
      */
     public function sort()
     {

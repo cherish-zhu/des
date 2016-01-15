@@ -42,7 +42,7 @@
                    <div class="user-action"><a href="/admin/Role/edit?id=<?php echo $u['id']?>"><i class="fa fa-pencil" title="编辑角色"></i></a><i role-id="<?php echo $u['id']?>" class="fa fa-times delete_role" title="删除角色"></i></div>
                    <div class="user-time"><?php echo date("Y-m-d H:i:m",$u['create_time'])?></div>
                    <div class="user-from"><?php echo $u['last_login_ip']?></div>
-                   <div class="user-node"><a href="#">权限设置</a></div>              
+                   <div class="user-node"><a href="/admin/Role/node?id=<?php echo $u['id']?>">权限设置</a></div>              
                 </li>
 				<?php }?>
              </ul>

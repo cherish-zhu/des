@@ -209,6 +209,50 @@ function cate_tree($fid,$count,$list=NULL,$id){
   	  return $str;
  
 }
+
+ /**
+  * 无限分类
+  * 通过递归法实现无限分类查询，表node
+  *
+  * @param int $fid 开始查询的id
+  * @param int $count 级数
+  * @param string $list 控制列出的级数，无参则为无限级
+  * @return array
+  * @author Cherish.Zhu
+  */
+function node_tree($fid,$id,$count = 0){
+    //$tree = array();
+    $count = $count + 1;
+    $model = M('node');
+    $map   = array();
+    $map['group_id'] = $fid;
+    $map['status'] = array('gt','-1');
+    $ret = $model->where($map)->order('sort desc')->select();
+    $n   = str_pad('',$count-1,'-',STR_PAD_RIGHT);
+    $n   = str_replace("-","&nbsp;&nbsp;&nbsp;&nbsp;",$n);
+    $str = '';
+    foreach($ret as $k => $v){
+        $str .= '<div class="category-line category-id-'.$v['group_id'].'" level="'.$count.'">';
+        $where = array();
+        $where[$k]['group_id'] = $v['id'];
+        $where[$k]['status'] = array('gt','-1');
+        $tree = $model->where($where[$k])->find();
+        if($id == $v['id']) $check = ' checked="checked"';
+        else $check = '';
+        
+        $check = '';
+        if(M('access')->where(array('role_id'=>$id,'node_id'=>$v['id']))->find()) $check = 'checked="checked"';
+
+        $str.='<div class="category-name" style="width:160px !important">'.$n.$v['title'].'</div>
+                  <div class="category-cap"  id="id-'.$v['id'].'"><input type="checkbox" name="checkbox['.$v['id'] .']"  id="checkbox-id-'.$v['id'].'"  remark="checkbox-'.$v['group_id'].'" class="checkbox pra checkbox-'.$v['group_id'].'" '.$check.' /></div>';
+        if(is_array($tree)){
+            $ret[$k]['son'] = true;
+            $str.= node_tree($ret[$k]['id'],$id,$count);
+        }
+        $str .= '<div class="category-clear"></div></div>';
+    }  
+    return $str;
+}
  
  /**
   * 无限分类
