@@ -20,9 +20,9 @@ body{background-image:url(/Static/background/bg2.jpg);background-size:100%; text
 <p>&nbsp;</p>
 <table width="960" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td height="36" colspan="2" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="#"><?php echo $cate_info['name']?></a></td>
+    <td height="36" colspan="2" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="javascript:viod(0)"><?php echo $center['title']?></a></td>
     <td width="16" rowspan="7" >&nbsp;</td>
-    <td width="251" rowspan="7" ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <td width="251" rowspan="7" valign="top" style="vertical-align:top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td height="36" bgcolor="#FFFFFF">&nbsp;文章分类</td>
       </tr>
@@ -31,18 +31,11 @@ body{background-image:url(/Static/background/bg2.jpg);background-size:100%; text
         <td height="36" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="<?php echo URL($li['alias'])?>"><?php echo $li['name']?></a></td>
       </tr>
       <?php }?>
-    </table></td>   
-  </tr>
-  <?php foreach($arr as $new => $ne){?>
-  <tr>
-    <td width="498" height="36" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="<?php echo URL($ne['alias'],$ne['cid'])?>"><?php echo $ne['title']?></a></td>
-    <td width="195" bgcolor="#FFFFFF"><?php echo date("Y-m-d H:i",$ne['create_time']);?></td>
-  </tr>
-  <?php }?>
-  <tr>
-    <td width="498" height="36" bgcolor="#FFFFFF">&nbsp;&nbsp;<?php echo $page?></td>
-    <td width="195" bgcolor="#FFFFFF">&nbsp;</td>
-  </tr>
+    </table></td>  
+      </tr>
+      <tr>
+          <td width="692" bgcolor="#FFFFFF"><?php echo $center['center']?></td>
+     </tr>
 </table>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

@@ -212,9 +212,10 @@ function contentbyUserID($uid){
 
 //flase 为不带域名
 function URL($alias,$id = NULL,$ym = true){
-    $ym ? $ym = siteTitle('host_url') : $ym = '';
+    $host = siteTitle('host_url');
+    $ym ? $ym = $host['value'] : $ym = '';
     if($id != NULL)
-        return $ym.'/'.$alias.'/id_'.$id.'.html';
+        return $ym.'/'.$alias.'/'.$id.'.html';
     else
         return $ym.'/'.$alias;
 }
