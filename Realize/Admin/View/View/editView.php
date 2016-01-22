@@ -35,9 +35,9 @@
             
            <div class="file-mneu" style="border: 0; margin-top:10px">
                 <div class="category-box">
-                <div class="category-line category-id-'">
+                <div class="category-line">
                 <div class="category-name">Content</div>
-                <div class="category-cap"  id="id-"><i class="angle right icon"></i></div>
+                <div class="category-cap"><i class="angle right icon"></i></div>
                 <div class="category-clear"></div></div>
                 <?php file_tree($views);?>
 
@@ -46,7 +46,6 @@
            </div>
                 
            <div style="width: 100%; height:20px; clear:both"></div>
-     </div>
      </div>
 
             <div class="footer">
