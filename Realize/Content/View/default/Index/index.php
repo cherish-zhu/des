@@ -35,7 +35,7 @@ body{background-image:url(/Static/background/bg2.jpg);background-size:100%; text
   </tr>
   <?php foreach(getList(0,6) as $new => $ne){?>
   <tr>
-    <td width="498" height="36" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="<?php echo URL($ne['alias'],$ne['id'])?>"><?php echo $ne['title']?></a></td>
+    <td width="498" height="36" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="<?php echo URL($ne['alias'],$ne['cid'])?>"><?php echo $ne['title']?></a></td>
     <td width="195" bgcolor="#FFFFFF"><?php echo date("Y-m-d H:i",$ne['create_time']);?></td>
   </tr>
   <?php }?>
