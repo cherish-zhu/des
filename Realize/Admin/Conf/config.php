@@ -5,7 +5,7 @@ return array(
   // 'TMPL_ENGINE_TYPE' =>'PHP',//完全使用PHP本身作为模板引擎
 		
 	'LOAD_EXT_CONFIG' => 'info', // 加载扩展配置文件
-	'LOAD_EXT_FILE' => 'base', // 加载自定义扩展函数库 
+	'LOAD_EXT_FILE' => 'functions,base', // 加载自定义扩展函数库 
 		
 		
 	'PW_KEY' =>'3sd7',//秘钥

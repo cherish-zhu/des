@@ -11,7 +11,7 @@ return array(
     'MODULE_ALLOW_LIST'   => array('Content','Ucenter'),
 
     /* 系统数据加密设置 */
-    'DATA_AUTH_KEY' => '.$5G:p2!NDiA1n>K~zH/I#mr7c=aT&B9?exZyFL)', //默认数据加密KE //默认数据加密KEY
+    'DATA_AUTH_KEY' => 'yA!C)vj{YL7~0t^=}da"|u#D>z3UO?[TMl+Gsw&N', //默认数据加密KE //默认数据加密KEY
 
     /* 调试配置 */
     'SHOW_PAGE_TRACE' => false,
@@ -49,12 +49,12 @@ return array(
 
     /* 数据库配置 */
     'DB_TYPE'   => 'mysql', // 数据库类型
-    'DB_HOST'   => '120.25.220.53', // 服务器地址
-    'DB_NAME'   => 'lanmp', // 数据库名
-    'DB_USER'   => 'lanmp', // 用户名
-    'DB_PWD'    => 'zhu19880614',  // 密码
+    'DB_HOST'   => '127.0.0.1', // 服务器地址
+    'DB_NAME'   => 'des', // 数据库名
+    'DB_USER'   => 'root', // 用户名
+    'DB_PWD'    => '19880614',  // 密码
     'DB_PORT'   => '3306', // 端口
-    'DB_PREFIX' => 'lan_', // 数据库表前缀
+    'DB_PREFIX' => 'des_', // 数据库表前缀
 
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
     'DOCUMENT_MODEL_TYPE' => array(2 => '主题', 1 => '目录', 3 => '段落'),

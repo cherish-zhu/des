@@ -206,24 +206,17 @@ function create_tables($db, $prefix = ''){
 
 function register_administrator($db, $prefix, $admin, $auth){
 	show_msg('开始注册创始人帐号...');
-	// $sql = "INSERT INTO `[PREFIX]user` VALUES " . 
-	// 	   "('1', '[NAME]', '[PASS]', '[EMAIL]', '', '[TIME]', '[IP]', 0, 0, '[TIME]', '1')";
+	$sql = "INSERT INTO `[PREFIX]user`(`id`,`account`,`nickname`,`password`,`email`,`last_login_ip`,`last_login_time`,`create_time`,`status`) VALUES " . 
+		   "('1', '[NAME]', '[NAME]', '[PASS]', '[EMAIL]',  '[IP]', '[TIME]', '[TIME]', '1')";
 
-	// $password = md5($admin['password'].'3sd7');
-	// $sql = str_replace(
-	// 	array('[PREFIX]', '[NAME]', '[PASS]', '[EMAIL]', '[TIME]', '[IP]'), 
-	// 	array($prefix, $admin['username'], $password, $admin['email'], NOW_TIME, get_client_ip(1)), 
-	// 	$sql);
-	// //执行sql
-	// $db->execute($sql);
+	$password = user_md5($admin['password']);
+	$sql = str_replace(
+		array('[PREFIX]', '[NAME]', '[PASS]', '[EMAIL]', '[TIME]', '[IP]'), 
+		array($prefix, $admin['username'], $password, $admin['email'], NOW_TIME, get_client_ip(1)), 
+		$sql);
+	//执行sql
+	$db->execute($sql);
 
-	// $sql = "INSERT INTO `[PREFIX]member` VALUES ".
-	// 	   "('1', '[NAME]', '0', '0', '', '0', '1', '0', '[TIME]', '0', '[TIME]', '1');";
-	// $sql = str_replace(
-	// 	array('[PREFIX]', '[NAME]', '[TIME]'), 
-	// 	array($prefix, $admin['username'], NOW_TIME),
-	// 	$sql);
-	// $db->execute($sql);
 	show_msg('创始人帐号注册完成！');
 }
 
@@ -235,23 +228,4 @@ function show_msg($msg, $class = ''){
 	echo "<script type=\"text/javascript\">showmsg(\"{$msg}\", \"{$class}\")</script>";
 	flush();
 	ob_flush();
-}
-
-/**
- * 生成系统AUTH_KEY
- */
-function build_auth_key(){
-	$chars  = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	$chars .= '`~!@#$%^&*()_+-=[]{};:"|,.<>/?';
-	$chars  = str_shuffle($chars);
-	return substr($chars, 0, 40);
-}
-
-/**
- * 系统非常规MD5加密方法
- * @param  string $str 要加密的字符串
- * @return string 
- */
-function user_md5($str, $key = ''){
-	return '' === $str ? '' : md5(sha1($str) . $key);
 }

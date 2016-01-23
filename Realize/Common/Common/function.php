@@ -1,10 +1,5 @@
 <?php
 
-const ONETHINK_VERSION    = '1.0.131129';
-const ONETHINK_ADDON_PATH = './Addons/';
-
-
-
 /**
  * 系统公共库文件
  * 主要定义系统公共函数库
@@ -848,9 +843,19 @@ function get_nav_url($url){
  * @param  string $str 要加密的字符串
  * @return string
  */
-function think_ucenter_md5($str, $key = 'ThinkUCenter'){
-	return md5($str);
-// 	return '' === $str ? '' : md5(sha1($str) . $key);
+function user_md5($str, $key = 'destroy'){
+	return '' === $str ? '' : md5(sha1($str) . $key);
+}
+
+
+/**
+ * 生成系统AUTH_KEY
+ */
+function build_auth_key(){
+	$chars  = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	$chars .= '`~!@#$%^&*()_+-=[]{};:"|,.<>/?';
+	$chars  = str_shuffle($chars);
+	return substr($chars, 0, 40);
 }
 
 /**

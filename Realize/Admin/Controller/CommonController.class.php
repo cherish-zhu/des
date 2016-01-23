@@ -29,8 +29,9 @@ class CommonController extends Controller {
                     if (C('GUEST_AUTH_ON')) {
                         $this->assign('jumpUrl', PHP_FILE . C('USER_AUTH_GATEWAY'));
                     }
+                   // exit(PHP_FILE . C('USER_AUTH_GATEWAY'));
                     // 提示错误信息
-                    $this->error(L('_VALID_ACCESS_'));
+                   // $this->error(L('_VALID_ACCESS_'));
                 }
             }
         }

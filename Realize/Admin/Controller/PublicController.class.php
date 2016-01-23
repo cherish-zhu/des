@@ -191,7 +191,7 @@ class PublicController extends Controller {
             
             //$this->error('帐号不存在或已禁用！');
         }else {
-            if($authInfo['password'] != md5($_POST['password'])) {
+            if($authInfo['password'] != user_md5($_POST['password'])) {
                 $this->error('密码错误！');
             }
             $_SESSION[C('USER_AUTH_KEY')]	=	$authInfo['id'];
@@ -237,7 +237,7 @@ class PublicController extends Controller {
             $this->error('验证码错误！');
         }
         $map	=	array();
-        $map['password']= pwdHash($_POST['oldpassword']);
+        $map['password']= user_md5($_POST['oldpassword']);
         if(isset($_POST['account'])) {
             $map['account']	 =	 $_POST['account'];
         }elseif(isset($_SESSION[C('USER_AUTH_KEY')])) {
@@ -248,7 +248,7 @@ class PublicController extends Controller {
         if(!$User->where($map)->field('id')->find()) {
             $this->error('旧密码不符或者用户名错误！');
         }else {
-            $User->password	=	pwdHash($_POST['password']);
+            $User->password	=	user_md5($_POST['password']);
             $User->save();
             $this->success('密码修改成功！');
          }
@@ -262,7 +262,8 @@ class PublicController extends Controller {
         $this->display();
     }
 
-    public function verify() {
+    public function verify() { 
+    	ob_clean();
         $config  =   array(
             'fontSize'    =>    18,    // 验证码字体大小
             'length'      =>    4,     // 验证码位数
@@ -271,10 +272,9 @@ class PublicController extends Controller {
             'useCurve'    =>    false,
         );
         $verify = new \COM\Verify($config);
+
         $verify->entry();
-//         $type	 =	 isset($_GET['type'])?$_GET['type']:'gif';
-//         import("ORG.Util.Image");
-//         Image::buildImageVerify(4,1,$type);
+        
     }
 
     // 修改资料
