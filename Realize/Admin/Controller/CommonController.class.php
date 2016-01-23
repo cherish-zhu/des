@@ -1,19 +1,19 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-use Org\Util\Rbac;
+use Admin\Util\RBAC as RBAC;
 class CommonController extends Controller {
 
     function _initialize() {
         if(is_file('./Realize/Install/Data/install.lock')){
             $this->error('请安装Destroy!', U('Install/Index/index'));
         }
-        import('@.ORG.Util.Cookie');
+
         // 用户权限检查
         if (C('USER_AUTH_ON') && !in_array(MODULE_NAME, explode(',', C('NOT_AUTH_MODULE')))) {
-            import('ORG.Util.RBAC');
+           
          //   var_dump($r);
-            //new Admin\ORG\Util\RBAC();
+           // new RBAC();
             if (!RBAC::AccessDecision()) {
                 //检查认证识别号
                 if (!$_SESSION [C('USER_AUTH_KEY')]) {

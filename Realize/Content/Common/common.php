@@ -186,35 +186,101 @@ function getAllList($index = 6,$app = 1){
 function getContent($id){
 
 	$model = M('center');
-    return $model->where(array('id' => $id, ))->find();
+    return $model->where(array('id' => $id))->find();
 
 }
 
 //相关内容
-function contentAbout($limit){
-	#todo
+function contentAbout($cate_id,$limit = 5){
+    $model = M('center');
+    $model->field('id,title');
+    $model->where(array('cate_id'=>$cate_id,'status'=>1));
+	$arr = $model->limit($limit)->order('rand()')->select();
+    return $arr;
 }
 
 //上一条、下一条
-function contentBoth($limit){
-	#todo
+function contentBoth($id,$category = false){
+	$model = M('center');
+    $model->field('id,title');
+    $map['id'] = array('gt',$id);
+    $where['id'] = array('lt',$id);
+    $map['status'] = $where['status'] = 1;
+    if($category != false) $map['cate_id'] = $where['cate_id'] = $category;
+    $pre = $model->where($map)->find();
+    $next = $model->where($where)->find();
+    if(empty($pre)) $pre = array('id'=>0,'title'=>'没有了');
+    if(empty($next)) $next = array('id'=>0,'title'=>'没有了');
+    return array(
+        'pre'  => $pre,
+        'next' => $next
+    );
 }
 
 //用户详情
 function userInfo($uid){
-	#todo
+	$model = M('user');
+    $model->join(C('DB_PREFIX')."user_communication ON ".C('DB_PREFIX')."user_communication.uid = ".C('DB_PREFIX')."user.id","LEFT")
+          ->join(C('DB_PREFIX')."user_list ON ".C('DB_PREFIX')."user.id = ".C('DB_PREFIX')."user_list.uid","LEFT")
+          ->join(C('DB_PREFIX')."user_level ON ".C('DB_PREFIX')."user.id = ".C('DB_PREFIX')."user_level.uid","LEFT");
+    $model->field(
+            array(
+                    C('DB_PREFIX').'user.id',
+                    C('DB_PREFIX').'user.number',
+                    C('DB_PREFIX').'user.account',
+                    C('DB_PREFIX').'user.face',
+                    C('DB_PREFIX').'user.nickname',
+                    C('DB_PREFIX').'user.phone',
+                    C('DB_PREFIX').'user.last_login_time',
+                    C('DB_PREFIX').'user.last_login_ip',
+                    C('DB_PREFIX').'user.email',
+                    C('DB_PREFIX').'user.create_time',
+                    C('DB_PREFIX').'user.status',
+                    C('DB_PREFIX').'user_level.*',
+                    C('DB_PREFIX').'user_list.*',
+                    // C('DB_PREFIX').'center.id' => 'cid'
+            )
+        );
+    $userInfo = $model->where(array('id'=>$uid))->find();
+    return $userInfo;
+}
+
+//用户
+function userName($uid){
+    $user = M('user')->field('nickname')->where(array('id'=>$uid))->find();
+    return $user['nickname'];
 }
 
 //指定用户下内容列表
 function contentbyUserID($uid){
-	#todo
+	$model = M('center');
+    $model->join(C('DB_PREFIX')."center_count ON ".C('DB_PREFIX')."center_count.center_id = ".C('DB_PREFIX')."center.id","LEFT")
+          ->join(C('DB_PREFIX')."center_hits ON ".C('DB_PREFIX')."center.id = ".C('DB_PREFIX')."center_hits.center_id","LEFT")
+          ->join(C('DB_PREFIX')."category ON ".C('DB_PREFIX')."center.cate_id = ".C('DB_PREFIX')."category.id","LEFT");
+    $model->field(
+            array(
+                    C('DB_PREFIX').'center.*',
+                    C('DB_PREFIX').'center_count.*',
+                    C('DB_PREFIX').'center_hits.*',
+                    C('DB_PREFIX').'category.id',
+                    C('DB_PREFIX').'category.name',
+                    C('DB_PREFIX').'category.alias',
+                    C('DB_PREFIX').'category.icon',
+                    C('DB_PREFIX').'category.id' => 'cid'
+            )
+        );
+    $list = $model->where(array('user_id'=>$uid,'status'=>1))->select();
+    return $list;
 }
 
-function URL($alias,$id = NULL){
+//flase 为不带域名
+function URL($alias,$id = NULL,$ym = true){
+    $host = siteTitle('host_url');
+    $ym ? $ym = $host['value'] : $ym = '';
     if($id != NULL)
-        return '/'.$alias.'/id_'.$id.'.html';
+        return $ym.'/'.$alias.'/'.$id.'.html';
     else
-        return '/'.$alias;
+        return $ym.'/'.$alias;
 }
 
 function nav($id = '0',$nav = array()){
@@ -223,4 +289,8 @@ function nav($id = '0',$nav = array()){
 		$nav[$key]['son'] = M("nav")->where(array('status'=>'1','parent_id'=>$val['id']))->select();
 	}
 	return $nav;
+}
+
+function tags(){
+    #todo
 }

@@ -12,7 +12,7 @@ body{background-image:url(/Static/background/bg2.jpg);background-size:100%; text
 <table width="960" height="36" border="0" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0">
   <tr>
     <?php foreach($nav as $ke => $va){?>
-    <td>&nbsp;&nbsp;&nbsp;<a href="#<?php echo $va['links']?>"><?php echo $va['name']?></a></td>
+    <td>&nbsp;&nbsp;&nbsp;<a href="<?php echo $va['link']?>"><?php echo $va['name']?></a></td>
     <?php }?>
   </tr>
 </table>
@@ -35,7 +35,7 @@ body{background-image:url(/Static/background/bg2.jpg);background-size:100%; text
   </tr>
   <?php foreach(getList(0,6) as $new => $ne){?>
   <tr>
-    <td width="498" height="36" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="#"><?php echo $ne['title']?></a></td>
+    <td width="498" height="36" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="<?php echo URL($ne['alias'],$ne['cid'])?>"><?php echo $ne['title']?></a></td>
     <td width="195" bgcolor="#FFFFFF"><?php echo date("Y-m-d H:i",$ne['create_time']);?></td>
   </tr>
   <?php }?>
@@ -59,8 +59,7 @@ body{background-image:url(/Static/background/bg2.jpg);background-size:100%; text
   <tr>
     <td height="50" bgcolor="#FFFFFF"><?php foreach(getLinks() as $link => $s){
 		echo '<a style="margin-right:30px; margin-left:20px;" href="#'.$s['link'].'">'.$s['name'].'</a>';
-	}
-	?></td>
+	} ?></td>
   </tr>
 </table>
 <p>&nbsp;</p>

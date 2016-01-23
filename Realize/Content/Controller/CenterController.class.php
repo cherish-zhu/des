@@ -50,9 +50,9 @@ class CenterController extends BaseController {
 
         $gid = (int)getCategoryId(ACTION_NAME);
         $exp = explode("_", $_GET['id']);
-        $id  = (int)$exp[1];
+        $id  = $exp[1] ?  $exp[1] : I('get.id');
 
-		if(!isset($_GET['id'])){			
+		if(!isset($_GET['id'])){
 			if($gid == 0){
 				$this->display("Public:tips");
 				return false;
@@ -100,6 +100,7 @@ class CenterController extends BaseController {
 				$this->display("Public:tips");
 				return false;
 		} 
+
 		M("center_hits")->where(array('center_id'=>$id))->setInc("hits");
 		$this->assign('center',$arr);
 		$this->assign('title',$arr['title'] .' - '.self::$title );

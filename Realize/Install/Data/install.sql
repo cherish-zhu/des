@@ -43,7 +43,6 @@ CREATE TABLE IF NOT EXISTS `des_album` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='相册';
 
 
-
 CREATE TABLE IF NOT EXISTS `des_category` (
   `id` mediumint(9) NOT NULL AUTO_INCREMENT,
   `parent_id` mediumint(9) NOT NULL COMMENT '上级id',
