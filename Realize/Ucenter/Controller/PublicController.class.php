@@ -7,7 +7,6 @@ class PublicController extends Controller{
 	public $seKey     = 'verdify'; //验证码加密密钥
 	
 	public function  __construct(){
-		header("Content-type: text/html; charset=utf-8");
 		parent::__construct();
 	}
 
@@ -25,9 +24,6 @@ class PublicController extends Controller{
 		);
 		$verify = new \COM\Verify($config);
 		$verify->entry();
-		//         $type	 =	 isset($_GET['type'])?$_GET['type']:'gif';
-		//         import("ORG.Util.Image");
-		//         Image::buildImageVerify(4,1,$type);
 	}
 	
 	/* 加密验证码 */
@@ -56,9 +52,10 @@ class PublicController extends Controller{
 			$verdify = $this->authcode(strtoupper($_POST['verify']));
 			if($session['code'] != $verdify) {
 			  $this->error('验证码错误！');
+			  return false;
 			 }
 			import ( 'ORG.Util.RBAC' );
-			$authInfo = RBAC::authenticate($map);
+			$authInfo = RBAC::authenticate($map,'user');
 			//使用用户名、密码和状态的方式进行认证
 			if(false === $authInfo) {
 			
@@ -66,8 +63,9 @@ class PublicController extends Controller{
 				$msg  = '用户名或者密码错误!';
 			
 				$this->error('帐号不存在或已禁用！');
+				return false;
 			}else {
-				if($authInfo['password'] != md5($_POST['password'])) {
+				if($authInfo['password'] != user_md5($_POST['password'])) {
 					$this->error('密码错误！');
 				}
 				$_SESSION[C('USER_AUTH_KEY')]	=	$authInfo['id'];
@@ -95,12 +93,12 @@ class PublicController extends Controller{
 // 				$code = 1;
 // 				$msg  = '登陆成功!';
 			
-				$this->success('登录成功！',__APP__.'/Index/index');
+				$this->success('登录成功！','/Ucenter/User/index');
 			
 			}
 			
-			//echo json_encode(array('status'=>1,'info'=>'登录成功'));
-			return ;
+			echo json_encode(array('status'=>1,'info'=>'登录成功'));
+			return true;
 		}
 		$this->display();
 	}
@@ -156,7 +154,7 @@ class PublicController extends Controller{
 					'id'        => NULL,
  					'account'   => $account,
 					'nickname'  => $nickname,
-					'password'  => md5($password),
+					'password'  => user_md5($password),
 					'phone'     => $phone,
 					'email'     => $email,
 					'last_login_time' => time(),
@@ -171,7 +169,10 @@ class PublicController extends Controller{
 			if($id > 0){
 				M("user_property")->add(array('uid'=>$id,'species'=>100));
 				M("user_list")->add(array('uid'=>$id));
-				M("user_communication")->add(array('uid'=>$id,'species'=>100));			
+				M("user_communication")->add(array('uid'=>$id,'species'=>100));	
+				$number = (int)$id;
+				$number = 100000000 + $number;
+				$model->where(array('id'=>$id))->save(array('number'=>$number));
 				echo json_encode(array('info'=>'注册成功！','status'=>1));
 			}else{
 				echo json_encode(array('info'=>'系统错误！','status'=>0));
@@ -179,6 +180,10 @@ class PublicController extends Controller{
 			return ;
 		}
 		
+		$this->display();
+	}
+	
+	public function forget_password(){
 		$this->display();
 	}
 

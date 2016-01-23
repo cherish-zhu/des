@@ -1,0 +1,33 @@
+/* CSS Document */
+
+*{margin:0 auto; padding:0px}
+body{text-align:center; font-size:14px; margin:0px auto; padding:0px}
+a{text-decoration:none}
+td,tr,ul,li,img{margin:0px; padding:0px; border:0px}
+.header{width:100%; height:42px; background-color:#666}
+.banner{width:100%; height:200px; clear:both; background-image:url(/Static/style/defualt/images/back.jpg);backgroud-repeat:no-repeat}
+.user-main2{width:998px; height: auto; min-height:300px !important;  border:1px #999 solid; text-align:left; margin-top:20px}
+.user-left2{width:200px;  height:auto;  float:left;}
+.user-right{width:780px;  padding-left:10px; border-left:1px #999 solid; height:auto; min-height:300px !important; float:left}
+.main-title{width:100%; height:42px; line-height:36px; text-indent:10px; font-weight:bolder; font-size:14px; border-bottom:1px #CCCCCC dashed }
+.user-title{width:100%; height:42px; line-height:36px; text-indent:10px; font-weight:bolder; font-size:14px; border-bottom:1px #CCCCCC dashed }
+.user-left2 ul{list-style-type:none}
+.user-left2 li{width:100%; list-style-type:none; height:42px; line-height:42px; text-indent:16px; border-bottom:1px #CCCCCC dashed}
+.clear{width:100%; height:1px; clear:both}
+
+.right-meun{width:70px; margin-left:15px;height:42px; line-height:42px; float:left; margin-bottom:12px}
+.user-center{width:750px; height:auto; margin-bottom:10px; margin-top:10px}
+.user-avatar{width:200px; height:200px; float:left; margin-right:10px;}
+.user-avatar img{width:120px; height:120px; margin-left:40px; margin-top:40px}
+.avatar-list{float:left; padding-left:10px; border-left:#CCC 1px dashed; width:500px; overflow:hidden}
+
+.header-mian{width:998px; height:42px; background-color:#666}
+.haver img{width:40px; height:40px;}
+.haver{float:left}
+.title{float:left;line-height:40px;margin-left:12px; color:#FFF}
+.out{float:right;line-height:40px;}
+
+#butt{width:100px; text-align:center; border:0; background-color:#096; color:#FFF; line-height:36px}
+
+
+.footer{width:998px; height:36px; line-height:42px; margin-top:30px; color:#999; font-size:13px}

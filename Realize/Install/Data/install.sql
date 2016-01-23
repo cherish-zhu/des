@@ -3750,10 +3750,7 @@ CREATE TABLE IF NOT EXISTS `des_user_communication` (
 
 
 INSERT INTO `des_user_communication` (`uid`, `address`, `country`, `province`, `city`, `county`, `postalcode`) VALUES
-(1, '', '', '001018', '001018011', '001018011004', 0),
-(2, '', '', '', '', '', 0),
-(3, '', '', '', '', '', 0),
-(4, '', '', '', '', '', 0);
+(1, '', '', '001018', '001018011', '001018011004', 0);
 
 CREATE TABLE IF NOT EXISTS `des_user_group` (
   `gid` int(11) NOT NULL,
@@ -3806,10 +3803,7 @@ CREATE TABLE IF NOT EXISTS `des_user_list` (
 
 
 INSERT INTO `des_user_list` (`uid`, `home`, `qq`, `name`, `sex`, `birthday`, `believe`, `Individual`, `job`, `blood`, `school`, `edu`, `love`, `marriage`) VALUES
-(1, '', 0, '', 0, '0000-00-00', '没个性不签名', '', '', '', '大学', '大专', '', ''),
-(2, '', 0, '', 0, '0000-00-00', '', '', '', '', '', '', '', ''),
-(3, '', 0, '', 0, '0000-00-00', '', '', '', '', '', '', '', ''),
-(4, '', 0, '', 0, '0000-00-00', '', '', '', '', '', '', '', '');
+(1, '', 0, '', 0, '0000-00-00', '没个性不签名', '', '', '', '大学', '大专', '', '');
 
 
 CREATE TABLE IF NOT EXISTS `des_user_log` (

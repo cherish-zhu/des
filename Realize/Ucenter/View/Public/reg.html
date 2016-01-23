@@ -1,55 +1,103 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<form name="form1" method="post" action="" onSubmit="javscript:return false;"><table width="582" border="0" cellspacing="0" cellpadding="0">
-<tr>
-    <td width="186" height="45">帐号：</td>
-    <td width="396">
-      <input type="text" name="account" id="account"></td>
-  </tr>
-  <tr>
-    <td width="186" height="45">手机号：</td>
-    <td width="396">
-      <input type="text" name="phone" id="phone"></td>
-  </tr>
-  <tr>
-    <td width="186" height="45">邮箱：</td>
-    <td width="396">
-      <input type="text" name="email" id="email"></td>
-  </tr>
-  <tr>
-    <td width="186" height="45">昵称：</td>
-    <td width="396">
-      <input type="text" name="nickname" id="nickname"></td>
-  </tr>
-  <tr>
-    <td height="45">密码：</td>
-    <td>
-      <input type="password" name="passwd" id="passwd"></td>
-  </tr>
-  <tr>
-    <td height="45">重复密码：</td>
-    <td>
-      <input type="password" name="password" id="password"></td>
-  </tr>
-  <tr>
-    <td height="45">验证码：</td>
-    <td>
-      <input type="text" name="code" id="code"><br>
-      <img title="点击刷新" width="170" height="50" class="verify" src="/Ucenter/Public/verify"></td>
-  </tr>
-  <tr>
-    <td height="45" colspan="2">
-      <input type="submit" name="button" id="button" value="提交">
-    </td>
-  </tr>
-</table></form>
-</body>
-<script type="text/javascript" src="/Static/JQuery/jquery-1.8.3.min.js"></script>
+<!doctype html>
+<html lang="en" class="login-content" data-ng-app="materialAdmin">
+ <head>
+  <meta charset="UTF-8"> 
+  <title>登录</title>
+  <link href="/Static/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
+
+  <link href="/Static/css/material-design-iconic-font/css/material-design-iconic-font.min.css" rel="stylesheet" type="text/css">
+  <link href="/Static/css/app.min.1.css" rel="stylesheet" type="text/css">
+ </head>
+ <body class="login-content" data-ng-controller="loginCtrl as lctrl">
+  
+    <div class="lc-block" id="l-login" data-ng-class="{'toggled':lctrl.login === 1}">
+    	<h1 class="lean">Destroy</h1>
+
+    	<div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="zmdi zmdi-account"></i>
+    		</span>
+    		<div class="fg-line">
+    			<input type="text" name="account" id="account" class="form-control" placeholder="请输入帐号" regex="^\w{3,16}$"/>
+    		</div>
+    	</div>
+        
+        <div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="fa fa-mobile-phone fa-2x"></i>
+    		</span>
+    		<div class="fg-line">
+    			<input type="text" name="phone" id="phone" class="form-control" placeholder="请输入手机号码" regex="^\w{3,16}$"/>
+    		</div>
+    	</div>
+
+        <div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="zmdi zmdi-email"></i>
+    		</span>
+    		<div class="fg-line">
+    			<input type="text" name="email" id="email" class="form-control" placeholder="请输入Email" regex="^\w+@\w+\.[a-zA-Z]+(\.[a-zA-Z]+)?$"/>
+    		</div>
+    	</div>
+        
+        <div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="fa fa-user-md fa-2x"></i>
+    		</span>
+    		<div class="fg-line">
+    			<input type="text" name="nickname" id="nickname" class="form-control" placeholder="请输入昵称" regex="^\w{3,16}$"/>
+    		</div>
+    	</div>
+
+        <div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="fa fa-unlock-alt fa-2x"></i>
+    		</span>
+    		<div class="fg-line">
+    			<input type="password" name="passwd" id="passwd" class="form-control" placeholder="密码" regex="^\w+"/>
+    		</div>
+    	</div>
+        
+        <div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<i class="fa fa-unlock-alt fa-2x"></i>
+    		</span>
+    		<div class="fg-line">
+    			<input type="password" name="password" id="password" class="form-control" placeholder="再一次输入密码" regex="^\w+"/>
+    		</div>
+    	</div>
+        
+        <div class="input-group m-b-20">
+    		<span class="input-group-addon">
+    			<img title="点击刷新" width="120" height="30" class="verify" src="/Ucenter/Public/verify">
+    		</span>
+    		<div class="fg-line">
+    			<input type="text" name="code" id="code" class="form-control" placeholder="请输入验证码" regex="^\w+"/>
+    		</div>
+    	</div>
+    	
+    	<div class="clearfix"></div>
+    	
+    	<div class="checkbox">
+    		<label>
+    			<input type="checkbox" value=""/>
+    			<i class="input-helper"></i>
+    			我同意注册协议
+    		</label>
+    	</div>
+    	
+    	<a id="button" href="javascript:viod(0)" class="btn btn-login btn-danger btn-float">
+    		<i class="zmdi zmdi-arrow-forward"></i>
+    	</a>
+    
+    	<div class="login-navigation">
+        	已有帐号？现在就去 <a href="/Ucenter/Public/login.html">登录</a>
+        </div>
+    </div>
+
+   
+ </body>
+<script src="/Static/JQuery/jquery-1.8.3.min.js" type="text/javascript"></script>	
 <script type="text/javascript">
 $(function(){
 	$(".verify").click(function(){
@@ -91,11 +139,36 @@ $(function(){
 			alert('两次密码不一致');
 			return false;
 		}
-		$.post("/Ucenter/Public/reg",{account:$account,phone:$phone,email:$email,nickname:$nickname,password:$passwd,verify:$code},function(ret){
-			//if(ret.status == 1)
+		$.post("/Ucenter/Public/reg",{account:$account,phone:$phone,email:$email,nickname:$nickname,password:$passwd,verify:$code},function(ret){			
 			alert(ret.info);
+			if(ret.status == 1) location.href = '/Ucenter/Public/login';
 		},"json");
 	});
 });
 </script>
+
+	<!-- Angular -->
+	<script src="/Static/js/bower_components/angular/angular.min.js"></script>
+	<script src="/Static/js/bower_components/angular-resource/angular-resource.min.js"></script>
+	<script src="/Static/js/bower_components/angular-animate/angular-animate.min.js"></script>
+	
+	
+	<!-- Angular Modules -->
+	<script src="/Static/js/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="/Static/js/bower_components/angular-loading-bar/src/loading-bar.js"></script>
+	<script src="/Static/js/bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+	<script src="/Static/js/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	
+	<!-- Common js -->
+	<script src="/Static/js/bower_components/angular-nouislider/src/nouislider.min.js"></script>
+	<script src="/Static/js/bower_components/ng-table/dist/ng-table.min.js"></script>
+	
+	<!-- Placeholder for IE9 -->
+	<!--[if IE 9 ]>
+	    <script src="js/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+	<![endif]-->
+	<!-- App level -->
+	<script src="/Static/js/app.js"></script>
+	<script src="/Static/js/controllers/main.js"></script>
+	
 </html>

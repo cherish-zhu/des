@@ -11,11 +11,10 @@ class BaseController extends Controller {
 
 
 	public function  __construct(){
-		header("Content-type: text/html; charset=utf-8");
 		parent::__construct();
 		if(empty($_SESSION['user_id'])){
 			$this->success('未登录！','/Ucenter/Public/login');
-			return ;
+			exit;
 		}
 	}
     /* 空操作，用于输出404页面 */
@@ -39,6 +38,7 @@ class BaseController extends Controller {
     protected function login(){
         /* 用户登录检测 */
         is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
+        return false;
     }
 
 }

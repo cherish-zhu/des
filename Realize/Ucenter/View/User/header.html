@@ -1,12 +1,10 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>个人中心</title>
-<link href="/static/css/user.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/Static/css/user-center.css" />
-<link type="text/css" rel="stylesheet" href="/Static/Semantic/css/semantic.min.css" />
+<link type="text/css" rel="stylesheet" href="/Static/Semantic-UI/css/semantic.min.css" />
 <script src="/Static/JQuery/jquery-1.8.3.min.js"type="text/javascript"></script>
-<script src="/Static/Semantic/javascript/semantic.min.js"></script>
 <script type="text/javascript">
 function logout(){
 	$.get("/Ucenter/User/logout",function(ret){
@@ -19,9 +17,11 @@ function logout(){
 	},"json");	
 }
 </script>
-<div class="header">
-    <div class="haver"><img src="<php>if($row['face'] == ''){echo '/data/face/face.jpg';}else{echo $row['face'];}</php>" class="circular ui image" /></div>
+</head>
+
+<body>
+<div class="header"><div class="header-mian">
+    <div class="haver"><img src="<php>if($row['face'] == ''){echo '/Static/admin/images/atvar.jpg';}else{echo $row['face'];}</php>" class="circular ui image" /></div>
     <div class="title">个人中心</div>
-    <div class="out"><a href="javascript:logout();">安全退出</a></div>
-    <div class="game"><a href="/">去到游戏大厅</a></div> 
-</div>
+    <div class="out"><a href="/">去到首页</a> <a href="javascript:logout();">安全退出</a></div>
+</div></div>

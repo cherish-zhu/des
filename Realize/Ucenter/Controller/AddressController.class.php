@@ -1,7 +1,7 @@
 <?php
-namespace Content\Controller;
+namespace Ucenter\Controller;
 use Think\Controller;
-class addressController extends Controller{
+class AddressController extends Controller{
 	
 	public function province(){
 		echo json_encode(M('province')->field("provinceName,provinceId")->select());

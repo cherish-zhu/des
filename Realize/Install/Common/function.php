@@ -206,8 +206,8 @@ function create_tables($db, $prefix = ''){
 
 function register_administrator($db, $prefix, $admin, $auth){
 	show_msg('开始注册创始人帐号...');
-	$sql = "INSERT INTO `[PREFIX]user`(`id`,`account`,`nickname`,`password`,`email`,`last_login_ip`,`last_login_time`,`create_time`,`status`) VALUES " . 
-		   "('1', '[NAME]', '[NAME]', '[PASS]', '[EMAIL]',  '[IP]', '[TIME]', '[TIME]', '1')";
+	$sql = "INSERT INTO `[PREFIX]user`(`id`,`account`,`number`,`nickname`,`password`,`email`,`last_login_ip`,`last_login_time`,`create_time`,`status`) VALUES " . 
+		   "('1', '[NAME]', '100000001', '[NAME]', '[PASS]', '[EMAIL]',  '[IP]', '[TIME]', '[TIME]', '1')";
 
 	$password = user_md5($admin['password']);
 	$sql = str_replace(

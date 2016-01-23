@@ -13,7 +13,6 @@ class UserController extends BaseController {
 	protected $thumbFile ,$user_id;
 	
 	public function  __construct(){
-		header("Content-type: text/html; charset=utf-8");
 		parent::__construct();
 		$this->model = M('user');
 		$this->thumbFile = './data/face/';
@@ -23,7 +22,7 @@ class UserController extends BaseController {
 	}
 	
 	public function index(){
-		$this->assign('info',$this->model->join("user_list ON user.id = user_list.uid")->join("user_communication ON user.id = user_communication.uid")->where(array('id'=>$this->user_id))->find());
+		$this->assign('info',$this->model->join(C('DB_PREFIX')."user_list ON ".C('DB_PREFIX')."user.id = ".C('DB_PREFIX')."user_list.uid","LEFT")->join(C('DB_PREFIX')."user_communication ON ".C('DB_PREFIX')."user.id = ".C('DB_PREFIX')."user_communication.uid","LEFT")->where(array('id'=>$this->user_id))->find());
 		$this->display();
 	}
 	
@@ -76,8 +75,8 @@ class UserController extends BaseController {
 	
 	public function passwd(){
 		if($_POST){
-			$pwd = md5($_POST['pwd']);
-			$password = md5($_POST['password']);
+			$pwd = user_md5($_POST['pwd']);
+			$password = user_md5($_POST['password']);
 			$id = $_SESSION['user_id'];
 			$map = array();
 			$data = array();
@@ -200,7 +199,7 @@ class UserController extends BaseController {
 			));
 		}
 		$ad = new AddressController();
-		$ret = $this->model->join("user_list ON user.id = user_list.uid")->join("user_communication ON user.id = user_communication.uid")->where(array('id'=>$this->user_id))->find();
+		$ret = $this->model->join(C('DB_PREFIX')."user_list ON ".C('DB_PREFIX')."user.id = ".C('DB_PREFIX')."user_list.uid")->join(C('DB_PREFIX')."user_communication ON ".C('DB_PREFIX')."user.id = ".C('DB_PREFIX')."user_communication.uid")->where(array('id'=>$this->user_id))->find();
 		$this->assign('pro',$ad->_city($ret['province']));
 		$this->assign('cit',$ad->_county($ret['city']));
 		$this->assign('meb',$ret);
