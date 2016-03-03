@@ -153,16 +153,21 @@ class contentController extends CommonController {
 		
 		$data = M('center'); // 实例化User对象
 		import('ORG.Util.Page');//导入分页类
-		$count= $data->count();
+		$map = array();
+		if(!empty($_GET['cate_id'])) $map['cate_id'] = I('get.cate_id');
+		if(!empty($_GET['text'])) $map['center'] = array('like','%'.I('get.text').'%');
+		if(!empty($_GET['user'])) $map['user_id'] = userID(I('get.user'));
+		$count= $data->where($map)->count();
 		$page       = new Page($count,6);
 		$show       = $page->show();
 		//$nowPage = isset($_GET['p'])?$_GET['p']:0;
 		//$Page->listRows = $nowPage*5;
-		$where = array();
-		$where['status'] = 1;
-		$center = $data->where($where)->order('id desc')->limit($page->firstRow . ',' . $page->listRows)->select();
+		
+		$map['status'] = '1';
+		$center = $data->where($map)->order('id desc')->limit($page->firstRow . ',' . $page->listRows)->select();
 		$this->assign('page',$show);// 赋值分页输出
 		
+		$this->assign('options',option_tree($app = 1, 0,NULL,I('get.cate_id')));
 		$this->assign("center",$center);
 		$this->assign('menus',array('A'=>'应用','B'=>'内容管理'));
 		$this->display();

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>文章内容 - 我的控制台</title>
@@ -27,14 +27,15 @@
             
           <div class="select">
           <div class="select-left">
-            <form id="form2" name="form2" method="post" action="">
-              <select name="select2" id="select2">
+            <form id="form2" name="form2" method="get" action="">
+              <select name="cate_id" id="select2">
                 <option value="0">请选择分类</option>
+                <?php echo $options ?>
               </select>
 
-              <input name="user" type="text" id="textfield" size="20" placeholder="请输入用户名" />
+              <input name="user" type="text" id="textfield" size="20" placeholder="请输入用户名" value="<?php echo $_GET['user']?>" />
 
-              <input type="text" name="textfield2" id="textfield2" placeholder="请输入关键词"  />
+              <input type="text" name="text" id="textfield2" placeholder="请输入关键词" value="<?php echo $_GET['text']?>" />
               <input type="submit" name="button" class="smile-butt" value="查找" />
             </form>
           </div>
@@ -48,7 +49,7 @@
                <?php foreach($center as $k => $v){?>
                <div class="word-line" id="line-<?php echo $v['id']?>">
                     <div class="word-title"><?php echo $v['title']?></div>
-                    <div class="word-site"><?php echo $v['user_id']?>  <?php echo date('Y-m-d H:m:s',$v['create_time'])?> 发表在 <?php echo $v['sort']?></div>
+                    <div class="word-site"><?php echo userName($v['user_id'])?>  <?php echo date('Y-m-d H:m:s',$v['create_time'])?> 发表在 <?php $cate = getCategory((int)$v['cate_id']);echo $cate['name']?></div>
                     <div class="word-center"><?php echo msubstr(strip_tags($v['center']), $start=0, 100, "utf-8", true)?></div>
                     <div class="word-map"><a href="/admin/content/edit?id=<?php echo $v['id']?>" class="edit">编辑</a><a href="javascript:viod(0)" class="delete" id="del-<?php echo $v['id']?>">删除</a><a href="#">移动</a><a href="#">预览</a><a href="#">评论</a><a href="#">审核</a></div>
                </div>

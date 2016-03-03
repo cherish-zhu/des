@@ -21,11 +21,14 @@
 
  <div class="select">
           <div class="select-left">
-            <form id="form2" name="form2" method="post" action="">
-              <select name="select2" id="select2">
+            <form id="form2" name="form2" method="get" action="">
+              <select name="role" id="select2">
                 <option value="0">请选择用户组</option>
+                <?php foreach ($role as $key => $val){?>
+                <option value="<?php echo $val['id']?>" <?php if($val['id'] == $GET['role'])?>><?php echo $val['name']?></option>
+                <?php }?>
               </select>
-              <input name="user" type="text" id="textfield" size="20" placeholder="请输入用户名" />
+              <input name="user" type="text" id="textfield" size="20" placeholder="请输入用户名" value="<?php echo $_GET['user']?>" />
               <input type="submit" name="button" class="smile-butt" value="查找" />
             </form>
           </div>

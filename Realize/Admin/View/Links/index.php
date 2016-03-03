@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>友情链接 - 我的控制台</title>
@@ -20,15 +20,9 @@
 
           <div class="select">
           <div class="select-left">
-            <form id="form2" name="form2" method="post" action="">
-              <select name="select2" id="select2">
-                <option value="0">请选择分类</option>
-              </select>
-              <input name="link" type="text" id="textfield" size="20" placeholder="请输入关键字" />
-              <input type="submit" name="button" class="smile-butt" value="查找" />
-            </form>
+              <a href="/admin/links/add?app=3" style="color:#FFF"><div class="smile-butt"> &nbsp添加链接 </div></a>
           </div>
-          <div class="setect-right"><a href="/admin/links/add?app=3" style="color:#FFF"><div class="setting"><i class="fa fa-cog"></i> &nbsp; 添加</div></a></div>
+          <div class="setect-right"></div>
      </div>
       
       <div class="face">
@@ -52,7 +46,7 @@
                    <div class="link-id"><?php echo $u['name']?></div>
                    <div class="link-name"><?php echo $u['link']?></div>
                    <div class="link-action"><a href="<?php echo $u['link']?>" target="_blank"><i class="fa fa-eye" title="查看详情"></i></a> <a href="/admin/links/edit?app=3&id=<?php echo $u['id']?>"><i class="fa fa-pencil"></i></a> <i link-id="<?php echo $u['id']?>" class="fa fa-times delete_link" title="删除用户"></i></div>
-                   <div class="link-from"><?php echo $u['sort']?></div>              
+                   <div class="link-from"><?php $cate = getCategory((int)$u['sort']);echo $cate['name']?></div>              
                 </li>
 				<?php }?>
              </ul>

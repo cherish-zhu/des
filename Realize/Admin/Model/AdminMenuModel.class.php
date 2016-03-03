@@ -31,7 +31,7 @@ class AdminMenuModel extends Model {
                 "parent" => "",
                 "url" => "./admin.php",
                 "items" => array(
-                		array('name'=>'后台首页','url'=>'/admin'),
+                		array('name'=>'后台首页','url'=>'/admin/Index/index'),
                 		array('name'=>'菜单管理','url'=>'/admin/menu')
                 )
             )

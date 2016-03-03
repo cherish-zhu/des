@@ -44,7 +44,7 @@ class recycleController extends CommonController {
 		$show       = $page->show();
 		//$nowPage = isset($_GET['p'])?$_GET['p']:0;
 		//$Page->listRows = $nowPage*5;
-		$link = $data->where('type = 0')->order('lid')->limit($page->firstRow . ',' . $page->listRows)->select();
+		$link = $data->where('type = 0')->order('id')->limit($page->firstRow . ',' . $page->listRows)->select();
 		$this->assign('page',$show);// 赋值分页输出
 		$this->assign("center",$link);
 		$this->assign('menus',array('A'=>'系统','B'=>'回收站'));
@@ -52,6 +52,7 @@ class recycleController extends CommonController {
 	}
 	
 	public function albums(){
+		$this->assign('menus',array('A'=>'系统','B'=>'回收站'));
 		$this->display();
 	}
 	

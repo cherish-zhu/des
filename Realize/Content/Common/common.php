@@ -19,6 +19,18 @@ function getList($where,$limit,$offset = NULL,$type = NULL){
     
     $map   =  array();
     $map[C('DB_PREFIX').'center.status'] = '1';
+    
+    if($type == 'in:hit'){
+    	$son  = M('category')->where( array('parent_id' => $where ))->select();
+    	foreach ($son as $key => $val){
+    		$ids[] = $val['id'];
+    	}
+    	$id = implode(',', $ids);
+    	$map['cate_id'] = array('in',$id);
+    	$type = 'hit';
+    	$where = NULL;
+    }
+
     if(is_int($where)){
     	if($where == 0) goto x;
         $map['cate_id'] = $where;
@@ -55,19 +67,36 @@ function getCategory($val){
     $map   = array();
     if(is_string($val)) $map['alias'] = $val;
     if(is_int($val))    $map['id']    = $val;
-    $arr   = $model->field('id,parent_id,alias,name,url,view')->where( $map )->find();
+    $arr   = $model->field('id,parent_id,alias,name,url,app,view')->where( $map )->find();
     return $arr;
 }
 
 function getCategoryInfo($id,$limit = 10,$offset = NULL){
 	$model = M('category');
+	$center = M('center');
 	$data  = array();
-	$cate  = $model->where( array('alias' => $alias ))->find();
-	$map['cate_id'] = $cate['id'];
-	$map['status']  = 1;
-	if(is_int($limit)) $model->limit($offset,$limit);
-	$data['list'] = $model->where($map)->order('id desc')->select();
+	$cate  = $model->where( array('id' => $id ))->find();
+	$son  = $model->where( array('parent_id' => $cate['id'] ))->select();
+	foreach ($son as $key => $val){
+		$ids[] = $val['id'];
+	}
+	$id = implode(',', $ids);
+	$map['cate_id'] = array('in',$id);
+	$map[C('DB_PREFIX').'center.status']  = '1';
+	$center->join(C('DB_PREFIX')."category ON ".C('DB_PREFIX')."center.cate_id = ".C('DB_PREFIX')."category.id","LEFT");
+	$center->field(
+			array(
+					C('DB_PREFIX').'center.*',
+					C('DB_PREFIX').'category.name',
+					C('DB_PREFIX').'category.alias',
+					C('DB_PREFIX').'category.icon',
+					C('DB_PREFIX').'category.id' => 'cid'
+			)
+	);
+	if(is_int($limit))$center->limit($offset,$limit);
+	$data['list'] = $center->where($map)->order(C('DB_PREFIX').'center.id desc')->select();
 	$data['info'] = $cate;
+	$data['son'] = $son;
 	return $data;
 }
 
@@ -77,6 +106,20 @@ function getCategoryList($parent_id,$limit,$offset = NULL){
 	if(is_int($limit)) $model->limit($offset,$limit);
 
 	$data = $model->where( array('parent_id' => $parent_id , 'status' => '1'))->select();
+	return $data;
+}
+
+function getCategoryAll($parent_id,$limit,$offset = NULL,$nums = 3){
+    
+	$model = M('category');
+	if(is_int($limit)) $model->limit($offset,$limit);
+
+	$data = $model->where( array('parent_id' => $parent_id , 'status' => '1'))->select();
+	
+	foreach ($data as $key => $val){
+		$data[$key]['son'] = $model->where( array('parent_id' => $val['id'] , 'status' => '1'))->limit($nums)->select();
+	}
+	
 	return $data;
 }
 
@@ -158,7 +201,7 @@ function getAllList($index = 6,$app = 1){
 		$cate_id[$key][] = $val['id'];
 		$list  = array();
 		$list = M('center')->field('id,cate_id,thumb,title,create_time,update_time')->where(array('cate_id' => $val['id'],'status'=>'1'))->limit($index)->select();		
-		$data[$key]['son'] = $cate = $model->where(array('parent_id' => $val['id'],'status'=>'1' ))->select();
+		$data[$key]['son'] = $cate = $model->where(array('parent_id' => $val['id'],'status'=>'1' ))->limit(10)->select();
 		foreach ($cate as $k => $v){
 			$ca[$v['id']] = array(
 					'name' => $v['name'],
@@ -193,8 +236,8 @@ function getContent($id){
 //相关内容
 function contentAbout($cate_id,$limit = 5){
     $model = M('center');
-    $model->field('id,title');
-    $model->where(array('cate_id'=>$cate_id,'status'=>1));
+    $model->field('id,title,create_time');
+    $model->where(array('cate_id'=>$cate_id,'status'=>'1'));
 	$arr = $model->limit($limit)->order('rand()')->select();
     return $arr;
 }
@@ -203,12 +246,12 @@ function contentAbout($cate_id,$limit = 5){
 function contentBoth($id,$category = false){
 	$model = M('center');
     $model->field('id,title');
-    $map['id'] = array('gt',$id);
-    $where['id'] = array('lt',$id);
-    $map['status'] = $where['status'] = 1;
+    $map['id'] = array('gt',(int)$id);
+    $where['id'] = array('lt',(int)$id);
+    $map['status'] = $where['status'] = '1';
     if($category != false) $map['cate_id'] = $where['cate_id'] = $category;
-    $pre = $model->where($map)->find();
-    $next = $model->where($where)->find();
+    $pre = $model->where($map)->order('id ASC')->find();
+    $next = $model->where($where)->order('id DESC')->find();
     if(empty($pre)) $pre = array('id'=>0,'title'=>'没有了');
     if(empty($next)) $next = array('id'=>0,'title'=>'没有了');
     return array(
@@ -274,11 +317,11 @@ function contentbyUserID($uid){
 }
 
 //flase 为不带域名
-function URL($alias,$id = NULL,$ym = true){
+function URL($alias,$id = NULL,$ym = true,$hz = '.html'){
     $host = siteTitle('host_url');
     $ym ? $ym = $host['value'] : $ym = '';
     if($id != NULL)
-        return $ym.'/'.$alias.'/'.$id.'.html';
+        return $ym.'/'.$alias.'/'.$id.$hz;
     else
         return $ym.'/'.$alias;
 }
@@ -293,4 +336,50 @@ function nav($id = '0',$nav = array()){
 
 function tags(){
     #todo
+}
+
+function albums($cate = NULL,$type = 0,$limit = 10){//是否指定分类，默认全局不指定分类，0：最新排序，1热度排序
+	$model = M('category');
+	$map = array();
+	$map['status'] = '1';
+	$map['app'] = '0';	
+	if($cate != NULL) $map['parent_id'] = $cate;
+	$model->where($map);
+	if($type == 0) $model->order('id DESC');
+	if($type == 1) $model->order('hits DESC');
+	$albums = $model->limit($limit)->select();
+	foreach ($albums as $key => $val){
+		$albums[$key]['parent'] = getCategory((int)$val['parent_id']);
+	}
+	return $albums;
+}
+
+function album($id){
+
+}
+
+//相关内容
+function albumAbout($cate_id,$limit = 5){
+	$model = M('category');
+	$model->field('id,name,alias,icon')->where(array('parent_id'=>$cate_id,'status'=>'1'));
+	$arr = $model->limit($limit)->order('rand()')->select();
+	return $arr;
+}
+
+//上一条、下一条
+function albumBoth($id,$category = false){
+	$model = M('category');
+	//$model;
+	$map['id'] = array('gt',$id);
+	$where['id'] = array('lt',$id);
+	$map['status'] = $where['status'] = '1';
+	if($category != false) $map['parent_id'] = $where['parent_id'] = $category;
+	$pre = $model->field('id,name,alias')->where($map)->order('id ASC')->find();
+	$next = $model->field('id,name,alias')->where($where)->order('id DESC')->find();
+	if(empty($pre)) $pre = array('id'=>0,'title'=>'没有了');
+	if(empty($next)) $next = array('id'=>0,'title'=>'没有了');
+	return array(
+			'pre'  => $pre,
+			'next' => $next
+	);
 }

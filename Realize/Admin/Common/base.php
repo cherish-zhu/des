@@ -289,7 +289,7 @@ function option_tree($fid,$count,$list=NULL,$id=NULL){
      			  $x='';
      		}
      		$sel = '';
-     		if(!empty($check)) $sel = ' selected="selected"';
+     		if(!empty($check) || $v['id'] == $id) $sel = ' selected="selected"';
      		$str.='<option value="'.$v['id'].'"'.$sel.'>'.$n.$v['name'].'</option>';
      		if(is_array($tree)){
      			  $ret[$k]['son'] = true;
@@ -436,5 +436,23 @@ function file_tree($view,$count = 0){
 
 }
 
+//用户
+function userName($uid){
+	$user = M('user')->field('nickname')->where(array('id'=>$uid))->find();
+	return $user['nickname'];
+}
 
+function getCategory($val){
+	$model = M('category');
+	$map   = array();
+	if(is_string($val)) $map['alias'] = $val;
+	if(is_int($val))    $map['id']    = $val;
+	$arr   = $model->field('id,parent_id,alias,name,url,app,view')->where( $map )->find();
+	return $arr;
+}
 
+//用户
+function userID($account){
+	$user = M('user')->field('id')->where(array('account'=>$account))->find();
+	return $user['id'];
+}

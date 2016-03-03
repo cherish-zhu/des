@@ -19,7 +19,7 @@ class BaseController extends Controller {
 		self::$bei = $option->where(array('key'=>'host_beian'))->find();
 		self::$url  = $option->where(array('key'=>'host_url'))->find();
 		
-		if(!empty(self::$title2['value'])) self::$title2['value'] = ' - '.self::$title2['value'];
+		if(!empty(self::$title2['value'])) self::$title2['value'] = '_'.self::$title2['value'];
 		
 		$this->assign("name",self::$name['value']);
 		$this->assign("title",self::$title['value'].self::$title2['value']);

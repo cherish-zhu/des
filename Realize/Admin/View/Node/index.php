@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>用户权限 - 我的控制台</title>
@@ -88,11 +88,11 @@
                                         <td>
                                             <input type="checkbox" checked class="i-checks" name="input[]">
                                         </td>
-                                        <td><a href="?fid=<?php echo $val['id']?>" style="line-height:50px"><?php echo $val['title']?></a></td>
+                                        <td><a href="" style="line-height:50px"><?php echo $val['title']?></a></td>
                                         <td><span class="pie"><?php echo $val['Controller']?></span>
                                         </td>
                                         <td><?php echo $val['action']?></td>
-                                        <th><a href="?fid=<?php echo $val['id']?>" style="line-height:50px">查看子节点</a></th>
+                                        <th><a href="" style="line-height:50px">查看子节点</a></th>
                                         <td>正常</td>
                                         <td style="float:right; width:200px"><a href="/admin/Node/add?fid=<?php echo $val['id']?>" class="btn btn-sm btn-primary">新增子节点</a> <a href="/admin/Node/edit?id=<?php echo $val['id']?>" class="btn btn-sm btn-primary">编辑</a> <a href="/admin/Node/del?id=<?php echo $val['id']?>" class="btn btn-sm btn-primary">删除</a>
                                         </td>

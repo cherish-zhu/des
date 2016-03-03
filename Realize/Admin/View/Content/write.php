@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>文章内容 - 我的控制台</title>
@@ -140,10 +140,7 @@
 
 </body>
 <script type="text/javascript">
-
-
 $(".category-line[level != '1']").not(":first").hide();
-
 var num=0; 
 $('.category-cap').click(function(e){ 
     $id = $(this).attr("id");
@@ -159,17 +156,14 @@ $('.category-cap').click(function(e){
     $(this).children("i").removeClass("down").addClass("right");
     $(".category-id-"+$id).hide(); 
     } 
-
     e.preventDefault(); //阻止元素的默认动作（如果存在） 
 });
-
 $(".ed").click(function(){
 	$id = $(this).attr("id");
 	$id = $id.split("-");
 	$id = $id[2];
 	$("#cateid").val($id);
 });
-
 function sendfrom(){
 	 title = $("#title").val();
 	 cate  = $("#cateid").val();

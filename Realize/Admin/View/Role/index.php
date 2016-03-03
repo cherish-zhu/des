@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>用户角色 - 我的控制台</title>
@@ -23,9 +23,7 @@
              <form id="form1" name="form1" method="post" action="">
              <ul>
               <li class="user-mian">
-                   <div class="user-check">
-                       <input type="checkbox" name="checkbox" id="checkbox" />
-                   </div>
+                   <div class="user-check">&nbsp</div>
                    <div class="user-id">角色ID</div>
                    <div class="user-name">角色名称</div>
                    <div class="user-action">操作</div>
@@ -34,9 +32,7 @@
                </li>
                 <?php foreach($roles as $k => $u){?>
                 <li id="role-<?php echo $u['id']?>">    
-                   <div class="user-check">
-                       <input type="checkbox" name="checkbox" id="checkbox" />
-                   </div>
+                   <div class="user-check">&nbsp</div>
                    <div class="user-id"><?php echo $u['id']?></div>
                    <div class="user-name"><?php echo $u['name']?></div>
                    <div class="user-action"><a href="/admin/Role/edit?id=<?php echo $u['id']?>"><i class="fa fa-pencil" title="编辑角色"></i></a><i role-id="<?php echo $u['id']?>" class="fa fa-times delete_role" title="删除角色"></i></div>

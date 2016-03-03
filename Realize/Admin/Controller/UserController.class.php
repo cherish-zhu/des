@@ -11,6 +11,9 @@ class UserController extends CommonController {
     	
     	$map = array();
     	
+    	if(!empty($_GET['role'])) $map['sort'] = I('get.role');
+    	if(!empty($_GET['user'])) $map['account'] = I('get.user');
+    			
     	$model = M($this->table);
     	
     	//取得满足条件的记录数
@@ -34,6 +37,7 @@ class UserController extends CommonController {
     		$voList = $model->where($map)->limit($p->firstRow . ',' . $p->listRows)->select();
     		$page = $p->show();
     		
+    		
     		$this->assign('users', $voList);
     		$this->assign("page", $page);
     	}
@@ -50,6 +54,7 @@ class UserController extends CommonController {
 //         $this->assign('page',$show);// 赋值分页输出
     
 //         $this->assign("user",$user);
+    	$this->assign('role',M('role')->select());
         $this->assign('menus',array('A'=>'用户','B'=>'用户列表'));
         $this->display();
     }
