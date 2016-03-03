@@ -29,6 +29,22 @@ CREATE TABLE IF NOT EXISTS `des_access` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
+
+CREATE TABLE IF NOT EXISTS `des_tags` (
+  
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tag_name` varchar(255) NOT NULL,
+
+  `type` tinyint(4) NOT NULL,
+
+  `hot` tinyint(4) NOT NULL COMMENT '热度，查看次数',
+
+  `bits` int(11) NOT NULL COMMENT '出现次数',
+
+  PRIMARY KEY (`id`)
+
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='标签';
+
 CREATE TABLE IF NOT EXISTS `des_album` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cate_id` int(11) NOT NULL,
@@ -57,8 +73,11 @@ CREATE TABLE IF NOT EXISTS `des_category` (
   `view` varchar(255) DEFAULT NULL,
   `create_time` int(11) NOT NULL,
   `update_time` int(11) NOT NULL,
+  `app` tinyint(4) NOT NULL DEFAULT '0',
+  `page` tinyint(4) NOT NULL DEFAULT '12',
+  `hits` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
 
 INSERT INTO `des_category` (`id`, `parent_id`, `sort`, `status`, `alias`, `name`, `keyword`, `description`, `url`, `icon`, `view`, `create_time`, `update_time`) VALUES
