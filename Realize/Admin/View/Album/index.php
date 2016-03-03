@@ -5,7 +5,8 @@
 <?php require_once('./Realize/Admin/View/Public/head.php');?>
 <meta HTTP-EQUIV="pragma" CONTENT="no-cache">  
 <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">  
-<meta HTTP-EQUIV="expires" CONTENT="0">  
+<meta HTTP-EQUIV="expires" CONTENT="0"> 
+<link type="text/css" rel="stylesheet" href="/Static/Semantic-UI/css/semantic.min.css" />
 <link rel="stylesheet" type="text/css" href="/Static/uploadify/uploadify.css">
 <link rel="stylesheet" type="text/css" href="/Static/admin/css/album.css">
 <link rel="stylesheet" type="text/css" href="/Static/admin/css/style.min.css">

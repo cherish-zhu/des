@@ -151,7 +151,7 @@ function type_tree($fid,$app,$count,$list=NULL){
             <div class="category-name">'.$n.$v['name'].'</div>
             <div class="category-alias">别名:'.$v['alias'].'</div>
             <div class="category-cap"  id="id-'.$v['id'].'"><i class="angle right icon"></i></div>
-            <div class="category-action">操作:<a href="/admin/category/insert?id='.$v['id'].'">添加子分类</a>&nbsp;&nbsp;'.$cz.'</div>';
+            <div class="category-action">操作:<a href="/admin/category/insert?app='.$app.'&id='.$v['id'].'">添加子分类</a>&nbsp;&nbsp;'.$cz.'</div>';
    		if(is_array($tree)){
    		 			$ret[$k]['son'] = true;
    		 			$str.= type_tree($ret[$k]['id'],$app,$count,$list);
@@ -435,3 +435,6 @@ function file_tree($view,$count = 0){
 
 
 }
+
+
+

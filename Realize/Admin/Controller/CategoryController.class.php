@@ -43,6 +43,8 @@ class CategoryController extends CommonController {
 			$data['icon'] = $_POST['thumb'] ? $_POST['thumb'] : '';
 			$data['status'] = '1';
 			$data['view'] = $_POST['view'];
+			$data['app'] = $_POST['app'];
+			$data['page'] = $_POST['page'];
 			$data['description'] = $_POST['description'];
 			$model = M($this->table);
 			if(!empty($_GET['id'])) $ret = $model->where(array('id'=>$_GET['id']))->save($data);

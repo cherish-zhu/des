@@ -3,6 +3,7 @@
 <head>
 <title>菜单管理 - 我的控制台</title>
 <?php require_once('./Realize/Admin/View/Public/head.php');?>
+<link type="text/css" rel="stylesheet" href="/Static/Semantic-UI/css/semantic.min.css" />
 </head>
 
 <body>
@@ -43,10 +44,18 @@
                                               }?>
                                               <?php echo $options ?>
                                             </select>
+                                            </div>
+                                    </div>
+                                    <?php if($_GET['app'] == 2){?>
+                                    <div class="form-group">
+                                     <label class="col-sm-3 control-label">相册?</label>
+                                        <div class="col-sm-8">
+                                          <input type="checkbox" name="album" id="is_album" <?php if($x['type'] == 0) echo 'checked';?>> 
                                         </div>
                                     </div>
+                                    <?php }?>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">分类名称：</label>
+                                        <label class="col-sm-3 control-label category">分类名称：</label>
                                         <div class="col-sm-8">
                                             <input id="name" name="name" minlength="2" type="text" class="form-control" value="<?php echo $x['name']?>" required aria-required="true">
                                         </div>
@@ -77,8 +86,15 @@
                                       </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="col-sm-3 control-label">每页分页显示条数：</label>
+                                        <div class="col-sm-8">
+                                          <input id="page" type="text" class="form-control" name="page" style="width:200px !important; float:left" value="<?php echo $x['page']?>"> 
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-3">
                                         <input type="hidden" name="thumb" id="thumb" value="<?php echo $x['thumb']?>">
+                                        <input type="hidden" name="app" id="app" value="<?php echo $x['app']?>">
                                         <button class="btn btn-primary" type="submit">提交</button>
                                         </div>
                                     </div>
@@ -105,6 +121,15 @@
     <script src="./admin/js/plugins/validate/messages_zh.min.js"></script>
     <script>
 	
+	 $("#is_album").click(function(){
+        if($(this).is(':checked')) {
+            $("#app").val("0");
+			$(".category").text("相册名称：");
+        }else{
+            $("#app").val("<?php echo $_GET['app']?>");
+			$(".category").text("分类名称:");
+        }
+     });
 	
 	$("#check_view").click(function(){ 
         if($(this).is(':checked')) {

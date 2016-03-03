@@ -40,7 +40,8 @@
 <input type="hidden" name="hiddenField" id="cate" value="<?php echo $cate?>" />
 </body>
 <script type="text/dialog">
-$(".image-check").bind("click",function(){
+
+$(document).on("click",".image-check",function(){
 		if($(this).hasClass("img-border") == false){
 			$(".img-border").removeClass("img-border");
 			$(this).addClass("img-border");
@@ -65,7 +66,7 @@ $("#select-img").change(function(){
 });
 $(".ajax-page").html('<li class="page-back" id="up-1">上一页</li><li  class="page-back" id="page-1">1</li><li id="page-2">2</li><li id="page-3">3</li><li id="page-4">4</li><li id="page-5">5</li><li id="page-6">6</li><li id="page-7">7</li><li  class="page-back"  id="down-1">下一页</li>');
 
-$(".ajax-page li").bind("click",function(){
+$(document).on("click",".ajax-page li",function(){
 	id = $(this).attr("id");
 	id = ud = id.split("-");
 	id = id[1];
@@ -112,7 +113,7 @@ $(".ajax-page li").bind("click",function(){
 		$(".album-list").html(er);
 	},"json");
 });
-$(".get-url").bind("click",function(){
+$(document).on("click",".get-url",function(){
 	if($(".image-check").hasClass("img-border") == false){
 		alert("请选择图片");
 		return false;

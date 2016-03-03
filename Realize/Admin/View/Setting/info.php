@@ -3,6 +3,7 @@
 <head>
 <title>基本设置 - 我的控制台</title>
 <?php require_once('./Realize/Admin/View/Public/head.php');?>
+<link type="text/css" rel="stylesheet" href="/Static/Semantic-UI/css/semantic.min.css" />
 <link type="text/css" rel="stylesheet" href="/Static/admin/css/system.css" />
 
 </head>

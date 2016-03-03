@@ -6,7 +6,7 @@ class uploadController extends CommonController {
 	protected $thumbFile ;
 	
 	public function __construct(){
-		
+		parent::__construct();
 		$this->thumbFile = './Data/Uploads/thumb/' . date('Ymd', time()) . '/';
 		
 	}

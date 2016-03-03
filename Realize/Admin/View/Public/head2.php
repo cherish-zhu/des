@@ -7,7 +7,7 @@
 
 <link type="text/css" rel="stylesheet" href="/Static/admin/css/main.css" />
 
-<script src="/Static/js/jquery-2.1.1.min.js"></script>
+<script src="/Static/JQuery/jquery-1.10.2.min.js"></script>
 
 <script src="/Static/js/bootstrap.min.js?v=3.4.0"></script>
 
