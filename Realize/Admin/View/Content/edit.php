@@ -27,12 +27,11 @@
         <div id="page-wrapper" class="gray-bg dashbard-1">
             <?php require_once('./Realize/Admin/View/Public/top.php');?>
             <div class="wrapper wrapper-content">
-            
-         <div class="face">
+        <div class="face">
           <form id="word" action="" method="post" onsubmit="javascript:return sendfrom()">
           <div class="cont-left">
-               <div class="cont-title"><input name="title" type="text" id="title" placeholder="请输入标题"/></div>
-               <div class="cont-center"><textarea name="content" id="content" cols="92" rows="18" class="xheditor"></textarea></div>
+               <div class="cont-title"><input name="title" type="text" id="title" value="<?php echo $alt['title']?>"/></div>
+               <div class="cont-center"><textarea name="content" id="content" cols="92" rows="18" class="xheditor"><?php echo $alt['center']?></textarea></div>
                <div class="cont-mian">
                     <div class="tab-box">
                          <ul class="tab-menu">
@@ -47,10 +46,10 @@
                              <div class="tab-list">
                                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                          <tr>
-                                             <td height="36"><label for="textfield2">标签</label> <input type="text" name="tags" id="tags" value=""/></td>
+                                             <td height="36"><label for="textfield2">标签</label> <input type="text" name="tags" id="tags" value="<?php echo $alt['tags']?>" /></td>
                                          </tr>
                                          <tr>
-                                             <td height="36"><label for="textarea2">描述</label><textarea name="description" id="description" cols="60" rows="3"></textarea></td>
+                                             <td height="36"><label for="textarea2">描述</label><textarea name="description" id="description" cols="60" rows="3"><?php echo $alt['description']?></textarea></td>
                                          </tr>
                                    </table>
                               </div>
@@ -74,7 +73,7 @@
                                </div>
                                 <div class="tab-list">
                                      <p>&nbsp;</p>
-                                     <p><label>请填写模版文件： </label><input type="text" name="view" id="view" /></p>
+                                     <p><label>请填写模版文件： </label><input type="text" name="view" id="view" value="<?php echo $alt['view']?>" /></p>
                                 </div>
                                 <div class="tab-list">
                                      <p>&nbsp;</p>
@@ -83,10 +82,10 @@
                                 <div class="tab-list">
                                   <label for="select">请选择属性： </label>
                                   <select name="type" size="1" id="select">
-                                    <option value="1">普通</option>
-                                    <option value="2">头条</option>
-                                    <option value="3">推荐</option>
-                                    <option value="4">置顶</option>
+                                    <option value="1" <?php if($alt['type'] == 1) echo 'selected="selected"'?>>普通</option>
+                                    <option value="2" <?php if($alt['type'] == 2) echo 'selected="selected"'?>>头条</option>
+                                    <option value="3" <?php if($alt['type'] == 3) echo 'selected="selected"'?>>推荐</option>
+                                    <option value="4" <?php if($alt['type'] == 4) echo 'selected="selected"'?>>置顶</option>
                                   </select>
                           </div>
                       </div>
@@ -97,17 +96,17 @@
           <div class="cont-right">
                 
                 <div class="cont-head">
-                     <div id="change-ico" class="cont-check">选择图标</div>
-                     <div class="cont-img"><img src="/Static/icon/wold.jpg" /></div>
+                  <div id="change-ico" class="cont-check">选择图标</div>
+                     <div class="cont-img"><img src="<?php if(!empty($alt['thumb'])){echo $alt['thumb'];}else{echo '/Static/icon/wold.jpg';}?>" /></div>
                 </div>
                 
                 <div class="cont-sub">
-                     <input type="hidden" name="thumb" id="thumb" />
+                     <input type="hidden" name="thumb" id="thumb" value="<?php echo $alt['thumb']?>" />
                      <input type="hidden" name="cateid" id="cateid" value="<?php echo $alt['cate_id']?>" />
                      <input type="submit" name="button" class="ui huge teal button" value="发 &nbsp; 布" />
                      <p style=" font-size:12px; line-height:36px" id="tips">系统自动检测内容完善程度后将自动保存到草稿箱</p>
                 </div>
-
+                
                 <div class="category-box">
                 <div class="category-line category-id-'">
                 <div class="category-name">选择分类</div>
@@ -115,16 +114,12 @@
                 <div class="category-clear"></div></div>
                 <?php echo $cate_tree;?>
 
-                <div class="category-clear"></div></div>
-    
+                <div class="category-clear"></div></div>    
           </div>
                
      </form>
      </div>
-
-
-                <div class="category-clear"></div>
-
+            <div class="category-clear"></div>
             </div>
             <div class="footer">
                 <div class="pull-right">
@@ -140,7 +135,10 @@
 
 </body>
 <script type="text/javascript">
+
+
 $(".category-line[level != '1']").not(":first").hide();
+
 var num=0; 
 $('.category-cap').click(function(e){ 
     $id = $(this).attr("id");
@@ -156,14 +154,17 @@ $('.category-cap').click(function(e){
     $(this).children("i").removeClass("down").addClass("right");
     $(".category-id-"+$id).hide(); 
     } 
+
     e.preventDefault(); //阻止元素的默认动作（如果存在） 
 });
+
 $(".ed").click(function(){
 	$id = $(this).attr("id");
 	$id = $id.split("-");
 	$id = $id[2];
 	$("#cateid").val($id);
 });
+
 function sendfrom(){
 	 title = $("#title").val();
 	 cate  = $("#cateid").val();
@@ -181,6 +182,8 @@ function sendfrom(){
 		 return false;
 	 }	 
 }
+center_id = $("#cateid").val();
+$("#cate-id-"+center_id).parent().show();
 </script>
 <script src="/Static/Semantic-UI/javascript/semantic.min.js"></script>
 <script src="/Static/admin/js/cont.js" type="text/javascript"></script>
