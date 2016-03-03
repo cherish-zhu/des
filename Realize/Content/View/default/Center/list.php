@@ -22,7 +22,7 @@ body{background-image:url(/Static/background/bg2.jpg);background-size:100%; text
   <tr>
     <td height="36" colspan="2" bgcolor="#FFFFFF">&nbsp;&nbsp;<a href="#"><?php echo $cate_info['name']?></a></td>
     <td width="16" rowspan="7" >&nbsp;</td>
-    <td width="251" rowspan="7" ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <td width="251" rowspan="7" valign="top" style="vertical-align:top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td height="36" bgcolor="#FFFFFF">&nbsp;文章分类</td>
       </tr>
