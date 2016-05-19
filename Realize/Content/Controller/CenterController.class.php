@@ -48,6 +48,11 @@ class CenterController extends BaseController {
 
 	public function __call($method,$args){
 		
+		if($method == 'search'){
+			$this->search($_GET['keyword']);
+			exit();
+		}
+		
         $gid = (int)getCategoryId(ACTION_NAME);
         $exp = explode("_", $_GET['id']);
         $id  = $exp[1] ?  $exp[1] : I('get.id');
@@ -127,6 +132,11 @@ class CenterController extends BaseController {
 	
 	public function praise(){
 		M("center_count")->where(array('center_id'=>$_GET['id']))->setInc("praise");
+	}
+	
+	protected function search($keyword){
+		$search = new SearchController();
+		$search->index($keyword);
 	}
 	
 	protected function album($gid,$id){
