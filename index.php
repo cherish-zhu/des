@@ -4,3 +4,4 @@ define ( 'APP_DEBUG', true );
 define ( 'APP_PATH', './Realize/' );
 define ( 'RUNTIME_PATH', './Cache/' );
 require './Core/Start.php';
+
