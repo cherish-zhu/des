@@ -29,10 +29,10 @@
                 <?php }?>
               </select>
               <input name="user" type="text" id="textfield" size="20" placeholder="请输入用户名" value="<?php echo $_GET['user']?>" />
-              <input type="submit" name="button" class="smile-butt" value="查找" />
+              <input type="submit" name="button" class="fa fa-bars"value="查找" />
             </form>
           </div>
-          <div class="setect-right"><div class="setting"><i class="fa fa-cog"></i>  设置</div></div>
+          <div class="setect-right"><div class="setting"><i cclass="fa fa-bars"></i>  设置</div></div>
      </div>
       
       <div class="face">

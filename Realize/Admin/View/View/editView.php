@@ -27,7 +27,7 @@
                  <textarea name="code" id="code"><?php echo $code?></textarea>
                  
                  <p><div class="ui instagram button">
-                 <button style="border:none; background:none" class="instagram icon">保存</button>
+                 <button style="border:none; background:none" class="fa fa-bars">保存</button>
                  </div></p>
            </form>
            </div>

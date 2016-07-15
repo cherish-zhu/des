@@ -45,7 +45,7 @@
              </form>
         </div>
         
-        <div class="add-role"><a href="/admin/Role/add" style="color:#FFF">新增角色</a></div>
+        <div class="fa fa-bars"><a href="/admin/Role/add" style="color:#FFF">新增角色</a></div>
                 </div>
 
 

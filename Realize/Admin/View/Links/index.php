@@ -20,7 +20,7 @@
 
           <div class="select">
           <div class="select-left">
-              <a href="/admin/links/add?app=3" style="color:#FFF"><div class="smile-butt"> &nbsp添加链接 </div></a>
+              <a href="/admin/links/add?app=3" style="color:#FFF"><div class="fa fa-bars"> &nbsp添加链接 </div></a>
           </div>
           <div class="setect-right"></div>
      </div>

@@ -66,7 +66,7 @@
           <div class="input"><textarea name="keyword" id="keyword" cols="56" rows="4"><?php echo $p['host_keyword']?></textarea>  <textarea name="description" id="description" cols="56" rows="4"><?php echo $p['host_description']?></textarea></div>
      </div> 
      
-     <input type="submit" name="button" id="butt" value="保存并更新" />
+     <input type="submit" name="button" class="fa fa-bars" value="保存并更新" />
      </form>
      </div>
 </div>            
