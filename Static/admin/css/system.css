@@ -14,7 +14,8 @@
 .input{width:100%; height:auto; clear:both}
 .input input{border: #DBDBDB 1px solid; height:28px; line-height:28px; text-indent:6px; color: #033}
 .input input:focus{
-
+    background-color: #1ab394;
+	border-radius: 8px;
      outline:none;
      border:#87C6F9 1px solid;
      box-shadow: 0 0 8px rgba(103, 166, 217, 1);

@@ -76,10 +76,9 @@ ul{list-style-type:none}
 .pageRight{width:49.5%; height:30px; float:left; text-align:right}
 
 /*按钮*/
-#butt{width:120px; height:39px; text-align:center; line-height:39px; border:0; color:#FFF; font-size:14px;  -moz-border-radius:3px;  -webkit-border-radius: 3px;  border-radius:3px;font-weight:bolder;border-radius: 2px;background-color:#096; cursor:pointer}
-
-.smile-butt{background-color:#069; border:0; width:60px; color:#FFF}
-.setting{width:60px; background-color:#39C; height:39px; line-height:39px; text-align:center; color:#FFF; cursor:pointer; font-size:12px; font-weight:bolder }
+#butt{width:120px; height:39px; text-align:center; line-height:39px; border:0; color:#FFF; font-size:14px;  -moz-border-radius:3px;  -webkit-border-radius: 3px;  border-radius:3px;font-weight:bolder;border-radius: 2px;cursor:pointer}
+.smile-butt{ background-color: #1ab394;border-radius: 4px; border:0; width:80px; color:#FFF}
+.setting{width:60px;  background-color: #1ab394;border-radius: 4px;height:39px; line-height:39px; text-align:center; color:#FFF; cursor:pointer; font-size:12px; font-weight:bolder }
 .action,.add-action{width:60px; border-radius: 2px;background-color:#096; height:30px; line-height:30px; text-align:center; color:#FFF; -moz-border-radius:3px;      /* Gecko browsers */
     -webkit-border-radius: 3px;   /* Webkit browsers */
     border-radius:3px;            /* W3C syntax */ cursor:pointer; font-size:14px; font-weight:bolder; margin-right:12px}

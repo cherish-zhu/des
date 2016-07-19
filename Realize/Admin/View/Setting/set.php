@@ -30,7 +30,7 @@
           <div class="input"><input name="dir" type="text" id="textfield" value="<?php echo $host_dir?>" size="50" /></div>
      </div>
        
-       <input type="submit" name="button" class="fa fa-bars" value="保存并更新" />
+       <input type="submit" name="button" class="smile-butt" value="保存并更新" />
        
        </form>
      </div>

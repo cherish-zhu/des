@@ -29,7 +29,7 @@
                 <?php }?>
               </select>
               <input name="user" type="text" id="textfield" size="20" placeholder="请输入用户名" value="<?php echo $_GET['user']?>" />
-              <input type="submit" name="button" class="fa fa-bars"value="查找" />
+              <input type="submit" name="button" class="setting"value="查找" />
             </form>
           </div>
           <div class="setect-right"><div class="setting"><i cclass="fa fa-bars"></i>  设置</div></div>
@@ -68,10 +68,10 @@
             <div class="page">
 	       <div class="pageLeft">
 	         <table width="200" border="0" align="left" cellpadding="0" cellspacing="0">
-	           <tr>
-	             <td width="31"><font id="checkAll">全选</font></td>
-	             <td width="30"><font id="checkBack">反选</font></td>
-	             <td width="104">
+	           <tr >
+	             <td width="31"  class="setting"><font id="checkAll">全选</font></td>
+	             <td width="30"  class="setting"><font id="checkBack">反选</font></td>
+	             <td width="104"  class="setting">
 	               <select name="select" size="1" id="select">
 	                 <option value="1">删除</option>
 	                 <option value="2">审核</option>

@@ -28,7 +28,7 @@
 	       <div class="pageLeft">
 	         <table width="427" border="0" align="left">
 	           <tr>
-	             <td width="36"><a href="/admin/category/insert?id=0"  style="float:left; width:100px" class="fa fa-bars">新增主分类</a></td>
+	             <td width="36"><a href="/admin/category/insert?id=0"  style="float:left; width:100px" class="setting">新增主分类</a></td>
 	             <td width="36"></td>
 	             <td width="230">
 	                  

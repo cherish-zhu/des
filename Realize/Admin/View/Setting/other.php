@@ -37,7 +37,7 @@
           <div class="input"><textarea name="code" id="code" cols="45" rows="3">无</textarea></div>
      </div>
      
-       <input type="submit" name="button" class="fa fa-bars" value="保存并更新" />
+       <input type="submit" name="button" class="smile-butt" value="保存并更新" />
        </form>
      </div>
 </div>            
